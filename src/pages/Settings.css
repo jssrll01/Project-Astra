@@ -1,0 +1,234 @@
+.settings-card {
+  padding: 24px clamp(20px, 3vw, 32px);
+  border-radius: 14px;
+  margin-bottom: 16px;
+}
+
+.settings-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.settings-row:last-child { border-bottom: none; padding-bottom: 0; }
+.settings-row:first-of-type { padding-top: 0; }
+
+.settings-label {
+  font-size: 0.94rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.settings-control { flex-shrink: 0; }
+
+.toggle {
+  width: 48px; height: 26px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  position: relative;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.toggle .knob {
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--muted);
+  transition: transform 0.25s, background 0.25s;
+}
+
+.toggle.on { background: rgba(45, 212, 191, 0.2); border-color: rgba(45, 212, 191, 0.5); }
+.toggle.on .knob { transform: translateX(22px); background: var(--teal); }
+
+.cselect { position: relative; min-width: 130px; }
+
+.cselect-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: 9px;
+  font-family: var(--font-b);
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.cselect-trigger:hover { border-color: rgba(45, 212, 191, 0.4); }
+.cselect.open .cselect-trigger { border-color: var(--teal); }
+
+.cselect-caret {
+  color: var(--muted);
+  font-size: 0.7rem;
+  transition: transform 0.2s;
+}
+
+.cselect.open .cselect-caret { transform: rotate(180deg); color: var(--teal); }
+
+.cselect-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 100%;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 5px;
+  list-style: none;
+  z-index: 60;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+  animation: cselIn 0.15s ease-out;
+}
+
+@keyframes cselIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cselect-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  border-radius: 7px;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-family: var(--font-b);
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cselect-option:hover { background: rgba(45, 212, 191, 0.08); color: var(--text); }
+.cselect-option.active { background: rgba(45, 212, 191, 0.12); color: var(--teal); font-weight: 600; }
+
+.settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.settings-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--teal);
+  color: #06231f;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  z-index: 500;
+  animation: toastIn 0.25s ease-out;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translate(-50%, 16px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@media (max-width: 600px) {
+  .settings-row { flex-direction: row; gap: 12px; }
+  .settings-control { min-width: 120px; }
+}
+
+body.set-reduce-motion *,
+body.set-reduce-motion *::before,
+body.set-reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+body.set-reduce-motion .orbit,
+body.set-reduce-motion .bg-glow { animation: none !important; }
+
+body.set-contrast {
+  --muted: #d2d8e8;
+  --text: #ffffff;
+  --border: rgba(255, 255, 255, 0.25);
+}
+body.set-contrast .glass,
+body.set-contrast .chip,
+body.set-contrast .page-header { border-width: 2px; }
+
+body.set-no-smooth,
+body.set-no-smooth html { scroll-behavior: auto !important; }
+
+body.set-no-comfort .page { padding: 80px clamp(18px, 4vw, 44px) 40px; }
+body.set-no-comfort .about-block { padding: 14px 0; }
+body.set-no-comfort p { line-height: 1.5; }
+
+body.set-data-saver .bg-canvas,
+body.set-data-saver .bg-glow { display: none !important; }
+
+.app.set-render-medium .glass:hover { transform: none; }
+.app.set-render-fast .glass { transition: none; }
+.app.set-render-fast .glass:hover { border-color: var(--border); transform: none; box-shadow: none; }
+.app.set-render-ultra .glass:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.5), 0 0 40px rgba(45,212,191,0.15);
+}
+
+.app.set-trans-medium .route-fade { animation-duration: 0.4s !important; }
+.app.set-trans-high .route-fade { animation-duration: 0.55s !important; }
+.app.set-trans-fast .route-fade { animation-duration: 0.15s !important; }
+.app.set-trans-ultra .route-fade { animation-duration: 0.7s ease-out !important; }
+
+.app.set-img-low img { image-rendering: pixelated; filter: contrast(0.95) saturate(0.85); }
+.app.set-img-medium img { filter: contrast(0.97) saturate(0.92); }
+.app.set-img-high img { filter: none; }
+.app.set-img-ultra img { filter: saturate(1.06) contrast(1.02); }
+
+.app.set-shadow-medium .glass,
+.app.set-shadow-medium .chip { box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+.app.set-shadow-high .glass { box-shadow: 0 6px 20px rgba(0,0,0,0.35); }
+.app.set-shadow-ultra .glass { box-shadow: 0 12px 40px rgba(0,0,0,0.55), 0 0 30px rgba(45,212,191,0.08); }
+
+.app.set-light-medium .glow-text { filter: none; }
+.app.set-light-high .glow-text { filter: drop-shadow(0 0 8px rgba(45,212,191,0.35)); }
+.app.set-light-ultra .glow-text {
+  filter: drop-shadow(0 0 12px rgba(45,212,191,0.55)) drop-shadow(0 0 24px rgba(168,85,247,0.3));
+}
+
+.app.set-anim-medium .route-fade { animation-duration: 0.4s; }
+.app.set-anim-high .route-fade { animation-duration: 0.55s; }
+.app.set-anim-fast .route-fade { animation-duration: 0.15s; }
+.app.set-anim-ultra .route-fade { animation-duration: 0.7s ease-out; }
+
+.install-btn {
+  padding: 9px 22px;
+  font-size: 0.88rem;
+  border-radius: 8px;
+}
+
+.install-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}

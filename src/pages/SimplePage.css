@@ -1,0 +1,88 @@
+.simple-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+.simple-card { padding: 26px clamp(20px, 3vw, 30px); border-radius: 14px; }
+.simple-card h3 { font-size: 1.15rem; margin-bottom: 10px; color: var(--text); }
+.simple-card p { font-size: 0.92rem; line-height: 1.7; }
+.empty-note { background: rgba(17, 26, 46, 0.4); backdrop-filter: blur(12px); border: 1px dashed var(--border); border-radius: 14px; padding: 48px 32px; text-align: center; color: var(--muted); font-size: 0.98rem; font-style: italic; }
+.resource-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.resource-list li { font-size: 0.9rem; color: var(--muted); padding-left: 20px; position: relative; line-height: 1.6; }
+.resource-list li::before { content: '▸'; position: absolute; left: 0; color: var(--teal); }
+.prompt-list { display: flex; flex-direction: column; gap: 16px; }
+.prompt-item { padding: 24px clamp(20px, 3vw, 32px); border-radius: 14px; }
+.prompt-item h3 { font-size: 1.1rem; margin-bottom: 12px; color: var(--teal); }
+.prompt-text { font-family: ui-monospace, Menlo, monospace; font-size: 0.86rem; line-height: 1.75; color: var(--muted); background: rgba(0,0,0,0.25); padding: 16px 20px; border-radius: 10px; border-left: 3px solid var(--teal); white-space: pre-wrap; word-break: break-word; }
+.timeline { position: relative; padding-left: 40px; }
+.timeline::before { content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(180deg, var(--teal), var(--purple), var(--coral)); border-radius: 2px; }
+.timeline-item { position: relative; padding: 14px 0; }
+.timeline-dot { position: absolute; left: -35px; top: 26px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 3px solid var(--teal); box-shadow: 0 0 20px rgba(45, 212, 191, 0.6); z-index: 2; }
+.timeline-content { padding: 20px 26px; border-radius: 12px; }
+.timeline-year { display: inline-block; font-size: 0.78rem; color: var(--gold); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+.timeline-content h3 { font-size: 1.1rem; margin-bottom: 6px; }
+.timeline-content p { font-size: 0.92rem; line-height: 1.65; margin: 0; }
+@media (max-width: 600px) { .timeline { padding-left: 30px; } .timeline-dot { left: -28px; } }
+
+.settings-list { display: flex; flex-direction: column; gap: 12px; }
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  border-radius: 12px;
+}
+
+.settings-row h3 { font-size: 1rem; margin-bottom: 4px; color: var(--text); }
+.settings-row p { font-size: 0.88rem; margin: 0; line-height: 1.55; }
+
+.toggle {
+  width: 48px; height: 26px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  position: relative;
+  transition: background 0.25s, border-color 0.25s;
+  flex-shrink: 0;
+}
+
+.toggle .knob {
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--muted);
+  transition: transform 0.25s, background 0.25s;
+}
+
+.toggle.on { background: rgba(45, 212, 191, 0.2); border-color: rgba(45, 212, 191, 0.5); }
+.toggle.on .knob { transform: translateX(22px); background: var(--teal); }
+
+.settings-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--teal);
+  color: #06231f;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  animation: toastIn 0.3s ease-out;
+  z-index: 500;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translate(-50%, 20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@media (max-width: 600px) {
+  .settings-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+}
+
+body.compact-mode .page { padding: 80px clamp(16px, 4vw, 48px) 40px; }
+body.compact-mode .hero { padding: 90px clamp(16px, 4vw, 48px) 40px; min-height: auto; }
+body.compact-mode .quick-facts { margin-top: 26px; gap: 36px; }
+body.compact-mode .about-block { padding: 16px 0; }
+body.compact-mode .footer { padding-top: 36px; padding-bottom: 22px; }

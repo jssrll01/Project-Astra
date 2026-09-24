@@ -1,0 +1,50 @@
+.skill-block { margin-bottom: 20px; padding: 24px; border-radius: 14px; }
+.skill-label { font-family: var(--font-b); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+.skill-label.teal { color: var(--teal); }
+.skill-label.coral { color: var(--coral); }
+.chip-icon { width: 16px; height: 16px; object-fit: contain; flex-shrink: 0; }
+.tool-chip .chip-icon { filter: brightness(0) invert(1); opacity: 0.85; }
+.skills-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+.strengths-section, .learning-section { padding: 26px; border-radius: 14px; }
+.strengths-section h2, .learning-section h2 { font-size: clamp(1.2rem, 2.2vw, 1.5rem); margin-bottom: 18px; }
+.strengths-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.strength-card { background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.strength-card h3 { font-size: 1rem; margin-bottom: 6px; color: var(--text); }
+.strength-card p { font-size: 0.88rem; margin: 0; line-height: 1.55; }
+.learning-section p { font-size: 0.95rem; line-height: 1.75; }
+@media (max-width: 800px) { .skills-bottom { grid-template-columns: 1fr; } }
+
+.chip-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.05);
+  border-radius: 3px;
+}
+
+.learning-section p { margin-bottom: 12px; }
+
+.learn-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.learn-list li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.learn-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+}

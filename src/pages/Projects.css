@@ -1,0 +1,116 @@
+.projects-page {
+  padding-top: 120px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 80px;
+}
+
+.project-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.project-card:hover {
+  border-color: rgba(45, 212, 191, 0.4);
+  transform: translateY(-3px);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.project-header h3 {
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.project-status {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.project-status.active {
+  color: var(--teal);
+  border: 1px solid rgba(45, 212, 191, 0.4);
+}
+
+.project-status.ongoing {
+  color: var(--coral);
+  border: 1px solid rgba(251, 146, 60, 0.4);
+}
+
+.project-status.planned {
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 18px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.project-tag {
+  font-size: 0.78rem;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.project-link {
+  color: var(--teal);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: opacity 0.2s;
+  align-self: flex-start;
+}
+
+.project-link:hover {
+  opacity: 0.8;
+}
+
+.vision-cta {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.vision-cta h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 14px;
+}
+
+.vision-cta p {
+  max-width: 50ch;
+  margin: 0 auto 28px;
+  font-size: 1rem;
+}
