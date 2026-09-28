@@ -22,6 +22,9 @@ import Blog from './pages/Blog';
 import Certifications from './pages/Certifications';
 import Achievements from './pages/Achievements';
 import Settings from './pages/Settings';
+import NotFound from './pages/NotFound';
+import Threads from './pages/Threads';
+import BlogPost from './pages/BlogPost';
 import './App.css';
 
 function ScrollToTop() {
@@ -50,9 +53,12 @@ function RoutesView() {
         <Route path="/prompt-programming" element={<PromptProgramming />} />
         <Route path="/journey" element={<Journey />} />
         <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/certifications" element={<Certifications />} />
         <Route path="/achievements" element={<Achievements />} />
         <Route path="/settings" element={<Settings />} />
+          <Route path="/threads" element={<Threads />} />
+          <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

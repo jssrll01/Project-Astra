@@ -25,6 +25,7 @@ function Navbar() {
     { path: '/gallery', label: 'Gallery' },
     { path: '/ai-music', label: 'AI Music' },
     { path: '/blog', label: 'Blog' },
+    { path: '/threads', label: 'Threads' },
     { path: '/contact', label: 'Contact' },
   ];
 
