@@ -43,7 +43,7 @@ function Footer() {
           <div className="footer-col">
             <h4>Explore</h4>
             <Link to="/partners">Partners</Link>
-            <Link to="/resources">Resources</Link>
+            <Link to="/bookshelf">Bookshelf</Link>
             <Link to="/archives">Archives</Link>
             <Link to="/journey">Journey</Link>
             <Link to="/blog">Blog</Link>

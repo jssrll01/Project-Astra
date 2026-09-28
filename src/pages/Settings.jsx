@@ -180,6 +180,14 @@ function Settings() {
     window.__astraToast = setTimeout(() => setToast(''), 1200);
   };
 
+  const handleRefresh = () => {
+    setToast('Refreshing…');
+    clearTimeout(window.__astraToast);
+    window.__astraToast = setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  };
+
   const reset = () => {
     setS({ ...DEFAULTS });
     setToast('Reset');
@@ -265,6 +273,13 @@ function Settings() {
           </Row>
           <Row title="Lighting Quality">
             <CustomSelect value={s.lightingQuality} options={['medium','high','ultra']} onChange={v => set('lightingQuality', v)} />
+          </Row>
+        </div>
+
+        <div className="settings-card glass" style={{ marginTop: 16 }}>
+          <h2 className="settings-title">Maintenance</h2>
+          <Row title="Refresh Page">
+            <button className="btn btn-ghost" onClick={handleRefresh}>Refresh</button>
           </Row>
         </div>
 

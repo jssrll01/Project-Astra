@@ -11,7 +11,7 @@ import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import ProjectGallery from './pages/ProjectGallery';
 import Partners from './pages/Partners';
-import Resources from './pages/Resources';
+import Bookshelf from './pages/Bookshelf';
 import AIMusic from './pages/AIMusic';
 import Archives from './pages/Archives';
 import PromptMusic from './pages/PromptMusic';
@@ -26,6 +26,7 @@ import NotFound from './pages/NotFound';
 import Threads from './pages/Threads';
 import BlogPost from './pages/BlogPost';
 import AIMusicDetail from './pages/AIMusicDetail';
+import AIArt from './pages/AIArt';
 import './App.css';
 
 function ScrollToTop() {
@@ -46,9 +47,10 @@ function RoutesView() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/gallery" element={<ProjectGallery />} />
         <Route path="/partners" element={<Partners />} />
-        <Route path="/resources" element={<Resources />} />
+        <Route path="/bookshelf" element={<Bookshelf />} />
         <Route path="/ai-music" element={<AIMusic />} />
           <Route path="/ai-music/:slug" element={<AIMusicDetail />} />
+          <Route path="/ai-art" element={<AIArt />} />
         <Route path="/archives" element={<Archives />} />
         <Route path="/prompt-music" element={<PromptMusic />} />
         <Route path="/prompt-image" element={<PromptImage />} />

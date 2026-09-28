@@ -23,6 +23,7 @@ function Navbar() {
     { path: '/skills', label: 'Skills' },
     { path: '/projects', label: 'Projects' },
     { path: '/gallery', label: 'Gallery' },
+    { path: '/ai-art', label: 'AI Art' },
     { path: '/ai-music', label: 'AI Music' },
     { path: '/blog', label: 'Blog' },
     { path: '/threads', label: 'Threads' },
@@ -31,7 +32,7 @@ function Navbar() {
 
   const moreLinks = [
     { path: '/partners', label: 'Partners' },
-    { path: '/resources', label: 'Resources' },
+    { path: '/bookshelf', label: 'Bookshelf' },
     { path: '/archives', label: 'Archives' },
     { path: '/prompt-music', label: 'Prompt Lab (Music)' },
     { path: '/prompt-image', label: 'Prompt Lab (Image)' },
