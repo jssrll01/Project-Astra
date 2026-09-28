@@ -23,7 +23,6 @@ function Navbar() {
     { path: '/skills', label: 'Skills' },
     { path: '/projects', label: 'Projects' },
     { path: '/gallery', label: 'Gallery' },
-    { path: '/ai-art', label: 'AI Art' },
     { path: '/ai-music', label: 'AI Music' },
     { path: '/blog', label: 'Blog' },
     { path: '/threads', label: 'Threads' },

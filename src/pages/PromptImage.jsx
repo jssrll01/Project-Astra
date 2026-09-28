@@ -6,6 +6,7 @@ function PromptImage() {
     { title: 'Cyberpunk Street', prompt: 'Neon-lit alley, rain, cyberpunk aesthetic, cinematic lighting' },
     { title: 'Minimal UI Concept', prompt: 'Minimalist dashboard UI, dark mode, soft shadows, teal accents' },
     { title: 'Portrait Sketch', prompt: 'Pencil sketch portrait, soft shading, artistic, high detail' },
+    { title: 'Abstract Logo', prompt: 'Abstract geometric logo, flat design, gold and teal palette' },
   ];
   return (
     <div className="simple-page page">
@@ -13,7 +14,7 @@ function PromptImage() {
         <header className="page-header reveal">
           <p className="eyebrow">Prompt Engineering Lab — Image</p>
           <h1>Image Prompt Experiments</h1>
-          <p>Prompts I use for AI image generation.</p>
+          <p>Prompts I use for AI image generation and visual design.</p>
         </header>
         <div className="prompt-list">
           {prompts.map((p, i) => (

@@ -26,7 +26,6 @@ import NotFound from './pages/NotFound';
 import Threads from './pages/Threads';
 import BlogPost from './pages/BlogPost';
 import AIMusicDetail from './pages/AIMusicDetail';
-import AIArt from './pages/AIArt';
 import './App.css';
 
 function ScrollToTop() {
@@ -50,7 +49,6 @@ function RoutesView() {
         <Route path="/bookshelf" element={<Bookshelf />} />
         <Route path="/ai-music" element={<AIMusic />} />
           <Route path="/ai-music/:slug" element={<AIMusicDetail />} />
-          <Route path="/ai-art" element={<AIArt />} />
         <Route path="/archives" element={<Archives />} />
         <Route path="/prompt-music" element={<PromptMusic />} />
         <Route path="/prompt-image" element={<PromptImage />} />
