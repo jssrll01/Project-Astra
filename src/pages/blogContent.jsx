@@ -4,7 +4,7 @@ export const posts = [
   {
     slug: 'first-web-app',
     title: 'How I Built My First Web App',
-    date: 'September 2025',
+    date: 'September 2026',
     content: (
       <>
         <p>Building my first web app was one of the experiences that made me more interested in technology and software development. At first, I only wanted to understand how websites and applications worked. Eventually, I decided to turn one of my ideas into a working project.</p>
@@ -51,7 +51,7 @@ export const posts = [
   {
     slug: 'ai-in-projects',
     title: 'How I Use AI in My Projects',
-    date: 'September 2025',
+    date: 'September 2026',
     content: (
       <>
         <p>Artificial intelligence has become an important part of the way I explore technology and develop my projects. I don't see AI as a replacement for learning or creativity. Instead, I use it as a tool that helps me explore ideas, solve problems, and work more efficiently.</p>
@@ -103,7 +103,7 @@ export const posts = [
   {
     slug: 'ai-assisted-programming',
     title: 'AI-Assisted Programming: Benefits and Limitations',
-    date: 'October 2025',
+    date: 'October 2026',
     content: (
       <>
         <p>Artificial intelligence is changing the way people learn and develop software. AI-assisted programming allows developers to use AI tools to generate code, explain concepts, identify errors, and explore different approaches to solving problems.</p>
@@ -167,7 +167,7 @@ export const posts = [
   {
     slug: 'prompt-engineering-beginners',
     title: 'Prompt Engineering for Beginners',
-    date: 'October 2025',
+    date: 'October 2026',
     content: (
       <>
         <p>As artificial intelligence becomes more common, knowing how to communicate effectively with AI systems has become an increasingly useful skill. One way to improve the results you get from AI is through prompt engineering.</p>
@@ -254,7 +254,7 @@ export const posts = [
   {
     slug: 'innovation-matters',
     title: 'Why I Believe Innovation Matters',
-    date: 'November 2025',
+    date: 'November 2026',
     content: (
       <>
         <p>Innovation has always been connected to progress. It is not simply about creating something completely new. Sometimes, innovation means finding a better way to solve an existing problem, improving something that already works, or combining different ideas to create something useful.</p>
@@ -299,7 +299,7 @@ export const posts = [
   {
     slug: 'human-computer-interaction',
     title: 'The Future of Human-Computer Interaction',
-    date: 'November 2025',
+    date: 'November 2026',
     content: (
       <>
         <p>Human-computer interaction, or HCI, is the way people communicate and interact with computers and digital systems. From keyboards and mice to touchscreens and voice assistants, the way we interact with technology has continuously evolved.</p>
@@ -353,7 +353,7 @@ export const posts = [
   {
     slug: 'responsible-ai',
     title: 'Responsible Use of Artificial Intelligence',
-    date: 'December 2025',
+    date: 'December 2026',
     content: (
       <>
         <p>Artificial intelligence is becoming a powerful part of modern technology. It can help people learn, create, solve problems, automate tasks, and explore ideas that were once difficult to achieve.</p>
@@ -403,7 +403,7 @@ export const posts = [
   {
     slug: 'personal-ai-assistants',
     title: 'The Future of Personal AI Assistants',
-    date: 'December 2025',
+    date: 'December 2026',
     content: (
       <>
         <p>Artificial intelligence assistants are already becoming part of everyday life. They can answer questions, help with research, generate content, write code, organize information, and assist with creative work.</p>

@@ -301,3 +301,40 @@ body.compact-mode .footer { padding-top: 36px; padding-bottom: 22px; }
   margin: 0;
   color: var(--text);
 }
+
+.post-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.download-pdf-btn {
+  font-size: 0.85rem;
+  padding: 8px 16px;
+}
+
+.blog-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.blog-download {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+  color: var(--muted);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.blog-download:hover {
+  color: var(--teal);
+  border-color: rgba(45, 212, 191, 0.5);
+}

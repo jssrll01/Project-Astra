@@ -1,14 +1,92 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './SimplePage.css';
+import './AIMusic.css';
+
+const tracks = [
+  { slug: 'your-name', title: 'Your Name', artist: 'Astra', src: 'https://res.cloudinary.com/bvw3okdf/video/upload/v1790598382/Your_Name.mp3' },
+  { slug: 'your-name-remastered', title: 'Your Name (Remastered)', artist: 'Astra', src: 'https://res.cloudinary.com/bvw3okdf/video/upload/v1790598383/Your_Name_Remastered.mp3' },
+  { slug: 'for-a-little-while', title: 'For a Little While', artist: 'Astra ft Shao', src: 'https://res.cloudinary.com/bvw3okdf/video/upload/v1790598382/For_a_Little_While.mp3' },
+  { slug: 'for-a-little-while-remastered', title: 'For a Little While (Remastered)', artist: 'Astra ft Shao', src: 'https://res.cloudinary.com/bvw3okdf/video/upload/v1790598382/For_a_Little_While_Remastered.mp3.mp3' },
+  { slug: 'unfaded', title: 'Unfaded', artist: 'Astra', src: 'https://res.cloudinary.com/bvw3okdf/video/upload/v1790598382/Unfaded.mp3' },
+];
+
+function formatTime(s) {
+  if (!s || isNaN(s)) return '0:00';
+  const m = Math.floor(s / 60);
+  const r = Math.floor(s % 60);
+  return m + ':' + String(r).padStart(2, '0');
+}
 
 function AIMusic() {
-  const tracks = [
-    { title: 'Your Name', src: 'https://res.cloudinary.com/bvw3okdf/video/upload/v1790598382/Your_Name.mp3' },
-    { title: 'Your Name (Remastered)', src: 'https://res.cloudinary.com/bvw3okdf/video/upload/v1790598383/Your_Name_Remastered.mp3' },
-    { title: 'For a Little While', src: 'https://res.cloudinary.com/bvw3okdf/video/upload/v1790598382/For_a_Little_While.mp3' },
-    { title: 'For a Little While (Remastered)', src: 'https://res.cloudinary.com/bvw3okdf/video/upload/v1790598382/For_a_Little_While_Remastered.mp3.mp3' },
-    { title: 'Unfaded', src: 'https://res.cloudinary.com/bvw3okdf/video/upload/v1790598382/Unfaded.mp3' },
-  ];
+  const audioRef = useRef(null);
+  const [current, setCurrent] = useState(null);
+  const [playing, setPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(0.8);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const onTime = () => setProgress(audio.currentTime);
+    const onLoaded = () => setDuration(audio.duration || 0);
+    const onEnd = () => { setPlaying(false); setProgress(0); };
+    const onPlay = () => setPlaying(true);
+    const onPause = () => setPlaying(false);
+    audio.addEventListener('timeupdate', onTime);
+    audio.addEventListener('loadedmetadata', onLoaded);
+    audio.addEventListener('ended', onEnd);
+    audio.addEventListener('play', onPlay);
+    audio.addEventListener('pause', onPause);
+    return () => {
+      audio.removeEventListener('timeupdate', onTime);
+      audio.removeEventListener('loadedmetadata', onLoaded);
+      audio.removeEventListener('ended', onEnd);
+      audio.removeEventListener('play', onPlay);
+      audio.removeEventListener('pause', onPause);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.volume = volume;
+  }, [volume]);
+
+  const togglePlay = (track) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (current && current.slug === track.slug) {
+      if (audio.paused) audio.play();
+      else audio.pause();
+    } else {
+      setCurrent(track);
+      audio.src = track.src;
+      audio.play();
+    }
+  };
+
+  const seek = (e) => {
+    const audio = audioRef.current;
+    if (!audio || !duration) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX || e.touches[0].clientX) - rect.left;
+    const pct = Math.max(0, Math.min(1, x / rect.width));
+    audio.currentTime = pct * duration;
+    setProgress(pct * duration);
+  };
+
+  const downloadTrack = (track) => {
+    const ok = window.confirm('Download "' + track.title + '" by ' + track.artist + '?\n\nFile: ' + track.title + '.mp3');
+    if (!ok) return;
+    const a = document.createElement('a');
+    a.href = track.src;
+    a.download = track.title + '.mp3';
+    a.target = '_blank';
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
 
   return (
     <div className="simple-page page">
@@ -19,19 +97,58 @@ function AIMusic() {
           <p>Tracks I've created using AI-assisted composition tools.</p>
         </header>
 
+        <audio ref={audioRef} preload="none" />
+
         <div className="track-list">
-          {tracks.map((t) => (
-            <div className="track-card card" key={t.title}>
-              <div className="track-info">
-                <span className="track-icon">♪</span>
-                <h3>{t.title}</h3>
+          {tracks.map((t) => {
+            const isCurrent = current && current.slug === t.slug;
+            const isPlaying = isCurrent && playing;
+            return (
+              <div className={'track-card card' + (isCurrent ? ' active' : '')} key={t.slug}>
+                <div className="track-row">
+                  <button
+                    className={'track-play' + (isPlaying ? ' playing' : '')}
+                    onClick={() => togglePlay(t)}
+                    aria-label={isPlaying ? 'Pause' : 'Play'}
+                  >
+                    {isPlaying ? '❚❚' : '▶'}
+                  </button>
+                  <div className="track-meta">
+                    <h3>{t.title}</h3>
+                    <span className="track-artist">{t.artist}</span>
+                  </div>
+                  <div className="track-actions">
+                    <Link to={'/ai-music/' + t.slug} className="track-action-btn" aria-label="Details">ℹ</Link>
+                    <button className="track-action-btn" onClick={() => downloadTrack(t)} aria-label="Download">⤓</button>
+                  </div>
+                </div>
+
+                {isCurrent && (
+                  <div className="track-progress-row">
+                    <span className="track-time">{formatTime(progress)}</span>
+                    <div className="track-progress" onClick={seek} onTouchStart={seek}>
+                      <div className="track-progress-fill" style={{ width: (duration ? (progress / duration) * 100 : 0) + '%' }} />
+                    </div>
+                    <span className="track-time">{formatTime(duration)}</span>
+                  </div>
+                )}
               </div>
-              <audio controls preload="none" src={t.src}>
-                Your browser does not support the audio element.
-              </audio>
-            </div>
-          ))}
+            );
+          })}
         </div>
+
+        {current && (
+          <div className="volume-row">
+            <span className="volume-label">🔊</span>
+            <input
+              type="range"
+              min="0" max="1" step="0.01"
+              value={volume}
+              onChange={(e) => setVolume(Number(e.target.value))}
+              className="volume-slider"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -3,9 +3,7 @@ import './SimplePage.css';
 
 function Threads() {
   const threads = [
-    { date: '12/15/2025', text: 'I was starting my new project.' },
-    { date: '12/20/2025', text: 'Learning that mistakes are just part of the process.' },
-    { date: '01/03/2026', text: 'Every small step counts when building something meaningful.' },
+    { date: '10/10/2026', text: 'Introducing Project Astra where UI/UX highlighted' },
   ];
 
   return (
