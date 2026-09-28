@@ -4,7 +4,6 @@ import './Footer.css';
 
 function Footer() {
   const socials = [
-    { name: 'GitHub', url: 'https://github.com/jssrll01', icon: 'https://cdn.simpleicons.org/github/ffffff' },
     { name: 'Gmail', url: 'mailto:custodiojessrell07@gmail.com', icon: 'https://cdn.simpleicons.org/gmail/EA4335' },
     { name: 'Facebook', url: 'https://www.facebook.com/share/19NZJfifwE/', icon: 'https://cdn.simpleicons.org/facebook/1877F2' },
     { name: 'TikTok', url: 'https://tiktok.com/@sizzam_18', icon: 'https://cdn.simpleicons.org/tiktok/ffffff' },

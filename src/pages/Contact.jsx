@@ -16,7 +16,6 @@ function Contact() {
 
   const socials = [
     { label: 'Email', value: 'custodiojessrell07@gmail.com', href: 'mailto:custodiojessrell07@gmail.com', icon: 'https://cdn.simpleicons.org/gmail/EA4335' },
-    { label: 'GitHub', value: '@jssrll01', href: 'https://github.com/jssrll01', icon: 'https://cdn.simpleicons.org/github/ffffff' },
     { label: 'Facebook', value: 'Jessrell Custodio', href: 'https://www.facebook.com/share/19NZJfifwE/', icon: 'https://cdn.simpleicons.org/facebook/1877F2' },
     { label: 'Instagram', value: '@jssrll01', href: 'https://www.instagram.com/', icon: 'https://cdn.simpleicons.org/instagram/E4405F' },
     { label: 'TikTok', value: '@sizzam_18', href: 'https://tiktok.com/@sizzam_18', icon: 'https://cdn.simpleicons.org/tiktok/ffffff' },
