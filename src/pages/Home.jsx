@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useCounter from '../hooks/useCounter';
 import './Home.css';
@@ -15,10 +15,10 @@ function useTypewriterLoop(lines, typeSpeed = 55, eraseSpeed = 28, holdMs = 2600
   const [display, setDisplay] = useState('');
   const [index, setIndex] = useState(0);
   const [phase, setPhase] = useState('typing');
-  const idxRef = useRef(0);
+  const idxRef = React.useRef(0);
   const current = lines[index];
 
-  useEffect(() => {
+  React.useEffect(() => {
     let timer;
     if (phase === 'typing') {
       if (idxRef.current < current.length) {
@@ -71,7 +71,7 @@ function Home() {
             <h1 className="hero-name">Jessrell M. Custodio</h1>
 
             <div className="hero-meta">
-              <span className="role">Programmer &bull; UI/UX Designer &bull; AI Music Composer</span>
+              <span className="role">Programmer &bull; UI/UX Designer &bull; Explorer</span>
             </div>
 
             <p className="tagline">

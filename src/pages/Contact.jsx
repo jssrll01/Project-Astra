@@ -20,19 +20,19 @@ function Contact() {
     { label: 'Facebook', value: 'Jessrell Custodio', href: 'https://www.facebook.com/share/19NZJfifwE/', icon: 'https://cdn.simpleicons.org/facebook/1877F2' },
     { label: 'Instagram', value: '@jssrll01', href: 'https://www.instagram.com/', icon: 'https://cdn.simpleicons.org/instagram/E4405F' },
     { label: 'TikTok', value: '@sizzam_18', href: 'https://tiktok.com/@sizzam_18', icon: 'https://cdn.simpleicons.org/tiktok/ffffff' },
-    { label: 'X', value: '@astrater07', href: 'https://x.com/astrater07', icon: 'https://cdn.simpleicons.org/x/ffffff' }
+    { label: 'X (Twitter)', value: '@astrater07', href: 'https://x.com/astrater07', icon: 'https://cdn.simpleicons.org/x/ffffff' }
   ];
 
   return (
     <div className="contact-page page">
       <div className="wrap">
-        <header className="page-header reveal">
+        <header className="page-header card-header">
           <p className="eyebrow">Contact</p>
           <h1>Let's Talk</h1>
           <p>Open to opportunities, collaborations, and conversations about technology.</p>
         </header>
 
-        <section className="contact-intro glass reveal">
+        <section className="contact-intro card">
           <h2>Get in Touch</h2>
           <p>
             Whether you have a project idea, want to collaborate, or just want to talk about
@@ -48,7 +48,7 @@ function Contact() {
         </section>
 
         <div className="contact-grid">
-          <div className="contact-info glass reveal">
+          <div className="contact-info card">
             <h2>Socials &amp; Reach</h2>
             <p className="contact-note">Find me across the web — click any card to connect.</p>
             <div className="contact-links">
@@ -61,37 +61,28 @@ function Contact() {
                   className="contact-item"
                 >
                   <span className="contact-left">
-                    <img
-                      src={s.icon}
-                      alt=""
-                      width="18" height="18"
-                      loading="lazy"
-                      decoding="async"
-                      className="contact-icon"
-                      onError={(e) => { e.target.style.display = 'none'; }}
-                    />
+                    <img src={s.icon} alt="" className="contact-icon" onError={(e)=>{e.target.style.display='none';}} />
                     <span className="contact-label">{s.label}</span>
                   </span>
                   <span className="contact-value">{s.value}</span>
                 </a>
               ))}
             </div>
-
             <div className="contact-response">
               <span className="pulse-dot"></span>
               Usually replies within 24–48 hours
             </div>
           </div>
 
-          <div className="contact-form-wrapper reveal reveal-delay-1">
+          <div className="contact-form-wrapper">
             {submitted ? (
-              <div className="form-success glass">
+              <div className="form-success card">
                 <h3>Message Ready!</h3>
                 <p>Your email client should open with your message. If not, you can reach me directly at custodiojessrell07@gmail.com</p>
                 <button className="btn btn-ghost" onClick={() => setSubmitted(false)}>Send Another</button>
               </div>
             ) : (
-              <form className="contact-form glass" onSubmit={handleSubmit}>
+              <form className="contact-form card" onSubmit={handleSubmit}>
                 <h2>Send a Message</h2>
                 <p className="form-note">Fill this out and your email app will open with everything prepared.</p>
                 <div className="form-group">
@@ -111,28 +102,6 @@ function Contact() {
             )}
           </div>
         </div>
-
-        <section className="contact-faq glass reveal">
-          <h2>Quick Answers</h2>
-          <div className="faq-grid">
-            <div className="faq-item">
-              <h3>Are you available for collaborations?</h3>
-              <p>Yes — especially AI, web, or creative tech projects. Send a message with the details.</p>
-            </div>
-            <div className="faq-item">
-              <h3>Do you take freelance work?</h3>
-              <p>Small UI/UX or frontend projects, yes. Larger ones depend on my class schedule.</p>
-            </div>
-            <div className="faq-item">
-              <h3>Can you build a website for me?</h3>
-              <p>Absolutely — reach out with what you need and I'll reply with a plan and timeline.</p>
-            </div>
-            <div className="faq-item">
-              <h3>Where are you based?</h3>
-              <p>Calapan City, Oriental Mindoro, Philippines. Available remotely worldwide.</p>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   );

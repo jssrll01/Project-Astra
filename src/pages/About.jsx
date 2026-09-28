@@ -68,7 +68,6 @@ function About() {
             <div className="roles-grid">
               <div className="role-card glass"><h3>Programmer</h3><p>Building web apps and turning ideas into working code.</p></div>
               <div className="role-card glass"><h3>UI/UX Designer</h3><p>Creating modern, user-friendly digital experiences.</p></div>
-              <div className="role-card glass"><h3>AI Music Composer</h3><p>Exploring AI to compose and experiment with music.</p></div>
               <div className="role-card glass"><h3>Researcher</h3><p>Continuously learning and exploring emerging tech.</p></div>
             </div>
           </section>

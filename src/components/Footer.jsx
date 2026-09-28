@@ -62,10 +62,7 @@ function Footer() {
               Astra is a personal showcase built to display creative and technical
               projects — where ideas, code, and design come together.
             </p>
-            <p className="footer-about-text">
-              A portfolio in progress by Jessrell M. Custodio.
-            </p>
-          </div>
+            </div>
         </div>
       </div>
 

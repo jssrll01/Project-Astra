@@ -33,8 +33,6 @@ function Skills() {
     { name: 'Gemini', url: 'https://gemini.google.com', icon: 'https://cdn.simpleicons.org/googlegemini/8E75B2' },
     { name: 'MongoDB', url: 'https://www.mongodb.com', icon: 'https://cdn.simpleicons.org/mongodb/47A248' },
     { name: 'Supabase', url: 'https://supabase.com', icon: 'https://cdn.simpleicons.org/supabase/3ECF8E' },
-    { name: 'ChatGPT', url: 'https://chat.openai.com', icon: 'https://cdn.simpleicons.org/openai/ffffff' },
-    { name: 'Canva', url: 'https://www.canva.com', icon: 'https://cdn.simpleicons.org/canva/00C4CC' },
     { name: 'GitHub Copilot', url: 'https://github.com/features/copilot', icon: 'https://cdn.simpleicons.org/githubcopilot/ffffff' },
     { name: 'MySQL', url: 'https://www.mysql.com', icon: 'https://cdn.simpleicons.org/mysql/4479A1' },
     { name: 'PostgreSQL', url: 'https://www.postgresql.org', icon: 'https://cdn.simpleicons.org/postgresql/4169E1' },
