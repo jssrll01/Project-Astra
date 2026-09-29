@@ -1,6 +1,7 @@
 /* ============================================================
    ASTRA — Splash Screen
-   Deep-space animated loader, ~5s, with progress bar.
+   Deep-space animated loader, 15s, with progress bar,
+   layered star field, and a meteor shower.
    ============================================================ */
 
 .splash {
@@ -12,7 +13,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.7s ease;
   will-change: opacity;
 }
 
@@ -21,31 +22,52 @@
   pointer-events: none;
 }
 
-/* ---------- Backdrop: stars + nebula ---------- */
+/* ---------- Backdrop: static star layer ---------- */
 
-.splash-stars {
+.splash-stars-layer {
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(1px 1px at 12% 22%, rgba(220,235,255,0.75), transparent 1px),
-    radial-gradient(1px 1px at 27% 68%, rgba(220,235,255,0.55), transparent 1px),
-    radial-gradient(1px 1px at 41% 14%, rgba(220,235,255,0.65), transparent 1px),
-    radial-gradient(1px 1px at 58% 47%, rgba(220,235,255,0.5), transparent 1px),
-    radial-gradient(1px 1px at 71% 82%, rgba(220,235,255,0.6), transparent 1px),
-    radial-gradient(1px 1px at 84% 33%, rgba(220,235,255,0.7), transparent 1px),
-    radial-gradient(1.5px 1.5px at 93% 71%, rgba(220,235,255,0.6), transparent 1.5px),
-    radial-gradient(1px 1px at 8% 88%, rgba(220,235,255,0.5), transparent 1px),
-    radial-gradient(1px 1px at 34% 91%, rgba(220,235,255,0.55), transparent 1px),
-    radial-gradient(1.5px 1.5px at 66% 8%, rgba(220,235,255,0.65), transparent 1.5px),
-    radial-gradient(1px 1px at 19% 52%, rgba(220,235,255,0.6), transparent 1px),
-    radial-gradient(1px 1px at 49% 62%, rgba(220,235,255,0.5), transparent 1px),
-    radial-gradient(1px 1px at 77% 18%, rgba(220,235,255,0.55), transparent 1px),
-    radial-gradient(1px 1px at 88% 92%, rgba(220,235,255,0.5), transparent 1px),
-    radial-gradient(1px 1px at 5% 40%, rgba(220,235,255,0.6), transparent 1px);
+    radial-gradient(1px 1px at 8% 12%, rgba(220,235,255,0.85), transparent 1px),
+    radial-gradient(1px 1px at 22% 74%, rgba(220,235,255,0.55), transparent 1px),
+    radial-gradient(1.5px 1.5px at 37% 22%, rgba(220,235,255,0.75), transparent 1.5px),
+    radial-gradient(1px 1px at 52% 88%, rgba(220,235,255,0.6), transparent 1px),
+    radial-gradient(1px 1px at 68% 41%, rgba(220,235,255,0.7), transparent 1px),
+    radial-gradient(1.5px 1.5px at 81% 63%, rgba(220,235,255,0.65), transparent 1.5px),
+    radial-gradient(1px 1px at 94% 18%, rgba(220,235,255,0.75), transparent 1px),
+    radial-gradient(1px 1px at 15% 46%, rgba(220,235,255,0.55), transparent 1px),
+    radial-gradient(1px 1px at 44% 58%, rgba(220,235,255,0.6), transparent 1px),
+    radial-gradient(1.5px 1.5px at 72% 8%, rgba(220,235,255,0.8), transparent 1.5px),
+    radial-gradient(1px 1px at 29% 92%, rgba(220,235,255,0.5), transparent 1px),
+    radial-gradient(1px 1px at 61% 34%, rgba(220,235,255,0.7), transparent 1px),
+    radial-gradient(1px 1px at 88% 82%, rgba(220,235,255,0.6), transparent 1px),
+    radial-gradient(1px 1px at 4% 68%, rgba(220,235,255,0.55), transparent 1px),
+    radial-gradient(1px 1px at 97% 52%, rgba(220,235,255,0.65), transparent 1px);
   background-size: 100% 100%;
-  animation: splashTwinkle 5s ease-in-out infinite alternate;
+  animation: splashTwinkle 6s ease-in-out infinite alternate;
   pointer-events: none;
 }
+
+/* ---------- Dynamic stars (JS-generated) ---------- */
+
+.splash-stars-dynamic {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.splash-stars-dynamic .star {
+  position: absolute;
+  background: #eef1f7;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(238, 241, 247, 0.7);
+  animation-name: starPulse;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+/* ---------- Nebula ---------- */
 
 .splash-nebula {
   position: absolute;
@@ -55,35 +77,43 @@
     radial-gradient(circle at 72% 68%, rgba(168, 85, 247, 0.14), transparent 45%),
     radial-gradient(circle at 50% 90%, rgba(251, 146, 60, 0.10), transparent 50%);
   filter: blur(40px);
-  animation: nebulaDrift 12s ease-in-out infinite alternate;
+  animation: nebulaDrift 14s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
-/* ---------- Shooting star ---------- */
+/* ---------- Meteor shower ---------- */
 
-.splash-shoot {
+.splash-meteors {
   position: absolute;
-  top: 18%;
-  left: 88%;
-  width: 3px;
-  height: 3px;
+  inset: 0;
+  pointer-events: none;
+}
+
+.meteor {
+  position: absolute;
+  right: -10%;
   border-radius: 50%;
   background: #ffffff;
-  box-shadow: 0 0 8px #fff, 0 0 16px rgba(200, 230, 255, 0.9);
+  box-shadow:
+    0 0 6px #fff,
+    0 0 12px rgba(200, 230, 255, 0.9),
+    0 0 22px rgba(168, 85, 247, 0.5);
   opacity: 0;
-  animation: shootStar 5s ease-in-out infinite;
-  pointer-events: none;
+  animation-name: meteorFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
 }
 
-.splash-shoot::after {
+.meteor::after {
   content: '';
   position: absolute;
   top: 50%;
   right: 0;
-  width: 140px;
-  height: 1px;
+  width: 160px;
+  height: 1.5px;
   transform: translateY(-50%);
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85));
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95));
 }
 
 /* ---------- Layout wrapper ---------- */
@@ -143,22 +173,13 @@
   display: block;
 }
 
-.s1 {
-  width: 110px; height: 110px;
-  animation: splashSpin 6s linear infinite;
-}
+.s1 { width: 110px; height: 110px; animation: splashSpin 6s linear infinite; }
 .s1 .dot { background: #2dd4bf; box-shadow: 0 0 12px #2dd4bf, 0 0 24px rgba(45,212,191,0.5); }
 
-.s2 {
-  width: 155px; height: 155px;
-  animation: splashSpin 10s linear infinite reverse;
-}
+.s2 { width: 155px; height: 155px; animation: splashSpin 10s linear infinite reverse; }
 .s2 .dot { background: #a855f7; box-shadow: 0 0 12px #a855f7, 0 0 24px rgba(168,85,247,0.5); }
 
-.s3 {
-  width: 200px; height: 200px;
-  animation: splashSpin 14s linear infinite;
-}
+.s3 { width: 200px; height: 200px; animation: splashSpin 14s linear infinite; }
 .s3 .dot { background: #fb923c; box-shadow: 0 0 12px #fb923c, 0 0 24px rgba(251,146,60,0.5); }
 
 .splash-pulse {
@@ -170,7 +191,7 @@
   margin: -42px 0 0 -42px;
   border-radius: 50%;
   border: 1px solid rgba(45, 212, 191, 0.55);
-  animation: pulseRing 2.4s ease-out infinite;
+  animation: pulseRing 2.6s ease-out infinite;
   pointer-events: none;
 }
 
@@ -190,7 +211,7 @@
     0 0 0 4px rgba(7, 11, 20, 0.9),
     0 0 40px rgba(45, 212, 191, 0.55),
     0 0 80px rgba(168, 85, 247, 0.35);
-  animation: markBreathe 2.6s ease-in-out infinite;
+  animation: markBreathe 2.8s ease-in-out infinite;
 }
 
 .splash-mark span {
@@ -254,7 +275,6 @@
   height: 4px;
   background: rgba(255, 255, 255, 0.06);
   border-radius: 999px;
-  overflow: visible;
 }
 
 .splash-progress-fill {
@@ -262,7 +282,7 @@
   border-radius: 999px;
   background: linear-gradient(90deg, #2dd4bf 0%, #a855f7 55%, #fb923c 100%);
   background-size: 200% 100%;
-  animation: fillShimmer 2.2s linear infinite;
+  animation: fillShimmer 2.4s linear infinite;
   transition: width 0.08s linear;
   box-shadow: 0 0 12px rgba(45, 212, 191, 0.55);
 }
@@ -350,16 +370,21 @@
   100% { opacity: 0.6; }
 }
 
+@keyframes starPulse {
+  0%   { transform: scale(0.85); }
+  100% { transform: scale(1.25); }
+}
+
 @keyframes nebulaDrift {
   0%   { transform: translate3d(-3%, -2%, 0) scale(1); }
   100% { transform: translate3d(3%, 2%, 0) scale(1.08); }
 }
 
-@keyframes shootStar {
+@keyframes meteorFall {
   0%   { opacity: 0; transform: translate(0, 0) rotate(135deg); }
-  6%   { opacity: 1; }
-  24%  { opacity: 0; transform: translate(-380px, 380px) rotate(135deg); }
-  100% { opacity: 0; transform: translate(-380px, 380px) rotate(135deg); }
+  8%   { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(-110vw, 110vh) rotate(135deg); }
 }
 
 @keyframes fillShimmer {
@@ -370,9 +395,10 @@
 /* ---------- Reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {
-  .splash-stars,
+  .splash-stars-layer,
+  .splash-stars-dynamic .star,
   .splash-nebula,
-  .splash-shoot,
+  .meteor,
   .splash-aura,
   .splash-orbit,
   .splash-pulse,
