@@ -9,9 +9,9 @@ const STATUSES = [
   'Almost there…',
 ];
 
-const DURATION = 5000; // total splash duration in ms
-const FADE_AT = 4400;  // when fade-out begins
-const HIDE_AT = 5000;  // when component unmounts
+const DURATION = 10000; // total splash duration in ms
+const FADE_AT = 9400;  // when fade-out begins
+const HIDE_AT = 10000; // when component unmounts
 
 function Splash() {
   const [hidden, setHidden] = useState(false);
