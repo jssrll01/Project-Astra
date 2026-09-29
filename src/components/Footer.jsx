@@ -46,6 +46,7 @@ function Footer() {
             <Link to="/archives">Archives</Link>
             <Link to="/journey">Journey</Link>
             <Link to="/docs">Docs</Link>
+            <Link to="/faq">FAQ</Link>
             <Link to="/blog">Blog</Link>
           </div>
           <div className="footer-col">

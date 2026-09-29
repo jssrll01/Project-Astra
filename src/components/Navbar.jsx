@@ -38,6 +38,7 @@ function Navbar() {
     { path: '/prompt-programming', label: 'Prompt Lab (Programming)' },
     { path: '/journey', label: 'Development Journey' },
     { path: '/docs', label: 'Documentation' },
+    { path: '/faq', label: 'FAQ' },
     { path: '/certifications', label: 'Certifications' },
     { path: '/achievements', label: 'Achievements' },
   ];
