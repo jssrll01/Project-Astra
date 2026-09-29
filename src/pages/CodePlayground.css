@@ -1,0 +1,205 @@
+/* ============================================================
+   ASTRA — Code Playground
+   ============================================================ */
+
+.playground-page { position: relative; z-index: 2; }
+
+.pg-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.pg-toolbar-left,
+.pg-toolbar-right {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.pg-btn {
+  padding: 8px 14px;
+  font-size: 0.84rem;
+  border-radius: 8px;
+}
+
+.pg-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.pg-toggle input { accent-color: var(--teal); }
+
+.pg-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  min-height: 520px;
+}
+
+.pg-grid.no-preview { grid-template-columns: 1fr; }
+
+@media (max-width: 900px) {
+  .pg-grid { grid-template-columns: 1fr; }
+}
+
+.pg-editor,
+.pg-preview {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.pg-tabs {
+  display: flex;
+  gap: 2px;
+  padding: 6px 6px 0;
+  background: rgba(0, 0, 0, 0.25);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.pg-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, background 0.15s;
+}
+
+.pg-tab:hover { color: var(--text); background: rgba(255, 255, 255, 0.03); }
+
+.pg-tab.active {
+  color: var(--text);
+  background: var(--bg);
+  border-color: var(--border);
+}
+
+.pg-lang-badge {
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.lang-html { background: rgba(251, 146, 60, 0.18); color: #fb923c; }
+.lang-css  { background: rgba(45, 212, 191, 0.18); color: #2dd4bf; }
+.lang-js   { background: rgba(251, 191, 36, 0.18); color: #fbbf24; }
+
+.pg-tab-name { max-width: 130px; overflow: hidden; text-overflow: ellipsis; }
+
+.pg-tab-close {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0 2px;
+  border-radius: 3px;
+}
+
+.pg-tab-close:hover { color: var(--coral); background: rgba(251, 146, 60, 0.12); }
+
+.pg-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.pg-file-name {
+  font-size: 0.82rem;
+  color: var(--text);
+  font-family: ui-monospace, Menlo, monospace;
+}
+
+.pg-editor-actions { display: flex; gap: 6px; }
+
+.pg-code {
+  flex: 1;
+  min-height: 380px;
+  width: 100%;
+  background: var(--bg);
+  color: #eef1f7;
+  border: none;
+  outline: none;
+  padding: 16px 18px;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.86rem;
+  line-height: 1.65;
+  resize: none;
+  tab-size: 2;
+}
+
+.pg-code:focus { outline: none; }
+
+.pg-status {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 14px;
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  font-family: ui-monospace, monospace;
+}
+
+.pg-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.pg-preview-frame {
+  flex: 1;
+  width: 100%;
+  min-height: 480px;
+  border: none;
+  background: #ffffff;
+}
+
+.pg-note {
+  margin-top: 14px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.pg-note code {
+  background: rgba(45, 212, 191, 0.1);
+  color: var(--teal);
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-size: 0.85em;
+}

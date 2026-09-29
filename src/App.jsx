@@ -33,6 +33,7 @@ import NotFound from './pages/NotFound';
 import Threads from './pages/Threads';
 import BlogPost from './pages/BlogPost';
 import AIMusicDetail from './pages/AIMusicDetail';
+import CodePlayground from './pages/CodePlayground';
 import './App.css';
 
 function ScrollToTop() {
@@ -72,6 +73,7 @@ function RoutesView() {
         <Route path="/certifications" element={<Certifications />} />
         <Route path="/achievements" element={<Achievements />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/playground" element={<CodePlayground />} />
           <Route path="/threads" element={<Threads />} />
           <Route path="*" element={<NotFound />} />
       </Routes>

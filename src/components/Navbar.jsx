@@ -43,6 +43,7 @@ function Navbar() {
     { path: '/guestbook', label: 'Guestbook' },
     { path: '/bookmarks', label: 'Bookmarks' },
     { path: '/library', label: 'Library' },
+    { path: '/playground', label: 'Code Playground' },
     { path: '/certifications', label: 'Certifications' },
     { path: '/achievements', label: 'Achievements' },
   ];
