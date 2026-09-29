@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import ProjectGallery from './pages/ProjectGallery';
 import Partners from './pages/Partners';
 import Bookshelf from './pages/Bookshelf';
+import Docs from './pages/Docs';
 import AIMusic from './pages/AIMusic';
 import Archives from './pages/Archives';
 import PromptMusic from './pages/PromptMusic';
@@ -47,6 +48,7 @@ function RoutesView() {
         <Route path="/gallery" element={<ProjectGallery />} />
         <Route path="/partners" element={<Partners />} />
         <Route path="/bookshelf" element={<Bookshelf />} />
+          <Route path="/docs" element={<Docs />} />
         <Route path="/ai-music" element={<AIMusic />} />
           <Route path="/ai-music/:slug" element={<AIMusicDetail />} />
         <Route path="/archives" element={<Archives />} />

@@ -37,6 +37,7 @@ function Navbar() {
     { path: '/prompt-image', label: 'Prompt Lab (Image)' },
     { path: '/prompt-programming', label: 'Prompt Lab (Programming)' },
     { path: '/journey', label: 'Development Journey' },
+    { path: '/docs', label: 'Documentation' },
     { path: '/certifications', label: 'Certifications' },
     { path: '/achievements', label: 'Achievements' },
   ];

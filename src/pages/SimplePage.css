@@ -754,3 +754,92 @@ body.compact-mode .footer { padding-top: 36px; padding-bottom: 22px; }
   width: 13px;
   height: 13px;
 }
+
+.docs-toc {
+  padding: 20px 26px;
+  border-radius: 12px;
+  margin-bottom: 22px;
+}
+
+.docs-toc h4 {
+  font-family: var(--font-b);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+
+.docs-toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.docs-toc a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.docs-toc a:hover {
+  color: var(--teal);
+}
+
+.docs-section {
+  padding: 26px clamp(20px, 3vw, 32px);
+  border-radius: 14px;
+  margin-bottom: 16px;
+  scroll-margin-top: 100px;
+}
+
+.docs-section h2 {
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.docs-section h3 {
+  font-size: 1.05rem;
+  color: var(--text);
+  margin: 20px 0 10px;
+}
+
+.docs-section p {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.docs-section ul,
+.docs-section ol {
+  padding-left: 22px;
+  margin: 10px 0 14px;
+}
+
+.docs-section li {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 6px;
+}
+
+.docs-section strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.docs-section code {
+  background: rgba(45, 212, 191, 0.1);
+  color: var(--teal);
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.85em;
+}
