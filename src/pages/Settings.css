@@ -232,3 +232,163 @@ body.set-data-saver .bg-glow { display: none !important; }
   transform: none !important;
   box-shadow: none !important;
 }
+
+/* ============================================================
+   Version Card + System Info (added)
+   ============================================================ */
+
+.version-card {
+  padding: 22px clamp(20px, 3vw, 30px);
+  border-radius: 14px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.version-card::before {
+  content: '';
+  position: absolute;
+  top: -40%; right: -10%;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.14), transparent 70%);
+  pointer-events: none;
+}
+
+.version-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.version-mark {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2dd4bf, #a855f7);
+  color: #070b14;
+  font-family: Georgia, 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 22px rgba(45, 212, 191, 0.5);
+  flex-shrink: 0;
+}
+
+.version-meta { min-width: 0; }
+
+.version-title {
+  font-size: 1.2rem;
+  color: var(--text);
+  margin: 0 0 2px;
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+.version-tag {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+  margin: 0;
+}
+
+.version-rows {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+  position: relative;
+}
+
+.version-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.version-key {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.version-val {
+  font-size: 0.86rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.version-val.mono,
+.version-key.mono {
+  font-family: ui-monospace, Menlo, monospace;
+}
+
+.version-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(45, 212, 191, 0.12);
+  color: var(--teal);
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+/* ---------- System Info ---------- */
+
+.settings-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px;
+}
+
+.settings-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+}
+
+.settings-info-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+.settings-info-value {
+  font-size: 0.84rem;
+  color: var(--text);
+  font-weight: 500;
+  text-align: right;
+  word-break: break-word;
+  max-width: 60%;
+}
+
+.settings-info-value.mono {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.8rem;
+  color: var(--teal);
+}
+
+.settings-footnote {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.7;
+  font-style: italic;
+}

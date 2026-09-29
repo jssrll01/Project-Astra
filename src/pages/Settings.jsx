@@ -2,6 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import './SimplePage.css';
 import './Settings.css';
 
+const APP_VERSION = '1.2.0';
+const BUILD_DATE = '2026-09-29';
+const BUILD_CHANNEL = 'stable';
+const BUILD_ID = 'astra-' + APP_VERSION + '-' + BUILD_DATE.replace(/-/g, '');
+
 const DEFAULTS = {
   reduceMotion: false,
   contrast: false,
@@ -134,6 +139,127 @@ function Row({ title, children }) {
   );
 }
 
+function InfoRow({ label, value, mono }) {
+  return (
+    <div className="settings-info-row">
+      <span className="settings-info-label">{label}</span>
+      <span className={'settings-info-value' + (mono ? ' mono' : '')}>{value}</span>
+    </div>
+  );
+}
+
+function SystemInfo() {
+  const [info, setInfo] = useState({
+    online: navigator.onLine,
+    viewport: window.innerWidth + '×' + window.innerHeight,
+    dpr: window.devicePixelRatio || 1,
+    lang: navigator.language || 'unknown',
+    ua: navigator.userAgent,
+    platform: navigator.platform || 'unknown',
+    cores: navigator.hardwareConcurrency || 'unknown',
+    memory: navigator.deviceMemory || 'unknown',
+    sw: 'serviceWorker' in navigator ? 'supported' : 'not supported',
+    storage: (typeof navigator.storage !== 'undefined') ? 'available' : 'unavailable',
+  });
+
+  const [storageEstimate, setStorageEstimate] = useState(null);
+
+  useEffect(() => {
+    const onResize = () => setInfo(i => ({ ...i, viewport: window.innerWidth + '×' + window.innerHeight }));
+    const onOnline = () => setInfo(i => ({ ...i, online: navigator.onLine }));
+    window.addEventListener('resize', onResize);
+    window.addEventListener('online', onOnline);
+    window.addEventListener('offline', onOnline);
+
+    if (navigator.storage && navigator.storage.estimate) {
+      navigator.storage.estimate().then(est => {
+        setStorageEstimate({
+          usage: est.usage ? (est.usage / 1024 / 1024).toFixed(1) + ' MB' : '—',
+          quota: est.quota ? (est.quota / 1024 / 1024).toFixed(0) + ' MB' : '—',
+        });
+      }).catch(() => {});
+    }
+
+    return () => {
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('online', onOnline);
+      window.removeEventListener('offline', onOnline);
+    };
+  }, []);
+
+  const shortUa = (() => {
+    const ua = info.ua;
+    if (/Android/i.test(ua)) return 'Android';
+    if (/iPhone|iPad|iPod/i.test(ua)) return 'iOS';
+    if (/Windows/i.test(ua)) return 'Windows';
+    if (/Mac/i.test(ua)) return 'macOS';
+    if (/Linux/i.test(ua)) return 'Linux';
+    return 'Unknown';
+  })();
+
+  return (
+    <div className="settings-card glass">
+      <h2 className="settings-title">System Info</h2>
+      <div className="settings-info-grid">
+        <InfoRow label="Version" value={APP_VERSION} mono />
+        <InfoRow label="Build" value={BUILD_ID} mono />
+        <InfoRow label="Channel" value={BUILD_CHANNEL} />
+        <InfoRow label="Build Date" value={BUILD_DATE} mono />
+        <InfoRow label="Platform" value={shortUa} />
+        <InfoRow label="Language" value={info.lang} />
+        <InfoRow label="Viewport" value={info.viewport} mono />
+        <InfoRow label="Pixel Ratio" value={String(info.dpr) + 'x'} mono />
+        <InfoRow label="CPU Cores" value={String(info.cores)} mono />
+        <InfoRow label="Device Memory" value={String(info.memory) + (info.memory !== 'unknown' ? ' GB' : '')} mono />
+        <InfoRow label="Connection" value={info.online ? 'Online' : 'Offline'} />
+        <InfoRow label="Service Worker" value={info.sw} />
+        <InfoRow label="Storage API" value={info.storage} />
+        {storageEstimate && (
+          <InfoRow label="Cache Usage" value={storageEstimate.usage + ' / ' + storageEstimate.quota} mono />
+        )}
+      </div>
+      <p className="settings-footnote">
+        Project Astra — a personal technology ecosystem built with React 18, Vite 5, and React Router 6.
+        Hand-written CSS, PWA-ready, deployed on Render.
+      </p>
+    </div>
+  );
+}
+
+function VersionCard() {
+  return (
+    <div className="settings-card glass version-card">
+      <div className="version-header">
+        <div className="version-mark">A</div>
+        <div className="version-meta">
+          <h2 className="version-title">Astra</h2>
+          <p className="version-tag">Where Intelligence Meets Innovation</p>
+        </div>
+      </div>
+      <div className="version-rows">
+        <div className="version-row">
+          <span className="version-key">Version</span>
+          <span className="version-val">{APP_VERSION}</span>
+        </div>
+        <div className="version-row">
+          <span className="version-key">Build</span>
+          <span className="version-val mono">{BUILD_ID}</span>
+        </div>
+        <div className="version-row">
+          <span className="version-key">Channel</span>
+          <span className="version-val">
+            <span className="version-badge">{BUILD_CHANNEL}</span>
+          </span>
+        </div>
+        <div className="version-row">
+          <span className="version-key">Released</span>
+          <span className="version-val">{BUILD_DATE}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Settings() {
   const [s, setS] = useState(loadSettings);
   const [toast, setToast] = useState('');
@@ -201,6 +327,8 @@ function Settings() {
         <header className="page-header">
           <p className="eyebrow">Settings</p>
         </header>
+
+        <VersionCard />
 
         <div className="settings-card glass">
           <h2 className="settings-title">Accessibility</h2>
@@ -275,6 +403,8 @@ function Settings() {
             <CustomSelect value={s.lightingQuality} options={['medium','high','ultra']} onChange={v => set('lightingQuality', v)} />
           </Row>
         </div>
+
+        <SystemInfo />
 
         <div className="settings-card glass" style={{ marginTop: 16 }}>
           <h2 className="settings-title">Maintenance</h2>

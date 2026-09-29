@@ -1,3 +1,7 @@
+/* ============================================================
+   ASTRA — Background (global starfield + cosmic accents)
+   ============================================================ */
+
 .bg-layer {
   position: fixed;
   inset: 0;
@@ -16,76 +20,45 @@
     radial-gradient(ellipse 70% 50% at 20% 100%, #0d1728 0%, transparent 60%);
 }
 
-.bg-stars {
+/* ---------- Layered starfields ---------- */
+
+.bg-stars-field {
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(1px 1px at 20% 30%, rgba(200,230,255,0.55), transparent 1px),
-    radial-gradient(1px 1px at 60% 70%, rgba(200,230,255,0.4), transparent 1px),
-    radial-gradient(1px 1px at 40% 15%, rgba(200,230,255,0.5), transparent 1px),
-    radial-gradient(1px 1px at 85% 45%, rgba(200,230,255,0.45), transparent 1px),
-    radial-gradient(1px 1px at 15% 80%, rgba(200,230,255,0.35), transparent 1px),
-    radial-gradient(1px 1px at 75% 25%, rgba(200,230,255,0.5), transparent 1px),
-    radial-gradient(2px 2px at 50% 50%, rgba(200,230,255,0.3), transparent 2px),
-    radial-gradient(1px 1px at 30% 65%, rgba(200,230,255,0.4), transparent 1px),
-    radial-gradient(1px 1px at 90% 10%, rgba(200,230,255,0.45), transparent 1px),
-    radial-gradient(1px 1px at 10% 55%, rgba(200,230,255,0.35), transparent 1px),
-    radial-gradient(1px 1px at 25% 45%, rgba(200,230,255,0.5), transparent 1px),
-    radial-gradient(1px 1px at 55% 25%, rgba(200,230,255,0.4), transparent 1px),
-    radial-gradient(1px 1px at 70% 55%, rgba(200,230,255,0.5), transparent 1px),
-    radial-gradient(1px 1px at 35% 85%, rgba(200,230,255,0.35), transparent 1px),
-    radial-gradient(1px 1px at 95% 65%, rgba(200,230,255,0.4), transparent 1px),
-    radial-gradient(1px 1px at 5% 15%, rgba(200,230,255,0.5), transparent 1px),
-    radial-gradient(1px 1px at 45% 70%, rgba(200,230,255,0.45), transparent 1px),
-    radial-gradient(1px 1px at 82% 82%, rgba(200,230,255,0.4), transparent 1px),
-    radial-gradient(1px 1px at 18% 5%, rgba(200,230,255,0.45), transparent 1px),
-    radial-gradient(1px 1px at 62% 92%, rgba(200,230,255,0.35), transparent 1px),
-    radial-gradient(1px 1px at 78% 12%, rgba(200,230,255,0.5), transparent 1px),
-    radial-gradient(1px 1px at 32% 32%, rgba(200,230,255,0.4), transparent 1px),
-    radial-gradient(1px 1px at 88% 88%, rgba(200,230,255,0.45), transparent 1px),
-    radial-gradient(1px 1px at 12% 42%, rgba(200,230,255,0.4), transparent 1px),
-    radial-gradient(2px 2px at 22% 62%, rgba(200,230,255,0.35), transparent 2px),
-    radial-gradient(1px 1px at 68% 38%, rgba(200,230,255,0.45), transparent 1px),
-    radial-gradient(1px 1px at 52% 82%, rgba(200,230,255,0.4), transparent 1px),
-    radial-gradient(1px 1px at 42% 8%, rgba(200,230,255,0.5), transparent 1px),
-    radial-gradient(1px 1px at 92% 28%, rgba(200,230,255,0.35), transparent 1px);
-  background-size: 100% 100%;
-  animation: twinkle 6s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
-.bg-stars::after {
-  content: '';
+.bg-stars-field.depth-1 { opacity: 0.75; }
+.bg-stars-field.depth-2 { opacity: 0.55; }
+.bg-stars-field.depth-3 { opacity: 0.35; }
+
+.bg-star {
   position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(1px 1px at 35% 40%, rgba(200,230,255,0.6), transparent 1px),
-    radial-gradient(1px 1px at 65% 20%, rgba(200,230,255,0.5), transparent 1px),
-    radial-gradient(1px 1px at 80% 60%, rgba(200,230,255,0.55), transparent 1px),
-    radial-gradient(2px 2px at 25% 75%, rgba(200,230,255,0.45), transparent 2px),
-    radial-gradient(1px 1px at 55% 85%, rgba(200,230,255,0.5), transparent 1px),
-    radial-gradient(1px 1px at 5% 25%, rgba(200,230,255,0.4), transparent 1px),
-    radial-gradient(1px 1px at 95% 35%, rgba(200,230,255,0.45), transparent 1px),
-    radial-gradient(1px 1px at 45% 5%, rgba(200,230,255,0.5), transparent 1px),
-    radial-gradient(1px 1px at 15% 68%, rgba(200,230,255,0.45), transparent 1px),
-    radial-gradient(1px 1px at 73% 78%, rgba(200,230,255,0.4), transparent 1px),
-    radial-gradient(1px 1px at 38% 55%, rgba(200,230,255,0.5), transparent 1px),
-    radial-gradient(1px 1px at 58% 40%, rgba(200,230,255,0.45), transparent 1px);
-  background-size: 100% 100%;
-  animation: twinkleOffset 8s ease-in-out infinite alternate;
-  animation-delay: -3s;
+  background: #eef1f7;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(238, 241, 247, 0.7);
+  animation-name: bgStarPulse;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  will-change: transform, opacity;
 }
 
-@keyframes twinkle {
-  0%   { opacity: 0.4; }
-  50%  { opacity: 0.75; }
-  100% { opacity: 0.55; }
+@keyframes bgStarPulse {
+  0%   { transform: scale(0.85); opacity: 0.4; }
+  100% { transform: scale(1.2);  opacity: 1; }
 }
 
-@keyframes twinkleOffset {
-  0%   { opacity: 0.7; }
-  50%  { opacity: 0.35; }
-  100% { opacity: 0.6; }
+/* Slow drift on depth-2 / depth-3 for parallax feel */
+.bg-stars-field.depth-2 { animation: bgDrift 90s linear infinite; }
+.bg-stars-field.depth-3 { animation: bgDrift 140s linear infinite reverse; }
+
+@keyframes bgDrift {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-30px, -20px, 0); }
 }
+
+/* ---------- Nebula glows ---------- */
 
 .bg-glow {
   position: absolute;
@@ -105,6 +78,15 @@
   background: radial-gradient(circle, #7c3aed, transparent 70%);
   bottom: -15%; right: -10%;
 }
+
+.bg-glow-3 {
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, #fb923c, transparent 70%);
+  top: 40%; left: 55%;
+  opacity: 0.12;
+}
+
+/* ---------- Asteroid belt ---------- */
 
 .asteroid-belt {
   position: absolute;
@@ -134,6 +116,8 @@
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
+
+/* ---------- Far satellite ---------- */
 
 .far-satellite {
   position: absolute;
@@ -169,6 +153,8 @@
   100% { transform: translate(0, 0) rotate(360deg); }
 }
 
+/* ---------- Supernova ---------- */
+
 .supernova {
   position: absolute;
   top: 12%;
@@ -187,6 +173,8 @@
   88% { opacity: 1; transform: scale(6); box-shadow: 0 0 30px #fff, 0 0 60px rgba(200,230,255,0.9), 0 0 100px rgba(45,212,191,0.6); }
   92% { opacity: 0.6; transform: scale(2); }
 }
+
+/* ---------- Shooting stars ---------- */
 
 .shooting-star {
   position: absolute;
@@ -221,13 +209,16 @@
   100% { opacity: 0; transform: translate(-350px, 350px) rotate(135deg); }
 }
 
+/* ---------- Reduced motion ---------- */
+
 @media (prefers-reduced-motion: reduce) {
-  .bg-stars,
-  .bg-stars::after,
+  .bg-star,
+  .bg-stars-field.depth-2,
+  .bg-stars-field.depth-3,
   .asteroid-belt,
   .far-satellite,
   .supernova,
   .shooting-star {
-    animation: none;
+    animation: none !important;
   }
 }
