@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Background from './components/Background';
+import Splash from './components/Splash';
 import ScrollProgress from './components/ScrollProgress';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -14,6 +15,10 @@ import Partners from './pages/Partners';
 import Bookshelf from './pages/Bookshelf';
 import Docs from './pages/Docs';
 import FAQ from './pages/FAQ';
+import Collection from './pages/Collection';
+import Guestbook from './pages/Guestbook';
+import Bookmarks from './pages/Bookmarks';
+import Library from './pages/Library';
 import AIMusic from './pages/AIMusic';
 import Archives from './pages/Archives';
 import PromptMusic from './pages/PromptMusic';
@@ -51,6 +56,10 @@ function RoutesView() {
         <Route path="/bookshelf" element={<Bookshelf />} />
           <Route path="/docs" element={<Docs />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/collection" element={<Collection />} />
+          <Route path="/guestbook" element={<Guestbook />} />
+          <Route path="/bookmarks" element={<Bookmarks />} />
+          <Route path="/library" element={<Library />} />
         <Route path="/ai-music" element={<AIMusic />} />
           <Route path="/ai-music/:slug" element={<AIMusicDetail />} />
         <Route path="/archives" element={<Archives />} />
@@ -73,6 +82,7 @@ function RoutesView() {
 function App() {
   return (
     <Router>
+      <Splash />
       <Background />
       <ScrollProgress />
       <ScrollToTop />

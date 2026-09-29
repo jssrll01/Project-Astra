@@ -19,6 +19,8 @@ function BlogPost() {
     );
   }
 
+  const related = posts.filter(p => p.slug !== slug).slice(0, 3);
+
   return (
     <div className="simple-page page">
       <div className="wrap">
@@ -28,6 +30,18 @@ function BlogPost() {
           <span className="post-meta">{post.date}</span>
           <div ref={contentRef}>{post.content}</div>
         </article>
+
+        <section className="related-posts">
+          <h2>Related Posts</h2>
+          <div className="related-grid">
+            {related.map((r) => (
+              <Link to={'/blog/' + r.slug} className="related-card card" key={r.slug}>
+                <span className="related-date">{r.date}</span>
+                <h3>{r.title}</h3>
+              </Link>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );

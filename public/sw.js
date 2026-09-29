@@ -1,4 +1,4 @@
-const CACHE = 'astra-v2';
+const CACHE = 'astra-v3';
 const CORE = [
   '/',
   '/index.html',
@@ -6,6 +6,7 @@ const CORE = [
   '/icon-192.png',
   '/icon-512.png',
   '/icon-512-maskable.png',
+  '/offline.html',
 ];
 
 self.addEventListener('install', (e) => {
@@ -39,7 +40,7 @@ self.addEventListener('fetch', (e) => {
           caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
           return res;
         })
-        .catch(() => caches.match(req).then(r => r || caches.match('/index.html')))
+        .catch(() => caches.match(req).then(r => r || caches.match('/offline.html')))
     );
     return;
   }

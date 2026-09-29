@@ -39,6 +39,10 @@ function Navbar() {
     { path: '/journey', label: 'Development Journey' },
     { path: '/docs', label: 'Documentation' },
     { path: '/faq', label: 'FAQ' },
+    { path: '/collection', label: 'Collection' },
+    { path: '/guestbook', label: 'Guestbook' },
+    { path: '/bookmarks', label: 'Bookmarks' },
+    { path: '/library', label: 'Library' },
     { path: '/certifications', label: 'Certifications' },
     { path: '/achievements', label: 'Achievements' },
   ];

@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './SimplePage.css';
+import { SkeletonList } from '../components/Skeleton';
 
 function Blog() {
   const [query, setQuery] = useState('');
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const t = setTimeout(() => setLoading(false), 400);
+    return () => clearTimeout(t);
+  }, []);
   const [filter, setFilter] = useState('all');
   const [filterOpen, setFilterOpen] = useState(false);
 
@@ -94,7 +101,9 @@ function Blog() {
           </div>
         </div>
 
-        {filtered.length === 0 ? (
+        {loading ? (
+          <SkeletonList count={3} />
+        ) : filtered.length === 0 ? (
           <div className="empty-note">No blogs match your search.</div>
         ) : (
           <div className="blog-grid">

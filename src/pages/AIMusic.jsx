@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './SimplePage.css';
 import './AIMusic.css';
+import { SkeletonList } from '../components/Skeleton';
 
 const tracks = [
   { slug: 'your-name', title: 'Your Name', artist: 'Astra', mood: 'emotional', src: 'https://res.cloudinary.com/bvw3okdf/video/upload/v1790598382/Your_Name.mp3' },
@@ -28,6 +29,12 @@ function AIMusic() {
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState('all');
   const [filterOpen, setFilterOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const t = setTimeout(() => setLoading(false), 400);
+    return () => clearTimeout(t);
+  }, []);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -155,7 +162,9 @@ function AIMusic() {
           </div>
         </div>
 
-        {filtered.length === 0 ? (
+        {loading ? (
+          <SkeletonList count={3} />
+        ) : filtered.length === 0 ? (
           <div className="empty-note">No tracks match your search.</div>
         ) : (
           <div className="track-list">
