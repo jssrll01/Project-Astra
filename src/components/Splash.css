@@ -1,7 +1,7 @@
 /* ============================================================
    ASTRA — Splash Screen
-   Deep-space animated loader, 15s, with progress bar,
-   layered star field, and a meteor shower.
+   Deep-space animated loader, 10s, with progress bar,
+   layered star field, and a scattered meteor shower.
    ============================================================ */
 
 .splash {
@@ -81,7 +81,7 @@
   pointer-events: none;
 }
 
-/* ---------- Meteor shower ---------- */
+/* ---------- Meteor shower (scattered) ---------- */
 
 .splash-meteors {
   position: absolute;
@@ -91,13 +91,12 @@
 
 .meteor {
   position: absolute;
-  right: -10%;
   border-radius: 50%;
   background: #ffffff;
   box-shadow:
     0 0 6px #fff,
-    0 0 12px rgba(200, 230, 255, 0.9),
-    0 0 22px rgba(168, 85, 247, 0.5);
+    0 0 14px rgba(200, 230, 255, 0.85),
+    0 0 24px rgba(168, 85, 247, 0.45);
   opacity: 0;
   animation-name: meteorFall;
   animation-timing-function: linear;
@@ -110,10 +109,10 @@
   position: absolute;
   top: 50%;
   right: 0;
-  width: 160px;
-  height: 1.5px;
+  width: 140px;
+  height: 1.4px;
   transform: translateY(-50%);
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95));
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9));
 }
 
 /* ---------- Layout wrapper ---------- */
@@ -383,8 +382,8 @@
 @keyframes meteorFall {
   0%   { opacity: 0; transform: translate(0, 0) rotate(135deg); }
   8%   { opacity: 1; }
-  70%  { opacity: 1; }
-  100% { opacity: 0; transform: translate(-110vw, 110vh) rotate(135deg); }
+  75%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(-115vw, 115vh) rotate(135deg); }
 }
 
 @keyframes fillShimmer {

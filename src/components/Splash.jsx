@@ -12,37 +12,50 @@ const STATUSES = [
   'Almost there…',
 ];
 
-const DURATION = 15000; // total splash duration in ms
-const FADE_AT = 14300;  // when fade-out begins
-const HIDE_AT = 15000;  // when component unmounts
+const DURATION = 10000; // total splash duration in ms
+const FADE_AT = 9300;   // when fade-out begins
+const HIDE_AT = 10000;  // when component unmounts
 
-// Generate static meteor configs so positions differ per meteor
-const METEORS = Array.from({ length: 14 }).map((_, i) => {
-  const lanes = [6, 12, 18, 26, 34, 42, 50, 58, 66, 74, 82, 88, 94, 10];
-  const delays = [0.4, 1.6, 2.9, 4.1, 5.4, 6.7, 7.9, 9.2, 10.4, 11.6, 12.8, 13.9, 14.2, 3.3];
-  const durations = [1.2, 1.4, 1.1, 1.6, 1.3, 1.5, 1.2, 1.7, 1.3, 1.4, 1.5, 1.2, 1.6, 1.4];
+// Deterministic pseudo-random so meteors stay scattered and never overlap
+function seeded(i, salt = 0) {
+  const x = Math.sin((i + 1) * (salt + 1) * 12.9898) * 43758.5453;
+  return x - Math.floor(x);
+}
+
+// 22 meteors, each with its own lane, start delay, duration, and drift
+const METEORS = Array.from({ length: 22 }).map((_, i) => {
+  const r1 = seeded(i, 1);
+  const r2 = seeded(i, 2);
+  const r3 = seeded(i, 3);
+  const r4 = seeded(i, 4);
   return {
     id: i,
-    top: lanes[i % lanes.length],
-    delay: delays[i % delays.length],
-    duration: durations[i % durations.length],
-    size: i % 3 === 0 ? 3 : 2,
+    // Top lane: spread from -5% to 85% (some start above viewport)
+    top: (-5 + r1 * 90).toFixed(2),
+    // Start delay: spread across the whole 10s window
+    delay: (r2 * 9).toFixed(2),
+    // Duration: 0.9s to 2.0s
+    duration: (0.9 + r3 * 1.1).toFixed(2),
+    // Size: 2px or 3px
+    size: r4 > 0.7 ? 3 : 2,
+    // Slight horizontal start offset so they don't all originate at right edge
+    rightOffset: (-15 + r1 * 20).toFixed(2),
   };
 });
 
-// Generate many stars with pseudo-random positions (deterministic on render)
+// 90 stars with deterministic scattered positions
 const STARS = Array.from({ length: 90 }).map((_, i) => {
-  const seed = (i * 9301 + 49297) % 233280;
-  const rnd = seed / 233280;
-  const rnd2 = ((i * 4567 + 12345) % 99991) / 99991;
+  const r1 = seeded(i, 5);
+  const r2 = seeded(i, 6);
+  const r3 = seeded(i, 7);
   return {
     id: i,
-    left: (rnd * 100).toFixed(2) + '%',
-    top: (rnd2 * 100).toFixed(2) + '%',
+    left: (r1 * 100).toFixed(2) + '%',
+    top: (r2 * 100).toFixed(2) + '%',
     size: i % 11 === 0 ? 2 : 1,
-    delay: (rnd * 6).toFixed(2) + 's',
-    duration: (2.5 + rnd2 * 3).toFixed(2) + 's',
-    opacity: (0.35 + rnd2 * 0.55).toFixed(2),
+    delay: (r1 * 6).toFixed(2) + 's',
+    duration: (2.5 + r2 * 3).toFixed(2) + 's',
+    opacity: (0.35 + r3 * 0.55).toFixed(2),
   };
 });
 
@@ -114,7 +127,7 @@ function Splash() {
       </div>
       <div className="splash-nebula" aria-hidden="true" />
 
-      {/* Meteor shower */}
+      {/* Meteor shower — each meteor has a unique lane + timing */}
       <div className="splash-meteors" aria-hidden="true">
         {METEORS.map(m => (
           <span
@@ -122,6 +135,7 @@ function Splash() {
             className="meteor"
             style={{
               top: m.top + '%',
+              right: m.rightOffset + '%',
               animationDelay: m.delay + 's',
               animationDuration: m.duration + 's',
               width: m.size + 'px',
