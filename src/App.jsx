@@ -34,6 +34,7 @@ import Threads from './pages/Threads';
 import BlogPost from './pages/BlogPost';
 import AIMusicDetail from './pages/AIMusicDetail';
 import CodePlayground from './pages/CodePlayground';
+import ShrineCollection from './pages/ShrineCollection';
 import './App.css';
 
 function ScrollToTop() {
@@ -58,6 +59,7 @@ function RoutesView() {
           <Route path="/docs" element={<Docs />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/collection" element={<Collection />} />
+          <Route path="/shrine" element={<ShrineCollection />} />
           <Route path="/guestbook" element={<Guestbook />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
           <Route path="/library" element={<Library />} />

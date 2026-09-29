@@ -28,8 +28,8 @@ function CodePlayground() {
   const [files, setFiles] = useState(DEFAULT_FILES);
   const [activeId, setActiveId] = useState(DEFAULT_FILES[0].id);
   const [srcDoc, setSrcDoc] = useState('');
-  const [autorun, setAutorun] = useState(true);
-  const [showPreview, setShowPreview] = useState(true);
+  const [autorun, setAutorun] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
   const { copiedId, copy } = useCopy();
   const debounceRef = useRef(null);
   const editorRef = useRef(null);
@@ -176,7 +176,6 @@ function CodePlayground() {
             <button className="btn btn-ghost pg-btn" onClick={addFile}>+ New File</button>
             <button className="btn btn-ghost pg-btn" onClick={resetAll}>Reset</button>
             <button className="btn btn-primary pg-btn" onClick={runNow}>▶ Run</button>
-            <button className="btn btn-ghost pg-btn" onClick={downloadAll}>⬇ Export HTML</button>
           </div>
           <div className="pg-toolbar-right">
             <label className="pg-toggle">

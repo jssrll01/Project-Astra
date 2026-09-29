@@ -2,15 +2,25 @@ import React, { useState } from 'react';
 import './SimplePage.css';
 
 const photos = [
-  { id: 1, src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800', caption: 'Into the woods' },
-  { id: 2, src: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800', caption: 'Foggy morning' },
-  { id: 3, src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800', caption: 'Mountain layer' },
-  { id: 4, src: 'https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?w=800', caption: 'Coastal line' },
-  { id: 5, src: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800', caption: 'Open road' },
-  { id: 6, src: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800', caption: 'Field of light' },
-  { id: 7, src: 'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?w=800', caption: 'Golden hour' },
-  { id: 8, src: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800', caption: 'Mountain dusk' },
-  { id: 9, src: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800', caption: 'Star field' },
+  { id: 1, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689227/Messenger_creation_E7A34F76-00FA-4627-BADD-61F04072D22D.jpg', caption: 'Moments — 01' },
+  { id: 2, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689227/Messenger_creation_65B44506-DAF5-411A-BAA7-8FD2F42D47F8.jpg', caption: 'Moments — 02' },
+  { id: 3, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689227/LivePhoto_1790477088349_MP.jpg', caption: 'Moments — 03' },
+  { id: 4, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689220/20260927_104326.jpg', caption: 'Moments — 04' },
+  { id: 5, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689218/20260929_141627.jpg', caption: 'Moments — 05' },
+  { id: 6, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689220/20260927_104208.jpg', caption: 'Moments — 06' },
+  { id: 7, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689219/LivePhoto_1790476474170_MP.jpg', caption: 'Moments — 07' },
+  { id: 8, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689220/20260927_103247.jpg', caption: 'Moments — 08' },
+  { id: 9, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689218/20260927_105111.jpg', caption: 'Moments — 09' },
+  { id: 10, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689217/20260927_105051.jpg', caption: 'Moments — 10' },
+  { id: 11, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689217/20260915_084029.jpg', caption: 'Moments — 11' },
+  { id: 12, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689217/20260915_084051.jpg', caption: 'Moments — 12' },
+  { id: 13, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689216/20260911_121428.jpg', caption: 'Moments — 13' },
+  { id: 14, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689217/20260926_120736.jpg', caption: 'Moments — 14' },
+  { id: 15, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689216/20260911_125359.jpg', caption: 'Moments — 15' },
+  { id: 16, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689217/20260915_193932.jpg', caption: 'Moments — 16' },
+  { id: 17, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689217/20260927_104954.jpg', caption: 'Moments — 17' },
+  { id: 18, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689216/20260915_053749.jpg', caption: 'Moments — 18' },
+  { id: 19, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689216/20260911_110317.jpg', caption: 'Moments — 19' },
 ];
 
 function Collection() {

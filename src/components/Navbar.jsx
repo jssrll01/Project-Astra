@@ -40,6 +40,7 @@ function Navbar() {
     { path: '/docs', label: 'Documentation' },
     { path: '/faq', label: 'FAQ' },
     { path: '/collection', label: 'Collection' },
+    { path: '/shrine', label: 'Shrine Collection' },
     { path: '/guestbook', label: 'Guestbook' },
     { path: '/bookmarks', label: 'Bookmarks' },
     { path: '/library', label: 'Library' },

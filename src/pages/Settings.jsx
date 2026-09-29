@@ -205,12 +205,6 @@ function SystemInfo() {
         <InfoRow label="Build" value={BUILD_ID} mono />
         <InfoRow label="Channel" value={BUILD_CHANNEL} />
         <InfoRow label="Build Date" value={BUILD_DATE} mono />
-        <InfoRow label="Platform" value={shortUa} />
-        <InfoRow label="Language" value={info.lang} />
-        <InfoRow label="Viewport" value={info.viewport} mono />
-        <InfoRow label="Pixel Ratio" value={String(info.dpr) + 'x'} mono />
-        <InfoRow label="CPU Cores" value={String(info.cores)} mono />
-        <InfoRow label="Device Memory" value={String(info.memory) + (info.memory !== 'unknown' ? ' GB' : '')} mono />
         <InfoRow label="Connection" value={info.online ? 'Online' : 'Offline'} />
         <InfoRow label="Service Worker" value={info.sw} />
         <InfoRow label="Storage API" value={info.storage} />
@@ -218,10 +212,6 @@ function SystemInfo() {
           <InfoRow label="Cache Usage" value={storageEstimate.usage + ' / ' + storageEstimate.quota} mono />
         )}
       </div>
-      <p className="settings-footnote">
-        Project Astra — a personal technology ecosystem built with React 18, Vite 5, and React Router 6.
-        Hand-written CSS, PWA-ready, deployed on Render.
-      </p>
     </div>
   );
 }
@@ -233,7 +223,6 @@ function VersionCard() {
         <div className="version-mark">A</div>
         <div className="version-meta">
           <h2 className="version-title">Astra</h2>
-          <p className="version-tag">Where Intelligence Meets Innovation</p>
         </div>
       </div>
       <div className="version-rows">
@@ -325,7 +314,6 @@ function Settings() {
     <div className="simple-page page">
       <div className="wrap">
         <header className="page-header">
-          <p className="eyebrow">Settings</p>
         </header>
 
         <VersionCard />
