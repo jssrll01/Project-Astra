@@ -175,3 +175,37 @@ h3 { font-size: clamp(1rem, 1.8vw, 1.2rem); }
 }
 
 @media (max-width: 700px) { .page { padding: 88px 18px 40px; } }
+
+img {
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity 0.4s ease-out, filter 0.5s ease-out;
+  will-change: filter, opacity;
+}
+
+img.img-loaded {
+  opacity: 1;
+  filter: blur(0);
+}
+
+img.img-error {
+  opacity: 0.3;
+  filter: blur(0);
+}
+
+.img-shimmer {
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
