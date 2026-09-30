@@ -3,7 +3,6 @@ import './SimplePage.css';
 import Img from '../components/Img';
 import { preloadImages } from '../utils/preloadImages';
 import Img from '../components/Img';
-import { preloadImages } from '../utils/preloadImages';
 
 const certifications = [
   {

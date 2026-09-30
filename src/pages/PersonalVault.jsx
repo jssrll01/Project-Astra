@@ -4,7 +4,6 @@ import './PersonalVault.css';
 import Img from '../components/Img';
 import { preloadImages } from '../utils/preloadImages';
 import Img from '../components/Img';
-import { preloadImages } from '../utils/preloadImages';
 
 const VERIFICATION_CODE = '101007';
 

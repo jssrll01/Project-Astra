@@ -3,7 +3,6 @@ import './SimplePage.css';
 import Img from '../components/Img';
 import { preloadImages } from '../utils/preloadImages';
 import Img from '../components/Img';
-import { preloadImages } from '../utils/preloadImages';
 
 const photos = [
   { id: 1, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790727121/Screenshot_20260930_080340_Chrome.jpg', caption: 'Gallery — 01' },
