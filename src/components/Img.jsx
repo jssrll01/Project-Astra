@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Img.css';
+import { isPreloaded } from '../utils/preloadImages';
 
 /**
  * Cloudinary-aware image with:

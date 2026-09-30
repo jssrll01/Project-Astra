@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './SimplePage.css';
 import Img from '../components/Img';
 import { preloadImages } from '../utils/preloadImages';
-import Img from '../components/Img';
 
 const certifications = [
   {
@@ -11,6 +10,14 @@ const certifications = [
     caption: 'Certification',
   },
 ];
+
+// Kick off preloading immediately — before React renders
+certifications.forEach(p => {
+  const img = new window.Image();
+  img.decoding = "async";
+  img.loading = "eager";
+  img.src = p.src.replace("/upload/", "/upload/f_auto,q_auto,w_800/");
+});
 
 function Certifications() {
   React.useEffect(() => { preloadImages(certifications.map(p => p.src)); }, []);

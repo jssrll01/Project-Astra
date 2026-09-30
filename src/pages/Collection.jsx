@@ -34,6 +34,14 @@ const photos = [
   { id: 28, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747516/20260915_150741.jpg', caption: 'Moments — 28' },
 ];
 
+// Kick off preloading immediately — before React renders
+photos.forEach(p => {
+  const img = new window.Image();
+  img.decoding = "async";
+  img.loading = "eager";
+  img.src = p.src.replace("/upload/", "/upload/f_auto,q_auto,w_800/");
+});
+
 function Collection() {
   React.useEffect(() => { preloadImages(photos.map(p => p.src)); }, []);
   const [selected, setSelected] = useState(null);

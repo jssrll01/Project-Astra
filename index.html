@@ -2,41 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#070b14" />
-  <link rel="manifest" href="/manifest.webmanifest" />
-  <link rel="icon" type="image/png" href="/icon-192.png" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Astra" />
-    <meta property="og:type" content="website" />
-  <meta property="og:title" content="Astra — Jessrell M. Custodio" />
-  <meta property="og:description" content="Where Intelligence Meets Innovation. Portfolio of Jessrell M. Custodio." />
-  <meta property="og:image" content="/icon-512.png" />
-  <meta property="og:url" content="https://project-astra-hz3o.onrender.com" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Astra — Jessrell M. Custodio" />
-  <meta name="twitter:description" content="Where Intelligence Meets Innovation." />
-  <meta name="twitter:image" content="/icon-512.png" />
-  <title>Astra — Where Intelligence Meets Innovation</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Debug Astra</title>
+  <style>
+    body { background: #070b14; color: #fff; font: 14px monospace; padding: 20px; }
+    #err { color: #ff6b6b; white-space: pre-wrap; margin-bottom: 20px; }
+    #ok { color: #2dd4bf; }
+    #root { min-height: 100px; border: 1px dashed #333; padding: 10px; margin-top: 10px; }
+  </style>
 </head>
 <body>
+  <div id="err"></div>
+  <div id="ok">Page loaded. Waiting for React...</div>
   <div id="root"></div>
+
   <script>
-    window.__pwaPrompt = null;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      window.__pwaPrompt = e;
-      window.dispatchEvent(new Event('pwa-prompt-ready'));
+    window.onerror = function(msg, src, line, col) {
+      var el = document.getElementById('err');
+      el.textContent += 'ERROR: ' + msg + '\n  at ' + src + ':' + line + ':' + col + '\n\n';
+      document.getElementById('ok').textContent = 'ERROR CAUGHT — see above';
+    };
+    window.addEventListener('unhandledrejection', function(e) {
+      document.getElementById('err').textContent += 'PROMISE REJECT: ' + e.reason + '\n\n';
     });
-    window.addEventListener('appinstalled', () => {
-      window.__pwaPrompt = null;
-      window.dispatchEvent(new Event('pwa-installed'));
-    });
+    // After 3 seconds, report whether React rendered anything
+    setTimeout(function() {
+      var root = document.getElementById('root');
+      if (root.children.length === 0) {
+        document.getElementById('ok').textContent = 'REACT DID NOT RENDER — root is empty';
+      } else {
+        document.getElementById('ok').textContent = 'REACT RENDERED — ' + root.children.length + ' element(s)';
+      }
+    }, 3000);
   </script>
   <script type="module" src="/src/main.jsx"></script>
 </body>

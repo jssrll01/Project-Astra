@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './SimplePage.css';
 import Img from '../components/Img';
 import { preloadImages } from '../utils/preloadImages';
-import Img from '../components/Img';
 
 const achievements = [
   {
@@ -11,6 +10,14 @@ const achievements = [
     caption: 'Achievement',
   },
 ];
+
+// Kick off preloading immediately — before React renders
+achievements.forEach(p => {
+  const img = new window.Image();
+  img.decoding = "async";
+  img.loading = "eager";
+  img.src = p.src.replace("/upload/", "/upload/f_auto,q_auto,w_800/");
+});
 
 function Achievements() {
   React.useEffect(() => { preloadImages(achievements.map(p => p.src)); }, []);

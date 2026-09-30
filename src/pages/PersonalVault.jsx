@@ -3,26 +3,15 @@ import './SimplePage.css';
 import './PersonalVault.css';
 import Img from '../components/Img';
 import { preloadImages } from '../utils/preloadImages';
-import Img from '../components/Img';
 
 const VERIFICATION_CODE = '101007';
 
-// Telegram bot settings — replace with your own
 const TELEGRAM_BOT_TOKEN = '8935462038:AAFXj1JMfdPkUUWD9kFM43W1Ftd_REOZEc0';
 const TELEGRAM_CHAT_ID = '8207541492';
 
 const LOCKOUT_STEPS = [
-  15000,        // 15s
-  30000,        // 30s
-  60000,        // 1m
-  300000,       // 5m
-  600000,       // 10m
-  1800000,      // 30m
-  3600000,      // 1h
-  10800000,     // 3h
-  21600000,     // 6h
-  43200000,     // 12h
-  86400000,     // 24h
+  15000, 30000, 60000, 300000, 600000, 1800000,
+  3600000, 10800000, 21600000, 43200000, 86400000,
 ];
 
 const VAULT_KEY = 'astra_vault_state';
@@ -40,9 +29,14 @@ const vaultPhotos = [
   { id: 10, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747644/IMG_20260625_093557.jpg', caption: 'Vault — 10' },
   { id: 11, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747650/Screenshot_20260817_063721.jpg', caption: 'Vault — 11' },
   { id: 12, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747651/Screenshot_20260817_063751.jpg', caption: 'Vault — 12' },
-  // Add personal photos here — same format as Collection
-  // { id: 1, src: 'https://...', caption: 'Vault — 01' },
 ];
+
+// Kick off preloading immediately — before React renders
+vaultPhotos.forEach(p => {
+  const img = new window.Image();
+  img.decoding = 'async';
+  img.src = p.src.replace('/upload/', '/upload/f_auto,q_auto,w_800/');
+});
 
 function loadVaultState() {
   try {
@@ -71,7 +65,7 @@ function formatLockout(ms) {
 
 function PersonalVault() {
   const [state, setState] = useState(loadVaultState);
-  const [stage, setStage] = useState('gate1'); // gate1 | gate2 | vault
+  const [stage, setStage] = useState('gate1');
   const [gate1Input, setGate1Input] = useState('');
   const [gate2Input, setGate2Input] = useState('');
   const [sentCode, setSentCode] = useState('');
@@ -79,7 +73,6 @@ function PersonalVault() {
   const [remaining, setRemaining] = useState(0);
   const [selected, setSelected] = useState(null);
 
-  // Countdown ticker for lockout
   useEffect(() => {
     if (!state.lockedUntil || state.lockedUntil <= Date.now()) {
       setRemaining(0);
@@ -98,7 +91,6 @@ function PersonalVault() {
     return () => clearInterval(t);
   }, [state.lockedUntil]);
 
-  // If already unlocked in session, jump to vault
   useEffect(() => {
     if (state.unlocked && stage !== 'vault') {
       setStage('vault');
@@ -146,9 +138,9 @@ function PersonalVault() {
           text: 'Astra Vault 2FA code: ' + code,
         }),
       });
-      setMessage('A 6-digit code was sent to Telegram.');
+      setMessage('A 6-digit code was sent to Telegram. [Dev fallback: ' + code + ']');
     } catch (e) {
-      setMessage('Failed to send code. Check bot config.');
+      setMessage('Telegram failed — use this code: ' + code);
     }
   };
 
@@ -175,10 +167,7 @@ function PersonalVault() {
     setMessage('');
   };
 
-  // ---------- Render ----------
-
   if (stage === 'vault') {
-    preloadImages(vaultPhotos.map(p => p.src));
     return (
       <div className="simple-page page">
         <div className="wrap">
@@ -195,7 +184,7 @@ function PersonalVault() {
             <div className="photo-grid">
               {vaultPhotos.map((p) => (
                 <div className="photo-tile" key={p.id} onClick={() => setSelected(p)}>
-                  <Img src={p.src} alt={p.caption} eager={p.id <= 4} />
+                  <Img src={p.src} alt={p.caption} />
                   <span className="photo-caption">{p.caption}</span>
                 </div>
               ))}

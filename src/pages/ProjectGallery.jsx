@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './SimplePage.css';
 import Img from '../components/Img';
 import { preloadImages } from '../utils/preloadImages';
-import Img from '../components/Img';
 
 const photos = [
   { id: 1, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790727121/Screenshot_20260930_080340_Chrome.jpg', caption: 'Gallery — 01' },
@@ -19,6 +18,14 @@ const photos = [
   { id: 12, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790727118/Screenshot_20260930_080109_Chrome.jpg', caption: 'Gallery — 12' },
   { id: 13, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790727117/Screenshot_20260920_082105_My_Files.jpg', caption: 'Gallery — 13' },
 ];
+
+// Kick off preloading immediately — before React renders
+photos.forEach(p => {
+  const img = new window.Image();
+  img.decoding = "async";
+  img.loading = "eager";
+  img.src = p.src.replace("/upload/", "/upload/f_auto,q_auto,w_800/");
+});
 
 function ProjectGallery() {
   React.useEffect(() => { preloadImages(photos.map(p => p.src)); }, []);

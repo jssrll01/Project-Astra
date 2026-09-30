@@ -1,4 +1,4 @@
-const CACHE = 'astra-v3';
+const CACHE = 'astra-v4';
 const CORE = [
   '/',
   '/index.html',
