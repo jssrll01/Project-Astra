@@ -49,6 +49,7 @@ function Navbar() {
 
   const hiddenLinks = [
     { path: '/settings', label: 'Settings' },
+    { path: '/vault', label: 'Personal Vault' },
   ];
 
   return (
