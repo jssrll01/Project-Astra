@@ -151,13 +151,7 @@ function InfoRow({ label, value, mono }) {
 function SystemInfo() {
   const [info, setInfo] = useState({
     online: navigator.onLine,
-    viewport: window.innerWidth + '×' + window.innerHeight,
-    dpr: window.devicePixelRatio || 1,
-    lang: navigator.language || 'unknown',
     ua: navigator.userAgent,
-    platform: navigator.platform || 'unknown',
-    cores: navigator.hardwareConcurrency || 'unknown',
-    memory: navigator.deviceMemory || 'unknown',
     sw: 'serviceWorker' in navigator ? 'supported' : 'not supported',
     storage: (typeof navigator.storage !== 'undefined') ? 'available' : 'unavailable',
   });
@@ -165,9 +159,7 @@ function SystemInfo() {
   const [storageEstimate, setStorageEstimate] = useState(null);
 
   useEffect(() => {
-    const onResize = () => setInfo(i => ({ ...i, viewport: window.innerWidth + '×' + window.innerHeight }));
     const onOnline = () => setInfo(i => ({ ...i, online: navigator.onLine }));
-    window.addEventListener('resize', onResize);
     window.addEventListener('online', onOnline);
     window.addEventListener('offline', onOnline);
 
@@ -181,21 +173,10 @@ function SystemInfo() {
     }
 
     return () => {
-      window.removeEventListener('resize', onResize);
       window.removeEventListener('online', onOnline);
       window.removeEventListener('offline', onOnline);
     };
   }, []);
-
-  const shortUa = (() => {
-    const ua = info.ua;
-    if (/Android/i.test(ua)) return 'Android';
-    if (/iPhone|iPad|iPod/i.test(ua)) return 'iOS';
-    if (/Windows/i.test(ua)) return 'Windows';
-    if (/Mac/i.test(ua)) return 'macOS';
-    if (/Linux/i.test(ua)) return 'Linux';
-    return 'Unknown';
-  })();
 
   return (
     <div className="settings-card glass">
@@ -223,6 +204,7 @@ function VersionCard() {
         <div className="version-mark">A</div>
         <div className="version-meta">
           <h2 className="version-title">Astra</h2>
+          <p className="version-tag">Where Intelligence Meets Innovation</p>
         </div>
       </div>
       <div className="version-rows">
@@ -333,6 +315,7 @@ function Settings() {
     <div className="simple-page page">
       <div className="wrap">
         <header className="page-header">
+          <p className="eyebrow">Settings</p>
         </header>
 
         <VersionCard />
@@ -420,7 +403,6 @@ function Settings() {
           </Row>
           <Row title="Clear Cache">
             <button className="btn btn-ghost" onClick={clearCache}>Clear Cache</button>
-          </Row>
           </Row>
         </div>
 
