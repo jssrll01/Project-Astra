@@ -71,7 +71,7 @@ function GameSpace() {
         {selected && (
           <div className="art-lightbox" onClick={() => setSelected(null)}>
             <div className="art-lightbox-inner" onClick={(e) => e.stopPropagation()}>
-              <Img src={selected.src} alt={selected.game} width={1200} aspect="auto" />
+              <img src={selected.src} alt={selected.game} className="lightbox-img" />
               <div className="art-lightbox-info">
                 <p>{selected.game}</p>
               </div>

@@ -54,7 +54,7 @@ function Certifications() {
         {selected && (
           <div className="art-lightbox" onClick={() => setSelected(null)}>
             <div className="art-lightbox-inner" onClick={(e) => e.stopPropagation()}>
-              <Img src={selected.src} alt={selected.caption} width={1200} aspect="auto" />
+              <img src={selected.src} alt={selected.caption} className="lightbox-img" />
               <div className="art-lightbox-info">
                 <p>{selected.caption}</p>
               </div>

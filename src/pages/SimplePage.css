@@ -1387,3 +1387,17 @@ body.compact-mode .footer { padding-top: 36px; padding-bottom: 22px; }
   margin: 0;
   color: var(--muted);
 }
+
+/* ---------- Lightbox image — consistent sizing ---------- */
+
+.lightbox-img {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  max-height: 70vh;
+  height: auto;
+  object-fit: contain;
+  background: #070b14;
+  margin: 0 auto;
+  border-radius: 0;
+}

@@ -75,44 +75,6 @@
   transition: transform 0.5s ease-out;
 }
 
-/* Lightbox — override to make .img-wrap flow naturally inside the panel */
-.art-lightbox-inner .img-wrap {
-  position: static !important;
-  aspect-ratio: auto !important;
-  width: 100% !important;
-  height: auto !important;
-  max-height: 70vh;
-  overflow: visible !important;
-  background: transparent !important;
-  display: block;
-  border-radius: 0;
-  isolation: auto;
-}
-
-/* Hide the blur/skeleton layers in lightbox — the sharp image is already cached */
-.art-lightbox-inner .img-wrap .img-blur,
-.art-lightbox-inner .img-wrap .img-skeleton {
-  display: none !important;
-}
-
-/* Make the sharp image flow at natural size, capped */
-.art-lightbox-inner .img-wrap .img-real {
-  position: static !important;
-  inset: auto !important;
-  width: 100% !important;
-  height: auto !important;
-  max-height: 70vh;
-  object-fit: contain;
-  opacity: 1 !important;
-  transform: none !important;
-  display: block;
-  background: #070b14;
-}
-
-.art-lightbox-inner .img-wrap:hover .img-real {
-  transform: none !important;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .img-wrap .img-blur,
   .img-wrap .img-real,
