@@ -1292,3 +1292,18 @@ body.compact-mode .footer { padding-top: 36px; padding-bottom: 22px; }
   line-height: 1.6;
   margin: 0;
 }
+
+/* ---------- Img component inside photo tiles ---------- */
+
+.photo-tile .img-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.photo-tile .img-wrap .img-real {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
