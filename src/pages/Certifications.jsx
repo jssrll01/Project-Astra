@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SimplePage.css';
 import Img from '../components/Img';
-import { preloadImages } from '../utils/preloadImages';
+import { preloadImages, preloadLightbox } from '../utils/preloadImages';
 
 const certifications = [
   {
@@ -37,7 +37,13 @@ function Certifications() {
         ) : (
           <div className="photo-grid">
             {certifications.map((p) => (
-              <div className="photo-tile" key={p.id} onClick={() => setSelected(p)}>
+              <div
+                className="photo-tile"
+                key={p.id}
+                onMouseEnter={() => preloadLightbox(p.src)}
+                onTouchStart={() => preloadLightbox(p.src)}
+                onClick={() => setSelected(p)}
+              >
                 <Img src={p.src} alt={p.caption} eager />
                 <span className="photo-caption">{p.caption}</span>
               </div>
@@ -48,7 +54,7 @@ function Certifications() {
         {selected && (
           <div className="art-lightbox" onClick={() => setSelected(null)}>
             <div className="art-lightbox-inner" onClick={(e) => e.stopPropagation()}>
-              <Img src={selected.src} alt={selected.caption} width={1400} aspect="auto" />
+              <Img src={selected.src} alt={selected.caption} width={1200} aspect="auto" />
               <div className="art-lightbox-info">
                 <p>{selected.caption}</p>
               </div>

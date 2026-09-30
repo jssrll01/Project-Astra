@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './SimplePage.css';
 import Img from '../components/Img';
-import { preloadImages } from '../utils/preloadImages';
+import { preloadImages, preloadLightbox } from '../utils/preloadImages';
 
 const games = [
   {
@@ -71,7 +71,7 @@ function GameSpace() {
         {selected && (
           <div className="art-lightbox" onClick={() => setSelected(null)}>
             <div className="art-lightbox-inner" onClick={(e) => e.stopPropagation()}>
-              <Img src={selected.src} alt={selected.game} width={1400} aspect="auto" />
+              <Img src={selected.src} alt={selected.game} width={1200} aspect="auto" />
               <div className="art-lightbox-info">
                 <p>{selected.game}</p>
               </div>

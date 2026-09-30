@@ -36,6 +36,7 @@ import CodePlayground from './pages/CodePlayground';
 import PersonalVault from './pages/PersonalVault';
 import GameSpace from './pages/GameSpace';
 import Devotion from './pages/Devotion';
+import { prefetchAll, prefetchLightboxSizes } from './utils/prefetchAll';
 import './App.css';
 
 function ScrollToTop() {
@@ -86,6 +87,7 @@ function RoutesView() {
 }
 
 function App() {
+  React.useEffect(() => { prefetchAll(); prefetchLightboxSizes(); }, []);
   return (
     <Router>
       <Splash />

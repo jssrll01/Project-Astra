@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './SimplePage.css';
 import './PersonalVault.css';
 import Img from '../components/Img';
-import { preloadImages } from '../utils/preloadImages';
+import { preloadImages, preloadLightbox } from '../utils/preloadImages';
 
 const VERIFICATION_CODE = '101007';
 
@@ -30,6 +30,12 @@ const vaultPhotos = [
   { id: 11, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747650/Screenshot_20260817_063721.jpg', caption: 'Vault — 11' },
   { id: 12, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747651/Screenshot_20260817_063751.jpg', caption: 'Vault — 12' },
 ];
+
+vaultPhotos.forEach(p => {
+  const img = new window.Image();
+  img.decoding = "async";
+  img.src = p.src.replace("/upload/", "/upload/f_auto,q_auto,w_800/");
+});
 
 // Kick off preloading immediately — before React renders
 vaultPhotos.forEach(p => {
@@ -183,7 +189,13 @@ function PersonalVault() {
           ) : (
             <div className="photo-grid">
               {vaultPhotos.map((p) => (
-                <div className="photo-tile" key={p.id} onClick={() => setSelected(p)}>
+                <div
+                className="photo-tile"
+                key={p.id}
+                onMouseEnter={() => preloadLightbox(p.src)}
+                onTouchStart={() => preloadLightbox(p.src)}
+                onClick={() => setSelected(p)}
+              >
                   <Img src={p.src} alt={p.caption} />
                   <span className="photo-caption">{p.caption}</span>
                 </div>
@@ -194,7 +206,7 @@ function PersonalVault() {
           {selected && (
             <div className="art-lightbox" onClick={() => setSelected(null)}>
               <div className="art-lightbox-inner" onClick={(e) => e.stopPropagation()}>
-                <Img src={selected.src} alt={selected.caption} width={1400} aspect="auto" />
+                <Img src={selected.src} alt={selected.caption} width={1200} aspect="auto" />
                 <div className="art-lightbox-info">
                   <p>{selected.caption}</p>
                 </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SimplePage.css';
 import Img from '../components/Img';
-import { preloadImages } from '../utils/preloadImages';
+import { preloadImages, preloadLightbox } from '../utils/preloadImages';
 
 const photos = [
   { id: 1, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689227/Messenger_creation_E7A34F76-00FA-4627-BADD-61F04072D22D.jpg', caption: 'Moments — 01' },
@@ -57,7 +57,13 @@ function Collection() {
 
         <div className="photo-grid">
           {photos.map((p) => (
-            <div className="photo-tile" key={p.id} onClick={() => setSelected(p)}>
+            <div
+                className="photo-tile"
+                key={p.id}
+                onMouseEnter={() => preloadLightbox(p.src)}
+                onTouchStart={() => preloadLightbox(p.src)}
+                onClick={() => setSelected(p)}
+              >
               <Img src={p.src} alt={p.caption} eager={p.id <= 4} />
               <span className="photo-caption">{p.caption}</span>
             </div>
@@ -67,7 +73,7 @@ function Collection() {
         {selected && (
           <div className="art-lightbox" onClick={() => setSelected(null)}>
             <div className="art-lightbox-inner" onClick={(e) => e.stopPropagation()}>
-              <Img src={selected.src} alt={selected.caption} width={1400} aspect="auto" />
+              <Img src={selected.src} alt={selected.caption} width={1200} aspect="auto" />
               <div className="art-lightbox-info">
                 <p>{selected.caption}</p>
               </div>
