@@ -1295,21 +1295,6 @@ body.compact-mode .footer { padding-top: 36px; padding-bottom: 22px; }
   margin: 0;
 }
 
-/* ---------- Img component inside photo tiles ---------- */
-
-.photo-tile .img-wrap {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.photo-tile .img-wrap .img-real {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 /* ---------- Game Space ---------- */
 
 .game-grid {
@@ -1400,4 +1385,105 @@ body.compact-mode .footer { padding-top: 36px; padding-bottom: 22px; }
   background: #070b14;
   margin: 0 auto;
   border-radius: 0;
+}
+
+/* ---------- Stacking fix ---------- */
+
+.simple-page,
+.simple-page .wrap,
+.simple-page .page-header,
+.simple-page .photo-grid,
+.simple-page .photo-tile,
+.page {
+  position: relative;
+  z-index: 2;
+}
+
+.simple-page {
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+/* ---------- Photo tiles — consistent square ---------- */
+
+.photo-tile {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #0d1526;
+  padding: 0;
+  margin: 0;
+}
+
+.photo-tile .img-wrap {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: auto !important;
+  padding: 0;
+  margin: 0;
+}
+
+.photo-tile .img-wrap .img-real {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block;
+}
+
+/* Remove caption */
+.photo-caption {
+  display: none !important;
+}
+
+/* ---------- Lightbox top-layer enforcement ---------- */
+
+.art-lightbox {
+  position: fixed !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 2147483000 !important;
+  background: rgba(3, 6, 12, 0.95) !important;
+  backdrop-filter: blur(10px);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin: 0;
+  overflow: auto;
+  isolation: isolate;
+}
+
+.art-lightbox-inner {
+  position: relative;
+  z-index: 2147483001;
+  max-width: 92vw;
+  max-height: 85vh;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.art-lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2147483002;
+}
+
+/* Prevent background scroll while lightbox is open */
+body.lightbox-open {
+  overflow: hidden;
 }

@@ -1,11 +1,7 @@
-/* ============================================================
-   ASTRA — Background (global starfield + cosmic accents)
-   ============================================================ */
-
 .bg-layer {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: -1;
   overflow: hidden;
   pointer-events: none;
   background: #070b14;
@@ -19,8 +15,6 @@
     radial-gradient(ellipse 80% 60% at 50% 0%, #0f1a2e 0%, transparent 60%),
     radial-gradient(ellipse 70% 50% at 20% 100%, #0d1728 0%, transparent 60%);
 }
-
-/* ---------- Layered starfields ---------- */
 
 .bg-stars-field {
   position: absolute;
@@ -49,7 +43,6 @@
   100% { transform: scale(1.2);  opacity: 1; }
 }
 
-/* Slow drift on depth-2 / depth-3 for parallax feel */
 .bg-stars-field.depth-2 { animation: bgDrift 90s linear infinite; }
 .bg-stars-field.depth-3 { animation: bgDrift 140s linear infinite reverse; }
 
@@ -57,8 +50,6 @@
   from { transform: translate3d(0, 0, 0); }
   to   { transform: translate3d(-30px, -20px, 0); }
 }
-
-/* ---------- Nebula glows ---------- */
 
 .bg-glow {
   position: absolute;
@@ -85,8 +76,6 @@
   top: 40%; left: 55%;
   opacity: 0.12;
 }
-
-/* ---------- Asteroid belt ---------- */
 
 .asteroid-belt {
   position: absolute;
@@ -116,8 +105,6 @@
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
-
-/* ---------- Far satellite ---------- */
 
 .far-satellite {
   position: absolute;
@@ -153,8 +140,6 @@
   100% { transform: translate(0, 0) rotate(360deg); }
 }
 
-/* ---------- Supernova ---------- */
-
 .supernova {
   position: absolute;
   top: 12%;
@@ -173,8 +158,6 @@
   88% { opacity: 1; transform: scale(6); box-shadow: 0 0 30px #fff, 0 0 60px rgba(200,230,255,0.9), 0 0 100px rgba(45,212,191,0.6); }
   92% { opacity: 0.6; transform: scale(2); }
 }
-
-/* ---------- Shooting stars ---------- */
 
 .shooting-star {
   position: absolute;
@@ -208,8 +191,6 @@
   20%  { opacity: 0; transform: translate(-350px, 350px) rotate(135deg); }
   100% { opacity: 0; transform: translate(-350px, 350px) rotate(135deg); }
 }
-
-/* ---------- Reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {
   .bg-star,

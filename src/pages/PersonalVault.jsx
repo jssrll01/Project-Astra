@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import './SimplePage.css';
 import './PersonalVault.css';
 import Img from '../components/Img';
 
-
 const VERIFICATION_CODE = '101007';
-
 const TELEGRAM_BOT_TOKEN = '8935462038:AAFXj1JMfdPkUUWD9kFM43W1Ftd_REOZEc0';
 const TELEGRAM_CHAT_ID = '8207541492';
 
@@ -17,21 +16,19 @@ const LOCKOUT_STEPS = [
 const VAULT_KEY = 'astra_vault_state';
 
 const vaultPhotos = [
-  { id: 1,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747642/file_000000005a908211a754d87dd38fae2f.png', caption: 'Vault — 01' },
-  { id: 2,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747640/6c9d0f24-f010-480e-bd96-59a100838ba7.png', caption: 'Vault — 02' },
-  { id: 3,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747640/12171024-8be0-4396-9b67-7f0d2d1fba5d.png', caption: 'Vault — 03' },
-  { id: 4,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747640/2eae83c7-456c-4b90-9934-140433093f61.png', caption: 'Vault — 04' },
-  { id: 5,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747642/file_00000000a8f882468fbb27fbf60e438d.png', caption: 'Vault — 05' },
-  { id: 6,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747641/782c393d-3088-46ec-bc10-7ec5e3278352.png', caption: 'Vault — 06' },
-  { id: 7,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747645/Messenger_creation_652F11ED-2240-444B-81D7-F41742F71D77.jpg', caption: 'Vault — 07' },
-  { id: 8,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747644/Messenger_creation_2D9E5A0B-C871-4B6D-A450-CD3F89FA790B.jpg', caption: 'Vault — 08' },
-  { id: 9,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747643/IMG_20260625_093543.jpg', caption: 'Vault — 09' },
-  { id: 10, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747644/IMG_20260625_093557.jpg', caption: 'Vault — 10' },
-  { id: 11, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747650/Screenshot_20260817_063721.jpg', caption: 'Vault — 11' },
-  { id: 12, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747651/Screenshot_20260817_063751.jpg', caption: 'Vault — 12' },
+  { id: 1,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747642/file_000000005a908211a754d87dd38fae2f.png', caption: 'Vault 01' },
+  { id: 2,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747640/6c9d0f24-f010-480e-bd96-59a100838ba7.png', caption: 'Vault 02' },
+  { id: 3,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747640/12171024-8be0-4396-9b67-7f0d2d1fba5d.png', caption: 'Vault 03' },
+  { id: 4,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747640/2eae83c7-456c-4b90-9934-140433093f61.png', caption: 'Vault 04' },
+  { id: 5,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747642/file_00000000a8f882468fbb27fbf60e438d.png', caption: 'Vault 05' },
+  { id: 6,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747641/782c393d-3088-46ec-bc10-7ec5e3278352.png', caption: 'Vault 06' },
+  { id: 7,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747645/Messenger_creation_652F11ED-2240-444B-81D7-F41742F71D77.jpg', caption: 'Vault 07' },
+  { id: 8,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747644/Messenger_creation_2D9E5A0B-C871-4B6D-A450-CD3F89FA790B.jpg', caption: 'Vault 08' },
+  { id: 9,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747643/IMG_20260625_093543.jpg', caption: 'Vault 09' },
+  { id: 10, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747644/IMG_20260625_093557.jpg', caption: 'Vault 10' },
+  { id: 11, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747650/Screenshot_20260817_063721.jpg', caption: 'Vault 11' },
+  { id: 12, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747651/Screenshot_20260817_063751.jpg', caption: 'Vault 12' },
 ];
-
-
 
 function loadVaultState() {
   try {
@@ -94,18 +91,6 @@ function PersonalVault() {
 
   const locked = state.lockedUntil > Date.now();
 
-  const handleGate1 = () => {
-    if (locked) return;
-    if (gate1Input.trim() === VERIFICATION_CODE) {
-      setMessage('');
-      setGate1Input('');
-      setStage('gate2');
-      sendTelegramCode();
-    } else {
-      registerFailure('Incorrect verification code.');
-    }
-  };
-
   const registerFailure = (msg) => {
     const nextAttempts = state.failedAttempts + 1;
     const idx = Math.min(nextAttempts - 1, LOCKOUT_STEPS.length - 1);
@@ -133,9 +118,21 @@ function PersonalVault() {
           text: 'Astra Vault 2FA code: ' + code,
         }),
       });
-      setMessage('A 6-digit code was sent to Telegram. [Dev fallback: ' + code + ']');
+      setMessage('A 6-digit code was sent to Telegram. [Dev: ' + code + ']');
     } catch (e) {
-      setMessage('Telegram failed — use this code: ' + code);
+      setMessage('Telegram failed - use this code: ' + code);
+    }
+  };
+
+  const handleGate1 = () => {
+    if (locked) return;
+    if (gate1Input.trim() === VERIFICATION_CODE) {
+      setMessage('');
+      setGate1Input('');
+      setStage('gate2');
+      sendTelegramCode();
+    } else {
+      registerFailure('Incorrect verification code.');
     }
   };
 
@@ -169,37 +166,26 @@ function PersonalVault() {
           <header className="page-header reveal">
             <p className="eyebrow">Personal Vault</p>
             <h1>Private Collection</h1>
-            <p>Locked content — only visible after verification.</p>
+            <p>Locked content - only visible after verification.</p>
             <button className="btn btn-ghost vault-lock-btn" onClick={lockVault}>Lock Vault</button>
           </header>
 
-          {vaultPhotos.length === 0 ? (
-            <div className="empty-note reveal">Vault photos will be added here soon.</div>
-          ) : (
-            <div className="photo-grid">
-              {vaultPhotos.map((p) => (
-                <div
-                className="photo-tile"
-                key={p.id}
-                onClick={() => setSelected(p)}
-              >
-                  <Img src={p.src} alt={p.caption} />
-                  <span className="photo-caption">{p.caption}</span>
-                </div>
-              ))}
-            </div>
-          )}
+          <div className="photo-grid">
+            {vaultPhotos.map((p) => (
+              <div className="photo-tile" key={p.id} onClick={() => setSelected(p)}>
+                <Img src={p.src} alt={p.caption} />
+              </div>
+            ))}
+          </div>
 
-          {selected && (
+          {selected && createPortal(
             <div className="art-lightbox" onClick={() => setSelected(null)}>
               <div className="art-lightbox-inner" onClick={(e) => e.stopPropagation()}>
                 <img src={selected.src} alt={selected.caption} className="lightbox-img" />
-                <div className="art-lightbox-info">
-                  <p>{selected.caption}</p>
-                </div>
-                <button className="art-lightbox-close" onClick={() => setSelected(null)}>×</button>
+                <button className="art-lightbox-close" onClick={() => setSelected(null)}>x</button>
               </div>
-            </div>
+            </div>,
+            document.body
           )}
         </div>
       </div>
@@ -218,7 +204,7 @@ function PersonalVault() {
         <div className="vault-gate card">
           {locked ? (
             <div className="vault-locked">
-              <div className="vault-lock-icon">🔒</div>
+              <div className="vault-lock-icon">Lock</div>
               <h2>Vault Locked</h2>
               <p>Too many failed attempts. Try again in <strong>{formatLockout(remaining)}</strong>.</p>
             </div>
@@ -243,9 +229,9 @@ function PersonalVault() {
                 type="text"
                 className="vault-input"
                 value={gate2Input}
-                onChange={(e) => setGate2Input(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                onChange={(e) => setGate2Input(e.target.value.replace(/[^0-9]/g, '').slice(0, 6))}
                 onKeyDown={(e) => e.key === 'Enter' && handleGate2()}
-                placeholder="••••••"
+                placeholder="______"
                 maxLength={6}
                 inputMode="numeric"
                 autoFocus

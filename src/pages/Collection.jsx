@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import './SimplePage.css';
 import Img from '../components/Img';
 
@@ -55,21 +56,18 @@ function Collection() {
                 onClick={() => setSelected(p)}
               >
               <Img src={p.src} alt={p.caption} eager={p.id <= 4} />
-              <span className="photo-caption">{p.caption}</span>
             </div>
           ))}
         </div>
 
-        {selected && (
+        {selected && createPortal(
           <div className="art-lightbox" onClick={() => setSelected(null)}>
             <div className="art-lightbox-inner" onClick={(e) => e.stopPropagation()}>
               <img src={selected.src} alt={selected.caption} className="lightbox-img" />
-              <div className="art-lightbox-info">
-                <p>{selected.caption}</p>
-              </div>
-              <button className="art-lightbox-close" onClick={() => setSelected(null)}>×</button>
+              <button className="art-lightbox-close" onClick={() => setSelected(null)}>x</button>
             </div>
-          </div>
+          </div>,
+          document.body
         )}
       </div>
     </div>

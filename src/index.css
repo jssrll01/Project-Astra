@@ -38,7 +38,7 @@ img { max-width: 100%; display: block; }
   z-index: 2;
 }
 
-.wrap { max-width: 1180px; margin: 0 auto; }
+.wrap { max-width: 1180px; margin: 0 auto; position: relative; z-index: 2; }
 
 h1, h2, h3 { font-family: var(--font-d); font-weight: 600; letter-spacing: -0.01em; color: var(--text); }
 p { color: var(--muted); }
@@ -65,9 +65,7 @@ p { color: var(--muted); }
   transform: translateY(-2px);
 }
 
-.glow-text {
-  color: var(--teal);
-}
+.glow-text { color: var(--teal); }
 
 .btn {
   padding: 12px 26px;
@@ -129,6 +127,7 @@ h3 { font-size: clamp(1rem, 1.8vw, 1.2rem); }
   border-radius: 16px;
   position: relative;
   overflow: hidden;
+  z-index: 2;
 }
 
 .page-header::before {
@@ -176,33 +175,20 @@ h3 { font-size: clamp(1rem, 1.8vw, 1.2rem); }
 
 @media (max-width: 700px) { .page { padding: 88px 18px 40px; } }
 
-img {
-  opacity: 0;
-  filter: blur(8px);
-  transition: opacity 0.4s ease-out, filter 0.5s ease-out;
-  will-change: filter, opacity;
-}
-
-img.img-loaded {
-  opacity: 1;
-  filter: blur(0);
-}
-
-img.img-error {
-  opacity: 0.3;
-  filter: blur(0);
-}
-
-.img-shimmer {
+/* Ensure content is above the fixed starfield */
+.simple-page,
+main,
+main > * {
   position: relative;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.03) 0%,
-    rgba(255, 255, 255, 0.06) 50%,
-    rgba(255, 255, 255, 0.03) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.6s ease-in-out infinite;
+  z-index: 2;
+}
+
+/* Kill any lingering blur */
+img,
+.img-wrap,
+.img-wrap * {
+  filter: none;
+  opacity: 1;
 }
 
 @keyframes shimmer {

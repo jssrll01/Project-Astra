@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import './SimplePage.css';
 import Img from '../components/Img';
-
 
 const photos = [
   { id: 1,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790727121/Screenshot_20260930_080340_Chrome.jpg', caption: 'Gallery 01' },
@@ -19,12 +19,8 @@ const photos = [
   { id: 13, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790727117/Screenshot_20260920_082105_My_Files.jpg', caption: 'Gallery 13' },
 ];
 
-
 function ProjectGallery() {
   const [selected, setSelected] = useState(null);
-
-  useEffect(() => {
-  }, []);
 
   return (
     <div className="simple-page page">
@@ -37,27 +33,20 @@ function ProjectGallery() {
 
         <div className="photo-grid">
           {photos.map((p) => (
-            <div
-                className="photo-tile"
-                key={p.id}
-                onClick={() => setSelected(p)}
-              >
+            <div className="photo-tile" key={p.id} onClick={() => setSelected(p)}>
               <Img src={p.src} alt={p.caption} />
-              <span className="photo-caption">{p.caption}</span>
             </div>
           ))}
         </div>
 
-        {selected && (
+        {selected && createPortal(
           <div className="art-lightbox" onClick={() => setSelected(null)}>
             <div className="art-lightbox-inner" onClick={(e) => e.stopPropagation()}>
               <img src={selected.src} alt={selected.caption} className="lightbox-img" />
-              <div className="art-lightbox-info">
-                <p>{selected.caption}</p>
-              </div>
               <button className="art-lightbox-close" onClick={() => setSelected(null)}>x</button>
             </div>
-          </div>
+          </div>,
+          document.body
         )}
       </div>
     </div>

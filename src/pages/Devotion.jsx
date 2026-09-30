@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import './SimplePage.css';
 import Img from '../components/Img';
 
-
-const devotionPhotos = [
-  // Add your devotion images here:
-  // { id: 1, src: 'https://...', caption: 'Devotion — 01' },
-];
+const devotionPhotos = [];
 
 const devotionNotes = [
   { title: 'Daily Reflection', text: 'A short moment each day to pause, reflect, and give thanks.' },
@@ -16,10 +13,6 @@ const devotionNotes = [
 
 function Devotion() {
   const [selected, setSelected] = useState(null);
-
-  useEffect(() => {
-    preloadImages(devotionPhotos.map(p => p.src));
-  }, []);
 
   return (
     <div className="simple-page page">
@@ -44,28 +37,21 @@ function Devotion() {
         ) : (
           <div className="photo-grid">
             {devotionPhotos.map((p) => (
-              <div
-                className="photo-tile"
-                key={p.id}
-                onClick={() => setSelected(p)}
-              >
+              <div className="photo-tile" key={p.id} onClick={() => setSelected(p)}>
                 <Img src={p.src} alt={p.caption} />
-                <span className="photo-caption">{p.caption}</span>
               </div>
             ))}
           </div>
         )}
 
-        {selected && (
+        {selected && createPortal(
           <div className="art-lightbox" onClick={() => setSelected(null)}>
             <div className="art-lightbox-inner" onClick={(e) => e.stopPropagation()}>
               <img src={selected.src} alt={selected.caption} className="lightbox-img" />
-              <div className="art-lightbox-info">
-                <p>{selected.caption}</p>
-              </div>
-              <button className="art-lightbox-close" onClick={() => setSelected(null)}>×</button>
+              <button className="art-lightbox-close" onClick={() => setSelected(null)}>x</button>
             </div>
-          </div>
+          </div>,
+          document.body
         )}
       </div>
     </div>

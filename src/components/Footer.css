@@ -93,3 +93,34 @@
 @media (prefers-reduced-motion: reduce) {
   .footer-mark { animation: none; -webkit-text-fill-color: var(--teal); background: none; }
 }
+
+/* ---------- Footer flow control ---------- */
+
+/* Footer sits in normal flow, above the starfield, and never overlaps */
+.footer {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;      /* pushes to bottom on short pages */
+  flex-shrink: 0;
+  width: 100%;
+}
+
+/* The main content area grows to push footer down */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app main {
+  flex: 1 0 auto;
+  min-height: 0;
+}
+
+/* Page wrappers should not overlap the footer */
+.simple-page,
+.page {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 0;
+}

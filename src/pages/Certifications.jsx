@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import './SimplePage.css';
 import Img from '../components/Img';
-
 
 const certifications = [
   {
@@ -10,7 +10,6 @@ const certifications = [
     caption: 'Certification',
   },
 ];
-
 
 function Certifications() {
   const [selected, setSelected] = useState(null);
@@ -24,33 +23,22 @@ function Certifications() {
           <p>Courses and certifications I've completed or am working on.</p>
         </header>
 
-        {certifications.length === 0 ? (
-          <div className="empty-note reveal">Certifications will be added here soon.</div>
-        ) : (
-          <div className="photo-grid">
-            {certifications.map((p) => (
-              <div
-                className="photo-tile"
-                key={p.id}
-                onClick={() => setSelected(p)}
-              >
-                <Img src={p.src} alt={p.caption} eager />
-                <span className="photo-caption">{p.caption}</span>
-              </div>
-            ))}
-          </div>
-        )}
+        <div className="photo-grid">
+          {certifications.map((p) => (
+            <div className="photo-tile" key={p.id} onClick={() => setSelected(p)}>
+              <Img src={p.src} alt={p.caption} eager />
+            </div>
+          ))}
+        </div>
 
-        {selected && (
+        {selected && createPortal(
           <div className="art-lightbox" onClick={() => setSelected(null)}>
             <div className="art-lightbox-inner" onClick={(e) => e.stopPropagation()}>
               <img src={selected.src} alt={selected.caption} className="lightbox-img" />
-              <div className="art-lightbox-info">
-                <p>{selected.caption}</p>
-              </div>
-              <button className="art-lightbox-close" onClick={() => setSelected(null)}>×</button>
+              <button className="art-lightbox-close" onClick={() => setSelected(null)}>x</button>
             </div>
-          </div>
+          </div>,
+          document.body
         )}
       </div>
     </div>
