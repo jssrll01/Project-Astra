@@ -392,3 +392,35 @@ body.set-data-saver .bg-glow { display: none !important; }
   line-height: 1.7;
   font-style: italic;
 }
+
+/* ---------- Visibility fixes ---------- */
+
+.settings-label {
+  color: var(--text) !important;
+  font-weight: 500;
+}
+
+.settings-info-label {
+  color: #b9c2d6 !important;
+}
+
+.settings-info-value {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.settings-info-value.mono {
+  color: var(--teal) !important;
+}
+
+.version-key {
+  color: #b9c2d6 !important;
+}
+
+.version-val {
+  color: #ffffff !important;
+}
+
+.settings-title {
+  color: var(--teal) !important;
+}

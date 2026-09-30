@@ -114,3 +114,42 @@
   margin: 0 auto 28px;
   font-size: 1rem;
 }
+
+/* ---------- Project meta rows ---------- */
+
+.project-category {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 14px;
+  font-style: italic;
+}
+
+.project-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.project-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.82rem;
+}
+
+.project-meta-row span:first-child {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+}
+
+.project-meta-row span:last-child {
+  color: var(--text);
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.82rem;
+}

@@ -303,6 +303,25 @@ function Settings() {
     }, 500);
   };
 
+  const clearCache = async () => {
+    setToast('Clearing cache…');
+    try {
+      if ('caches' in window) {
+        const keys = await caches.keys();
+        await Promise.all(keys.map(k => caches.delete(k)));
+      }
+      if ('serviceWorker' in navigator) {
+        const regs = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(regs.map(r => r.unregister()));
+      }
+      setToast('Cache cleared');
+    } catch (e) {
+      setToast('Failed to clear cache');
+    }
+    clearTimeout(window.__astraToast);
+    window.__astraToast = setTimeout(() => setToast(''), 1600);
+  };
+
   const reset = () => {
     setS({ ...DEFAULTS });
     setToast('Reset');
@@ -398,6 +417,10 @@ function Settings() {
           <h2 className="settings-title">Maintenance</h2>
           <Row title="Refresh Page">
             <button className="btn btn-ghost" onClick={handleRefresh}>Refresh</button>
+          </Row>
+          <Row title="Clear Cache">
+            <button className="btn btn-ghost" onClick={clearCache}>Clear Cache</button>
+          </Row>
           </Row>
         </div>
 

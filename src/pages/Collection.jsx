@@ -21,6 +21,8 @@ const photos = [
   { id: 17, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689217/20260927_104954.jpg', caption: 'Moments — 17' },
   { id: 18, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689216/20260915_053749.jpg', caption: 'Moments — 18' },
   { id: 19, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689216/20260911_110317.jpg', caption: 'Moments — 19' },
+  { id: 20, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790692087/Messenger_creation_97341421-AA6A-4CA6-B905-0ECC86B5B742.jpg', caption: 'Moments — 20' },
+  { id: 21, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790692087/20260911_125124.jpg', caption: 'Moments — 21' },
 ];
 
 function Collection() {

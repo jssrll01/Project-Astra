@@ -16,7 +16,6 @@ import Bookshelf from './pages/Bookshelf';
 import Docs from './pages/Docs';
 import FAQ from './pages/FAQ';
 import Collection from './pages/Collection';
-import Guestbook from './pages/Guestbook';
 import Bookmarks from './pages/Bookmarks';
 import Library from './pages/Library';
 import AIMusic from './pages/AIMusic';
@@ -34,7 +33,7 @@ import Threads from './pages/Threads';
 import BlogPost from './pages/BlogPost';
 import AIMusicDetail from './pages/AIMusicDetail';
 import CodePlayground from './pages/CodePlayground';
-import ShrineCollection from './pages/ShrineCollection';
+import PersonalVault from './pages/PersonalVault';
 import './App.css';
 
 function ScrollToTop() {
@@ -59,8 +58,6 @@ function RoutesView() {
           <Route path="/docs" element={<Docs />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/collection" element={<Collection />} />
-          <Route path="/shrine" element={<ShrineCollection />} />
-          <Route path="/guestbook" element={<Guestbook />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
           <Route path="/library" element={<Library />} />
         <Route path="/ai-music" element={<AIMusic />} />
@@ -76,6 +73,7 @@ function RoutesView() {
         <Route path="/achievements" element={<Achievements />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/playground" element={<CodePlayground />} />
+        <Route path="/vault" element={<PersonalVault />} />
           <Route path="/threads" element={<Threads />} />
           <Route path="*" element={<NotFound />} />
       </Routes>
