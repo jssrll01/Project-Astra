@@ -21,3 +21,37 @@
   transform: scale(1.03);
   transition: transform 0.3s ease-out;
 }
+
+/* ---------- Skeleton loading for every image ---------- */
+
+.img-wrap {
+  position: relative;
+  background: #0d1526;
+  overflow: hidden;
+}
+
+.img-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease-in-out infinite;
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.img-wrap.is-loaded::before {
+  opacity: 0;
+}
+
+@keyframes skeletonShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

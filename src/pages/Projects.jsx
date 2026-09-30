@@ -9,8 +9,8 @@ const projects = [
     status: 'Beta',
     version: 'v2.1.0',
     started: '08/20/2026',
-    deployed: '10/01/2026',
-    updated: '10/01/2026',
+    deployed: '10/10/2026',
+    updated: '10/11/2026',
     host: 'Render',
   },
   {

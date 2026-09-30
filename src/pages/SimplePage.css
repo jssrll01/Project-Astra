@@ -1487,3 +1487,82 @@ body.compact-mode .footer { padding-top: 36px; padding-bottom: 22px; }
 body.lightbox-open {
   overflow: hidden;
 }
+
+/* ---------- Devotion ---------- */
+
+.devotion-section-title {
+  font-size: 1.3rem;
+  margin: 32px 0 16px;
+  color: var(--text);
+}
+
+.prayer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.prayer-card {
+  padding: 24px clamp(20px, 3vw, 32px);
+  border-radius: 14px;
+}
+
+.prayer-card h3 {
+  font-size: 1.05rem;
+  color: var(--teal);
+  margin-bottom: 14px;
+}
+
+.prayer-latin {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--text);
+  font-style: italic;
+  margin: 0 0 10px;
+  border-left: 3px solid var(--gold);
+  padding-left: 14px;
+}
+
+.prayer-english {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0;
+  padding-left: 14px;
+}
+
+/* ---------- Lightbox image skeleton ---------- */
+
+.art-lightbox-inner {
+  position: relative;
+  background: #0d1526;
+  min-width: 200px;
+  min-height: 150px;
+}
+
+.art-lightbox-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease-in-out infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.lightbox-img {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes skeletonShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

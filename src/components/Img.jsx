@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Img.css';
 
 function cloudinaryUrl(src, width) {
@@ -14,11 +14,12 @@ function Img(props) {
   const aspect = props.aspect || '4 / 3';
   const onClick = props.onClick;
 
+  const [loaded, setLoaded] = useState(false);
   const optimized = cloudinaryUrl(src, width);
 
   return (
     <div
-      className={'img-wrap ' + className}
+      className={'img-wrap ' + (loaded ? 'is-loaded' : 'is-loading') + ' ' + className}
       style={{ aspectRatio: aspect }}
       onClick={onClick}
     >
@@ -29,6 +30,8 @@ function Img(props) {
         decoding="async"
         draggable="false"
         className="img-real"
+        onLoad={() => setLoaded(true)}
+        onError={() => setLoaded(true)}
       />
     </div>
   );

@@ -15,7 +15,7 @@ function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  const primaryLinks = [
+  const allLinks = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/skills', label: 'Skills' },
@@ -26,33 +26,25 @@ function Navbar() {
     { path: '/blog', label: 'Blog' },
     { path: '/threads', label: 'Threads' },
     { path: '/contact', label: 'Contact' },
-  ];
-
-  const secondaryLinks = [
     { path: '/partners', label: 'Partners' },
     { path: '/bookshelf', label: 'Bookshelf' },
+    { path: '/bookmarks', label: 'Bookmarks' },
+    { path: '/library', label: 'Library' },
     { path: '/archives', label: 'Archives' },
+    { path: '/journey', label: 'Journey' },
     { path: '/prompt-music', label: 'Prompt Lab (Music)' },
     { path: '/prompt-image', label: 'Prompt Lab (Image)' },
     { path: '/prompt-programming', label: 'Prompt Lab (Programming)' },
-    { path: '/journey', label: 'Journey' },
-    { path: '/docs', label: 'Docs' },
-    { path: '/faq', label: 'FAQ' },
-    { path: '/bookmarks', label: 'Bookmarks' },
-    { path: '/library', label: 'Library' },
     { path: '/playground', label: 'Code Playground' },
     { path: '/certifications', label: 'Certifications' },
     { path: '/achievements', label: 'Achievements' },
     { path: '/game-space', label: 'Game Space' },
     { path: '/devotion', label: 'Devotion' },
-  ];
-
-  const hiddenLinks = [
-    { path: '/settings', label: 'Settings' },
     { path: '/vault', label: 'Personal Vault' },
+    { path: '/settings', label: 'Settings' },
+    { path: '/faq', label: 'FAQ' },
+    { path: '/docs', label: 'Documentation' },
   ];
-
-  const allLinks = [...primaryLinks, ...secondaryLinks, ...hiddenLinks];
 
   return (
     <nav className="navbar">
