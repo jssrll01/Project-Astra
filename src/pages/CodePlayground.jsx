@@ -257,7 +257,6 @@ function CodePlayground() {
         <div className="pg-note card">
           <strong>Tips:</strong> Use <code>index.html</code>, <code>style.css</code>, and <code>script.js</code> for the default three-pane setup.
           Add more files with <em>+ New File</em> — each file keeps its own content.
-          Export a runnable HTML bundle with <em>Export HTML</em>.
         </div>
       </div>
     </div>
