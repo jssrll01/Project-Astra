@@ -10,40 +10,49 @@ function Navbar() {
     setMenuOpen(false);
   }, [location.pathname]);
 
+  // Lock body scroll and blur background when menu is open
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('burger-open');
+    } else {
+      document.body.style.overflow = '';
+      document.body.classList.remove('burger-open');
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.body.classList.remove('burger-open');
+    };
   }, [menuOpen]);
 
-  const allLinks = [
+  const links = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
-    { path: '/skills', label: 'Skills' },
+    { path: '/journey', label: 'Journey' },
     { path: '/projects', label: 'Projects' },
+    { path: '/skills', label: 'Skills' },
+    { path: '/certifications', label: 'Certifications' },
+    { path: '/achievements', label: 'Achievements' },
+    { path: '/partners', label: 'Partners' },
     { path: '/gallery', label: 'Gallery' },
     { path: '/collection', label: 'Collection' },
     { path: '/ai-music', label: 'AI Music' },
+    { path: '/game-space', label: 'Game Space' },
+    { path: '/prompt-music', label: 'Prompt Lab — Music' },
+    { path: '/prompt-image', label: 'Prompt Lab — Image' },
+    { path: '/prompt-programming', label: 'Prompt Lab — Programming' },
     { path: '/blog', label: 'Blog' },
     { path: '/threads', label: 'Threads' },
-    { path: '/contact', label: 'Contact' },
-    { path: '/partners', label: 'Partners' },
     { path: '/bookshelf', label: 'Bookshelf' },
     { path: '/bookmarks', label: 'Bookmarks' },
     { path: '/library', label: 'Library' },
     { path: '/archives', label: 'Archives' },
-    { path: '/journey', label: 'Journey' },
-    { path: '/prompt-music', label: 'Prompt Lab (Music)' },
-    { path: '/prompt-image', label: 'Prompt Lab (Image)' },
-    { path: '/prompt-programming', label: 'Prompt Lab (Programming)' },
-    { path: '/playground', label: 'Code Playground' },
-    { path: '/certifications', label: 'Certifications' },
-    { path: '/achievements', label: 'Achievements' },
-    { path: '/game-space', label: 'Game Space' },
     { path: '/devotion', label: 'Devotion' },
     { path: '/vault', label: 'Personal Vault' },
-    { path: '/settings', label: 'Settings' },
-    { path: '/faq', label: 'FAQ' },
     { path: '/docs', label: 'Documentation' },
+    { path: '/faq', label: 'FAQ' },
+    { path: '/contact', label: 'Contact' },
+    { path: '/settings', label: 'Settings' },
   ];
 
   return (
@@ -61,11 +70,12 @@ function Navbar() {
         </button>
 
         <ul className={'navlinks ' + (menuOpen ? 'active' : '')}>
-          {allLinks.map(link => (
+          {links.map(link => (
             <li key={link.path}>
               <Link
                 to={link.path}
                 className={'nav-btn ' + (location.pathname === link.path ? 'active' : '')}
+                onClick={() => setMenuOpen(false)}
               >
                 {link.label}
               </Link>
