@@ -95,8 +95,6 @@ function Projects() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">Projects</p>
-          <h1>What I'm Building</h1>
-          <p>A collection of projects, experiments, and things I'm working on.</p>
         </header>
 
         <div className="projects-grid">

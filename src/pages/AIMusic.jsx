@@ -115,8 +115,6 @@ function AIMusic() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">AI Music</p>
-          <h1>Composed with Intelligence</h1>
-          <p>Tracks I've created using AI-assisted composition tools.</p>
         </header>
 
         <audio ref={audioRef} preload="none" />

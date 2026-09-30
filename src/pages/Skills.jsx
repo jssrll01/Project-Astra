@@ -55,8 +55,6 @@ function Skills() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">Skills</p>
-          <h1>What I Work With</h1>
-          <p>Technologies, tools, and abilities I've developed through hands-on learning.</p>
         </header>
 
         <div className="skill-block glass">

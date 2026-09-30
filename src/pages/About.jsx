@@ -25,7 +25,6 @@ function About() {
         <header className="page-header reveal">
           <p className="eyebrow">About Me</p>
           <h1>{title}</h1>
-          <p>Technology enthusiast, aspiring developer, and creative problem-solver.</p>
         </header>
 
         <div className="about-cols">

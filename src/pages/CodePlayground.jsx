@@ -143,8 +143,6 @@ function CodePlayground() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">Code Playground</p>
-          <h1>Write, Run, Export</h1>
-          <p>A tiny in-browser editor for HTML, CSS, and JavaScript.</p>
         </header>
 
         <div className="pg-toolbar card">

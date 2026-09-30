@@ -165,8 +165,6 @@ function PersonalVault() {
         <div className="wrap">
           <header className="page-header reveal">
             <p className="eyebrow">Personal Vault</p>
-            <h1>Private Collection</h1>
-            <p>Locked content - only visible after verification.</p>
             <button className="btn btn-ghost vault-lock-btn" onClick={lockVault}>Lock Vault</button>
           </header>
 

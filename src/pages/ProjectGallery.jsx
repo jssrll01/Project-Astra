@@ -27,8 +27,6 @@ function ProjectGallery() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">Project Gallery</p>
-          <h1>Visual Showcase</h1>
-          <p>A visual collection of screenshots, designs, and creative output.</p>
         </header>
 
         <div className="photo-grid">

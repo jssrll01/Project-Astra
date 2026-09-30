@@ -6,8 +6,6 @@ function Archives() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">Experimental Archives</p>
-          <h1>Things I've Tried</h1>
-          <p>Not everything works out — and that's the point.</p>
         </header>
         <div className="empty-note reveal">Archived experiments will be added here.</div>
       </div>

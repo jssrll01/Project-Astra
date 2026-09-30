@@ -12,8 +12,6 @@ function Journey() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">Development Journey</p>
-          <h1>From Curiosity to Code</h1>
-          <p>A timeline of how I got here and where I'm going.</p>
         </header>
         <div className="timeline">
           {milestones.map((m, i) => (

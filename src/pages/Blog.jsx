@@ -56,8 +56,6 @@ function Blog() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">Blog</p>
-          <h1>Thoughts &amp; Writing</h1>
-          <p>Notes on tech, learning, design, and my journey as a UI/UX Designer.</p>
         </header>
 
         <div className="blog-toolbar">

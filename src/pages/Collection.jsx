@@ -44,8 +44,6 @@ function Collection() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">Collection</p>
-          <h1>Moments &amp; Visuals</h1>
-          <p>Photos and visuals I've captured or created.</p>
         </header>
 
         <div className="photo-grid">

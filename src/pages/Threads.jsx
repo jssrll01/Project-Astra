@@ -11,8 +11,6 @@ function Threads() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">Threads</p>
-          <h1>Thoughts in Passing</h1>
-          <p>Short updates, ideas, and moments from my journey.</p>
         </header>
 
         <div className="thread-list">

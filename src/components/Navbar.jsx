@@ -4,12 +4,10 @@ import './Navbar.css';
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [moreOpen, setMoreOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     setMenuOpen(false);
-    setMoreOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -23,36 +21,38 @@ function Navbar() {
     { path: '/skills', label: 'Skills' },
     { path: '/projects', label: 'Projects' },
     { path: '/gallery', label: 'Gallery' },
+    { path: '/collection', label: 'Collection' },
     { path: '/ai-music', label: 'AI Music' },
     { path: '/blog', label: 'Blog' },
     { path: '/threads', label: 'Threads' },
     { path: '/contact', label: 'Contact' },
   ];
 
-  const moreLinks = [
+  const secondaryLinks = [
     { path: '/partners', label: 'Partners' },
     { path: '/bookshelf', label: 'Bookshelf' },
     { path: '/archives', label: 'Archives' },
     { path: '/prompt-music', label: 'Prompt Lab (Music)' },
     { path: '/prompt-image', label: 'Prompt Lab (Image)' },
     { path: '/prompt-programming', label: 'Prompt Lab (Programming)' },
-    { path: '/journey', label: 'Development Journey' },
-    { path: '/docs', label: 'Documentation' },
+    { path: '/journey', label: 'Journey' },
+    { path: '/docs', label: 'Docs' },
     { path: '/faq', label: 'FAQ' },
-    { path: '/collection', label: 'Collection' },
     { path: '/bookmarks', label: 'Bookmarks' },
     { path: '/library', label: 'Library' },
     { path: '/playground', label: 'Code Playground' },
     { path: '/certifications', label: 'Certifications' },
     { path: '/achievements', label: 'Achievements' },
+    { path: '/game-space', label: 'Game Space' },
+    { path: '/devotion', label: 'Devotion' },
   ];
 
   const hiddenLinks = [
     { path: '/settings', label: 'Settings' },
     { path: '/vault', label: 'Personal Vault' },
-    { path: '/game-space', label: 'Game Space' },
-    { path: '/devotion', label: 'Devotion' },
   ];
+
+  const allLinks = [...primaryLinks, ...secondaryLinks, ...hiddenLinks];
 
   return (
     <nav className="navbar">
@@ -69,41 +69,7 @@ function Navbar() {
         </button>
 
         <ul className={'navlinks ' + (menuOpen ? 'active' : '')}>
-          {primaryLinks.map(link => (
-            <li key={link.path}>
-              <Link
-                to={link.path}
-                className={'nav-btn ' + (location.pathname === link.path ? 'active' : '')}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-
-          <li className={'dropdown ' + (moreOpen ? 'open' : '')}>
-            <button
-              type="button"
-              className="dropdown-toggle nav-btn"
-              onClick={(e) => { e.preventDefault(); setMoreOpen(v => !v); }}
-              aria-expanded={moreOpen}
-            >
-              More <span className={'caret ' + (moreOpen ? 'rot' : '')}>▾</span>
-            </button>
-            <ul className="dropdown-menu">
-              {moreLinks.map(link => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className={location.pathname === link.path ? 'active' : ''}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </li>
-
-          {hiddenLinks.map(link => (
+          {allLinks.map(link => (
             <li key={link.path}>
               <Link
                 to={link.path}

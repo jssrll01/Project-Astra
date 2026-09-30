@@ -19,8 +19,6 @@ function Certifications() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">Certifications</p>
-          <h1>Learning Credentials</h1>
-          <p>Courses and certifications I've completed or am working on.</p>
         </header>
 
         <div className="photo-grid">

@@ -148,88 +148,7 @@ function InfoRow({ label, value, mono }) {
   );
 }
 
-function SystemInfo() {
-  const [info, setInfo] = useState({
-    online: navigator.onLine,
-    ua: navigator.userAgent,
-    sw: 'serviceWorker' in navigator ? 'supported' : 'not supported',
-    storage: (typeof navigator.storage !== 'undefined') ? 'available' : 'unavailable',
-  });
 
-  const [storageEstimate, setStorageEstimate] = useState(null);
-
-  useEffect(() => {
-    const onOnline = () => setInfo(i => ({ ...i, online: navigator.onLine }));
-    window.addEventListener('online', onOnline);
-    window.addEventListener('offline', onOnline);
-
-    if (navigator.storage && navigator.storage.estimate) {
-      navigator.storage.estimate().then(est => {
-        setStorageEstimate({
-          usage: est.usage ? (est.usage / 1024 / 1024).toFixed(1) + ' MB' : '—',
-          quota: est.quota ? (est.quota / 1024 / 1024).toFixed(0) + ' MB' : '—',
-        });
-      }).catch(() => {});
-    }
-
-    return () => {
-      window.removeEventListener('online', onOnline);
-      window.removeEventListener('offline', onOnline);
-    };
-  }, []);
-
-  return (
-    <div className="settings-card glass">
-      <h2 className="settings-title">System Info</h2>
-      <div className="settings-info-grid">
-        <InfoRow label="Version" value={APP_VERSION} mono />
-        <InfoRow label="Build" value={BUILD_ID} mono />
-        <InfoRow label="Channel" value={BUILD_CHANNEL} />
-        <InfoRow label="Build Date" value={BUILD_DATE} mono />
-        <InfoRow label="Connection" value={info.online ? 'Online' : 'Offline'} />
-        <InfoRow label="Service Worker" value={info.sw} />
-        <InfoRow label="Storage API" value={info.storage} />
-        {storageEstimate && (
-          <InfoRow label="Cache Usage" value={storageEstimate.usage + ' / ' + storageEstimate.quota} mono />
-        )}
-      </div>
-    </div>
-  );
-}
-
-function VersionCard() {
-  return (
-    <div className="settings-card glass version-card">
-      <div className="version-header">
-        <div className="version-mark">A</div>
-        <div className="version-meta">
-          <h2 className="version-title">Astra</h2>
-          <p className="version-tag">Where Intelligence Meets Innovation</p>
-        </div>
-      </div>
-      <div className="version-rows">
-        <div className="version-row">
-          <span className="version-key">Version</span>
-          <span className="version-val">{APP_VERSION}</span>
-        </div>
-        <div className="version-row">
-          <span className="version-key">Build</span>
-          <span className="version-val mono">{BUILD_ID}</span>
-        </div>
-        <div className="version-row">
-          <span className="version-key">Channel</span>
-          <span className="version-val">
-            <span className="version-badge">{BUILD_CHANNEL}</span>
-          </span>
-        </div>
-        <div className="version-row">
-          <span className="version-key">Released</span>
-          <span className="version-val">{BUILD_DATE}</span>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function Settings() {
   const [s, setS] = useState(loadSettings);
@@ -285,24 +204,6 @@ function Settings() {
     }, 500);
   };
 
-  const clearCache = async () => {
-    setToast('Clearing cache…');
-    try {
-      if ('caches' in window) {
-        const keys = await caches.keys();
-        await Promise.all(keys.map(k => caches.delete(k)));
-      }
-      if ('serviceWorker' in navigator) {
-        const regs = await navigator.serviceWorker.getRegistrations();
-        await Promise.all(regs.map(r => r.unregister()));
-      }
-      setToast('Cache cleared');
-    } catch (e) {
-      setToast('Failed to clear cache');
-    }
-    clearTimeout(window.__astraToast);
-    window.__astraToast = setTimeout(() => setToast(''), 1600);
-  };
 
   const reset = () => {
     setS({ ...DEFAULTS });
@@ -318,7 +219,6 @@ function Settings() {
           <p className="eyebrow">Settings</p>
         </header>
 
-        <VersionCard />
 
         <div className="settings-card glass">
           <h2 className="settings-title">Accessibility</h2>
@@ -394,15 +294,11 @@ function Settings() {
           </Row>
         </div>
 
-        <SystemInfo />
 
         <div className="settings-card glass" style={{ marginTop: 16 }}>
           <h2 className="settings-title">Maintenance</h2>
           <Row title="Refresh Page">
             <button className="btn btn-ghost" onClick={handleRefresh}>Refresh</button>
-          </Row>
-          <Row title="Clear Cache">
-            <button className="btn btn-ghost" onClick={clearCache}>Clear Cache</button>
           </Row>
         </div>
 

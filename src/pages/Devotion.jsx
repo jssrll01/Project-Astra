@@ -19,8 +19,6 @@ function Devotion() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">Devotion</p>
-          <h1>Faith &amp; Reflection</h1>
-          <p>A quiet space for the things that matter beyond the screen.</p>
         </header>
 
         <div className="devotion-grid">

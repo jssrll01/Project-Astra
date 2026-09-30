@@ -69,8 +69,6 @@ function FAQ() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">FAQ</p>
-          <h1>Questions &amp; Answers</h1>
-          <p>Common questions about me, Astra, my work, and how to reach me.</p>
         </header>
 
         {categories.map((cat, ci) => (

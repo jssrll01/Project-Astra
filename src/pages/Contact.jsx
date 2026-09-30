@@ -27,8 +27,6 @@ function Contact() {
       <div className="wrap">
         <header className="page-header card-header">
           <p className="eyebrow">Contact</p>
-          <h1>Let's Talk</h1>
-          <p>Open to opportunities, collaborations, and conversations about technology.</p>
         </header>
 
         <section className="contact-intro card">

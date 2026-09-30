@@ -175,8 +175,6 @@ function Docs() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">Documentation</p>
-          <h1>How Astra Was Built</h1>
-          <p>The technologies, decisions, and structure behind this site.</p>
         </header>
 
         <div className="docs-toc card">

@@ -21,8 +21,6 @@ function PromptProgramming() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">Prompt Engineering Lab — Programming</p>
-          <h1>Programming Prompt Experiments</h1>
-          <p>How I use AI to assist with code generation, review, refactoring, and learning.</p>
         </header>
         <div className="prompt-list">
           {prompts.map((p) => (

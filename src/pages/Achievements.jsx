@@ -19,8 +19,6 @@ function Achievements() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">Achievements</p>
-          <h1>Milestones So Far</h1>
-          <p>A record of accomplishments throughout my journey.</p>
         </header>
 
         <div className="photo-grid">
