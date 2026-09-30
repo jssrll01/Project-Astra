@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './SimplePage.css';
 import Img from '../components/Img';
-import { preloadImages, preloadLightbox } from '../utils/preloadImages';
+
 
 const devotionPhotos = [
   // Add your devotion images here:
@@ -47,8 +47,6 @@ function Devotion() {
               <div
                 className="photo-tile"
                 key={p.id}
-                onMouseEnter={() => preloadLightbox(p.src)}
-                onTouchStart={() => preloadLightbox(p.src)}
                 onClick={() => setSelected(p)}
               >
                 <Img src={p.src} alt={p.caption} />

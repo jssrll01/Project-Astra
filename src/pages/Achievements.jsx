@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SimplePage.css';
 import Img from '../components/Img';
-import { preloadImages, preloadLightbox } from '../utils/preloadImages';
+
 
 const achievements = [
   {
@@ -11,16 +11,8 @@ const achievements = [
   },
 ];
 
-// Kick off preloading immediately — before React renders
-achievements.forEach(p => {
-  const img = new window.Image();
-  img.decoding = "async";
-  img.loading = "eager";
-  img.src = p.src.replace("/upload/", "/upload/f_auto,q_auto,w_800/");
-});
 
 function Achievements() {
-  React.useEffect(() => { preloadImages(achievements.map(p => p.src)); }, []);
   const [selected, setSelected] = useState(null);
 
   return (
@@ -40,8 +32,6 @@ function Achievements() {
               <div
                 className="photo-tile"
                 key={p.id}
-                onMouseEnter={() => preloadLightbox(p.src)}
-                onTouchStart={() => preloadLightbox(p.src)}
                 onClick={() => setSelected(p)}
               >
                 <Img src={p.src} alt={p.caption} eager />

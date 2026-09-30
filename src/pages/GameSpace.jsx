@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './SimplePage.css';
 import Img from '../components/Img';
-import { preloadImages, preloadLightbox } from '../utils/preloadImages';
+
 
 const games = [
   {

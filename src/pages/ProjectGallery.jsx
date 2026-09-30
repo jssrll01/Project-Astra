@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './SimplePage.css';
 import Img from '../components/Img';
-import { preloadImages, preloadLightbox } from '../utils/preloadImages';
+
 
 const photos = [
   { id: 1,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790727121/Screenshot_20260930_080340_Chrome.jpg', caption: 'Gallery 01' },
@@ -19,17 +19,11 @@ const photos = [
   { id: 13, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790727117/Screenshot_20260920_082105_My_Files.jpg', caption: 'Gallery 13' },
 ];
 
-photos.forEach(p => {
-  const img = new window.Image();
-  img.decoding = "async";
-  img.src = p.src.replace("/upload/", "/upload/f_auto,q_auto,w_800/");
-});
 
 function ProjectGallery() {
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    preloadImages(photos.map(p => p.src));
   }, []);
 
   return (
@@ -46,8 +40,6 @@ function ProjectGallery() {
             <div
                 className="photo-tile"
                 key={p.id}
-                onMouseEnter={() => preloadLightbox(p.src)}
-                onTouchStart={() => preloadLightbox(p.src)}
                 onClick={() => setSelected(p)}
               >
               <Img src={p.src} alt={p.caption} />

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './SimplePage.css';
 import './PersonalVault.css';
 import Img from '../components/Img';
-import { preloadImages, preloadLightbox } from '../utils/preloadImages';
+
 
 const VERIFICATION_CODE = '101007';
 
@@ -31,18 +31,7 @@ const vaultPhotos = [
   { id: 12, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747651/Screenshot_20260817_063751.jpg', caption: 'Vault — 12' },
 ];
 
-vaultPhotos.forEach(p => {
-  const img = new window.Image();
-  img.decoding = "async";
-  img.src = p.src.replace("/upload/", "/upload/f_auto,q_auto,w_800/");
-});
 
-// Kick off preloading immediately — before React renders
-vaultPhotos.forEach(p => {
-  const img = new window.Image();
-  img.decoding = 'async';
-  img.src = p.src.replace('/upload/', '/upload/f_auto,q_auto,w_800/');
-});
 
 function loadVaultState() {
   try {
@@ -192,8 +181,6 @@ function PersonalVault() {
                 <div
                 className="photo-tile"
                 key={p.id}
-                onMouseEnter={() => preloadLightbox(p.src)}
-                onTouchStart={() => preloadLightbox(p.src)}
                 onClick={() => setSelected(p)}
               >
                   <Img src={p.src} alt={p.caption} />

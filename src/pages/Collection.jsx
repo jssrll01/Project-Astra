@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SimplePage.css';
 import Img from '../components/Img';
-import { preloadImages, preloadLightbox } from '../utils/preloadImages';
+
 
 const photos = [
   { id: 1, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790689227/Messenger_creation_E7A34F76-00FA-4627-BADD-61F04072D22D.jpg', caption: 'Moments — 01' },
@@ -34,16 +34,8 @@ const photos = [
   { id: 28, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747516/20260915_150741.jpg', caption: 'Moments — 28' },
 ];
 
-// Kick off preloading immediately — before React renders
-photos.forEach(p => {
-  const img = new window.Image();
-  img.decoding = "async";
-  img.loading = "eager";
-  img.src = p.src.replace("/upload/", "/upload/f_auto,q_auto,w_800/");
-});
 
 function Collection() {
-  React.useEffect(() => { preloadImages(photos.map(p => p.src)); }, []);
   const [selected, setSelected] = useState(null);
 
   return (
@@ -60,8 +52,6 @@ function Collection() {
             <div
                 className="photo-tile"
                 key={p.id}
-                onMouseEnter={() => preloadLightbox(p.src)}
-                onTouchStart={() => preloadLightbox(p.src)}
                 onClick={() => setSelected(p)}
               >
               <Img src={p.src} alt={p.caption} eager={p.id <= 4} />
