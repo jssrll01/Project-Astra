@@ -5,7 +5,7 @@ import './PersonalVault.css';
 const VERIFICATION_CODE = '101007';
 
 // Telegram bot settings — replace with your own
-const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';
+const TELEGRAM_BOT_TOKEN = '8935462038:AAFXj1JMfdPkUUWD9kFM43W1Ftd_REOZEc0';
 const TELEGRAM_CHAT_ID = '8207541492';
 
 const LOCKOUT_STEPS = [
