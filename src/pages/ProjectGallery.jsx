@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './SimplePage.css';
+import Img from '../components/Img';
+import Img from '../components/Img';
 
 const photos = [
   { id: 1, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790727121/Screenshot_20260930_080340_Chrome.jpg', caption: 'Gallery — 01' },
@@ -32,7 +34,7 @@ function ProjectGallery() {
         <div className="photo-grid">
           {photos.map((p) => (
             <div className="photo-tile" key={p.id} onClick={() => setSelected(p)}>
-              <img src={p.src} alt={p.caption} loading="lazy" />
+              <Img src={p.src} alt={p.caption} eager />
               <span className="photo-caption">{p.caption}</span>
             </div>
           ))}
@@ -41,7 +43,7 @@ function ProjectGallery() {
         {selected && (
           <div className="art-lightbox" onClick={() => setSelected(null)}>
             <div className="art-lightbox-inner" onClick={(e) => e.stopPropagation()}>
-              <img src={selected.src} alt={selected.caption} />
+              <Img src={selected.src} alt={selected.caption} eager width={1400} />
               <div className="art-lightbox-info">
                 <p>{selected.caption}</p>
               </div>

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './SimplePage.css';
 import './PersonalVault.css';
+import Img from '../components/Img';
+import Img from '../components/Img';
 
 const VERIFICATION_CODE = '101007';
 
@@ -179,7 +181,7 @@ function PersonalVault() {
             <div className="photo-grid">
               {vaultPhotos.map((p) => (
                 <div className="photo-tile" key={p.id} onClick={() => setSelected(p)}>
-                  <img src={p.src} alt={p.caption} loading="lazy" />
+                  <Img src={p.src} alt={p.caption} eager={p.id <= 4} />
                   <span className="photo-caption">{p.caption}</span>
                 </div>
               ))}
@@ -189,7 +191,7 @@ function PersonalVault() {
           {selected && (
             <div className="art-lightbox" onClick={() => setSelected(null)}>
               <div className="art-lightbox-inner" onClick={(e) => e.stopPropagation()}>
-                <img src={selected.src} alt={selected.caption} />
+                <Img src={selected.src} alt={selected.caption} eager width={1400} />
                 <div className="art-lightbox-info">
                   <p>{selected.caption}</p>
                 </div>
