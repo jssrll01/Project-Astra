@@ -6,7 +6,7 @@ const VERIFICATION_CODE = '101007';
 
 // Telegram bot settings — replace with your own
 const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';
-const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID_HERE';
+const TELEGRAM_CHAT_ID = '8207541492';
 
 const LOCKOUT_STEPS = [
   15000,        // 15s
