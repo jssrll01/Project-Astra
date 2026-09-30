@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './SimplePage.css';
 import Img from '../components/Img';
+import { preloadImages } from '../utils/preloadImages';
 import Img from '../components/Img';
+import { preloadImages } from '../utils/preloadImages';
 
 const photos = [
   { id: 1, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790727121/Screenshot_20260930_080340_Chrome.jpg', caption: 'Gallery — 01' },
@@ -20,6 +22,7 @@ const photos = [
 ];
 
 function ProjectGallery() {
+  React.useEffect(() => { preloadImages(photos.map(p => p.src)); }, []);
   const [selected, setSelected] = useState(null);
 
   return (
@@ -43,7 +46,7 @@ function ProjectGallery() {
         {selected && (
           <div className="art-lightbox" onClick={() => setSelected(null)}>
             <div className="art-lightbox-inner" onClick={(e) => e.stopPropagation()}>
-              <Img src={selected.src} alt={selected.caption} eager width={1400} />
+              <Img src={selected.src} alt={selected.caption} width={1400} aspect="auto" />
               <div className="art-lightbox-info">
                 <p>{selected.caption}</p>
               </div>

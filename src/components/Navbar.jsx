@@ -50,6 +50,8 @@ function Navbar() {
   const hiddenLinks = [
     { path: '/settings', label: 'Settings' },
     { path: '/vault', label: 'Personal Vault' },
+    { path: '/game-space', label: 'Game Space' },
+    { path: '/devotion', label: 'Devotion' },
   ];
 
   return (

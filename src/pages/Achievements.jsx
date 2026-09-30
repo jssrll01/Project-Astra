@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './SimplePage.css';
 import Img from '../components/Img';
+import { preloadImages } from '../utils/preloadImages';
 import Img from '../components/Img';
+import { preloadImages } from '../utils/preloadImages';
 
 const achievements = [
   {
@@ -12,6 +14,7 @@ const achievements = [
 ];
 
 function Achievements() {
+  React.useEffect(() => { preloadImages(achievements.map(p => p.src)); }, []);
   const [selected, setSelected] = useState(null);
 
   return (
@@ -39,7 +42,7 @@ function Achievements() {
         {selected && (
           <div className="art-lightbox" onClick={() => setSelected(null)}>
             <div className="art-lightbox-inner" onClick={(e) => e.stopPropagation()}>
-              <Img src={selected.src} alt={selected.caption} eager width={1400} />
+              <Img src={selected.src} alt={selected.caption} width={1400} aspect="auto" />
               <div className="art-lightbox-info">
                 <p>{selected.caption}</p>
               </div>

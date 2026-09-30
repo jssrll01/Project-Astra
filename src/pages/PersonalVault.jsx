@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './SimplePage.css';
 import './PersonalVault.css';
 import Img from '../components/Img';
+import { preloadImages } from '../utils/preloadImages';
 import Img from '../components/Img';
+import { preloadImages } from '../utils/preloadImages';
 
 const VERIFICATION_CODE = '101007';
 
@@ -27,6 +29,18 @@ const LOCKOUT_STEPS = [
 const VAULT_KEY = 'astra_vault_state';
 
 const vaultPhotos = [
+  { id: 1,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747642/file_000000005a908211a754d87dd38fae2f.png', caption: 'Vault — 01' },
+  { id: 2,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747640/6c9d0f24-f010-480e-bd96-59a100838ba7.png', caption: 'Vault — 02' },
+  { id: 3,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747640/12171024-8be0-4396-9b67-7f0d2d1fba5d.png', caption: 'Vault — 03' },
+  { id: 4,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747640/2eae83c7-456c-4b90-9934-140433093f61.png', caption: 'Vault — 04' },
+  { id: 5,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747642/file_00000000a8f882468fbb27fbf60e438d.png', caption: 'Vault — 05' },
+  { id: 6,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747641/782c393d-3088-46ec-bc10-7ec5e3278352.png', caption: 'Vault — 06' },
+  { id: 7,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747645/Messenger_creation_652F11ED-2240-444B-81D7-F41742F71D77.jpg', caption: 'Vault — 07' },
+  { id: 8,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747644/Messenger_creation_2D9E5A0B-C871-4B6D-A450-CD3F89FA790B.jpg', caption: 'Vault — 08' },
+  { id: 9,  src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747643/IMG_20260625_093543.jpg', caption: 'Vault — 09' },
+  { id: 10, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747644/IMG_20260625_093557.jpg', caption: 'Vault — 10' },
+  { id: 11, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747650/Screenshot_20260817_063721.jpg', caption: 'Vault — 11' },
+  { id: 12, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790747651/Screenshot_20260817_063751.jpg', caption: 'Vault — 12' },
   // Add personal photos here — same format as Collection
   // { id: 1, src: 'https://...', caption: 'Vault — 01' },
 ];
@@ -165,6 +179,7 @@ function PersonalVault() {
   // ---------- Render ----------
 
   if (stage === 'vault') {
+    preloadImages(vaultPhotos.map(p => p.src));
     return (
       <div className="simple-page page">
         <div className="wrap">
@@ -191,7 +206,7 @@ function PersonalVault() {
           {selected && (
             <div className="art-lightbox" onClick={() => setSelected(null)}>
               <div className="art-lightbox-inner" onClick={(e) => e.stopPropagation()}>
-                <Img src={selected.src} alt={selected.caption} eager width={1400} />
+                <Img src={selected.src} alt={selected.caption} width={1400} aspect="auto" />
                 <div className="art-lightbox-info">
                   <p>{selected.caption}</p>
                 </div>
