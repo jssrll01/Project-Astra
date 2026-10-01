@@ -23,7 +23,7 @@ if ('serviceWorker' in navigator) {
     window.location.hostname === '127.0.0.1';
   if (!isLocalhost) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js').catch(() => {});
+//       navigator.serviceWorker.register('/sw.js').catch(() => {});
     });
   }
 }
@@ -33,3 +33,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>
 );
+
+// One-time cleanup of old service workers and caches
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(regs => {
+    regs.forEach(r => r.unregister());
+    if (regs.length && !sessionStorage.getItem('sw-cleared')) {
+      sessionStorage.setItem('sw-cleared', '1');
+      caches.keys()
+        .then(ks => Promise.all(ks.map(k => caches.delete(k))))
+        .then(() => location.reload());
+    }
+  });
+}

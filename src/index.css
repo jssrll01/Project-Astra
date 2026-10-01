@@ -209,8 +209,7 @@ img,
 .splash,
 .art-lightbox,
 .route-fade {
-  backface-visibility: hidden;
-  transform: translateZ(0);
+  /* removed: transform breaks position:fixed */
 }
 
 /* Faster animations on low-end devices */

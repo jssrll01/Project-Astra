@@ -1,89 +1,121 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
+const LINKS = [
+  { path: '/', label: 'Home' },
+  { path: '/about', label: 'About' },
+  { path: '/journey', label: 'Journey' },
+  { path: '/projects', label: 'Projects' },
+  { path: '/skills', label: 'Skills' },
+  { path: '/certifications', label: 'Certifications' },
+  { path: '/achievements', label: 'Achievements' },
+  { path: '/partners', label: 'Partners' },
+  { path: '/gallery', label: 'Gallery' },
+  { path: '/collection', label: 'Collection' },
+  { path: '/ai-music', label: 'AI Music' },
+  { path: '/prompt-music', label: 'Prompt Lab — Music' },
+  { path: '/prompt-image', label: 'Prompt Lab — Image' },
+  { path: '/prompt-programming', label: 'Prompt Lab — Programming' },
+  { path: '/blog', label: 'Blog' },
+  { path: '/threads', label: 'Threads' },
+  { path: '/bookshelf', label: 'Bookshelf' },
+  { path: '/bookmarks', label: 'Bookmarks' },
+  { path: '/library', label: 'Library' },
+  { path: '/archives', label: 'Archives' },
+  { path: '/devotion', label: 'Devotion' },
+  { path: '/vault', label: 'Personal Vault' },
+  { path: '/docs', label: 'Documentation' },
+  { path: '/faq', label: 'FAQ' },
+  { path: '/contact', label: 'Contact' },
+  { path: '/settings', label: 'Settings' },
+];
+
 function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    setMenuOpen(false);
-  }, [location.pathname]);
+    const nav = document.querySelector('.navlinks');
+    const toggle = document.querySelector('.menu-toggle');
+    const backdrop = document.querySelector('.nav-backdrop');
+    if (!nav || !toggle || !backdrop) return;
 
-  // Lock body scroll and blur background when menu is open
-  useEffect(() => {
-    if (menuOpen) {
+    function openMenu() {
+      nav.classList.add('active');
+      toggle.classList.add('open');
+      backdrop.classList.add('show');
       document.body.style.overflow = 'hidden';
-      document.body.classList.add('burger-open');
-    } else {
-      document.body.style.overflow = '';
-      document.body.classList.remove('burger-open');
     }
-    return () => {
-      document.body.style.overflow = '';
-      document.body.classList.remove('burger-open');
-    };
-  }, [menuOpen]);
 
-  const links = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/journey', label: 'Journey' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/skills', label: 'Skills' },
-    { path: '/certifications', label: 'Certifications' },
-    { path: '/achievements', label: 'Achievements' },
-    { path: '/partners', label: 'Partners' },
-    { path: '/gallery', label: 'Gallery' },
-    { path: '/collection', label: 'Collection' },
-    { path: '/ai-music', label: 'AI Music' },
-    { path: '/prompt-music', label: 'Prompt Lab — Music' },
-    { path: '/prompt-image', label: 'Prompt Lab — Image' },
-    { path: '/prompt-programming', label: 'Prompt Lab — Programming' },
-    { path: '/blog', label: 'Blog' },
-    { path: '/threads', label: 'Threads' },
-    { path: '/bookshelf', label: 'Bookshelf' },
-    { path: '/bookmarks', label: 'Bookmarks' },
-    { path: '/library', label: 'Library' },
-    { path: '/archives', label: 'Archives' },
-    { path: '/devotion', label: 'Devotion' },
-    { path: '/vault', label: 'Personal Vault' },
-    { path: '/docs', label: 'Documentation' },
-    { path: '/faq', label: 'FAQ' },
-    { path: '/contact', label: 'Contact' },
-    { path: '/settings', label: 'Settings' },
-  ];
+    function closeMenu() {
+      nav.classList.remove('active');
+      toggle.classList.remove('open');
+      backdrop.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    function toggleMenu() {
+      if (nav.classList.contains('active')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
+    toggle.addEventListener('click', toggleMenu);
+    backdrop.addEventListener('click', closeMenu);
+
+    // Close on nav link click
+    const navBtns = nav.querySelectorAll('.nav-btn');
+    navBtns.forEach(function (b) { b.addEventListener('click', closeMenu); });
+
+    // Store globally so route effect can close
+    window.__astraClose = closeMenu;
+
+    return () => {
+      toggle.removeEventListener('click', toggleMenu);
+      backdrop.removeEventListener('click', closeMenu);
+      navBtns.forEach(function (b) { b.removeEventListener('click', closeMenu); });
+      delete window.__astraClose;
+    };
+  }, []);
+
+  // Close on route change
+  useEffect(() => {
+    if (window.__astraClose) window.__astraClose();
+  }, [location.pathname]);
 
   return (
     <nav className="navbar">
-      <div className="nav-container">
-        <Link to="/" className="mark">Astra</Link>
+      <Link to="/" className="mark">Astra</Link>
 
-        <button
-          className={'menu-toggle ' + (menuOpen ? 'open' : '')}
-          onClick={() => setMenuOpen(v => !v)}
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
-        >
-          <span className="hamburger"></span>
-        </button>
+      <button
+        type="button"
+        className="menu-toggle"
+        aria-label="Toggle menu"
+      >
+        <span className="bar"></span>
+        <span className="bar"></span>
+        <span className="bar"></span>
+      </button>
 
-        <ul className={'navlinks ' + (menuOpen ? 'active' : '')}>
-          {links.map(link => (
-            <li key={link.path}>
-              <Link
-                to={link.path}
-                className={'nav-btn ' + (location.pathname === link.path ? 'active' : '')}
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul className="navlinks">
+        {LINKS.map(l => (
+          <li key={l.path}>
+            <Link
+              to={l.path}
+              className={'nav-btn' + (location.pathname === l.path ? ' active' : '')}
+            >
+              {l.label}
+            </Link>
+          </li>
+        ))}
+        <li className="nav-footer">
+          <span>© {new Date().getFullYear()} Astra</span>
+        </li>
+      </ul>
 
-      {menuOpen && <div className="nav-backdrop" onClick={() => setMenuOpen(false)} />}
+      <div className="nav-backdrop" />
     </nav>
   );
 }
