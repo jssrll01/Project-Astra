@@ -6,18 +6,11 @@ function Skills() {
     { name: 'HTML', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
     { name: 'CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
     { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
-    { name: 'Java', url: 'https://www.java.com' },
     { name: 'Python', url: 'https://www.python.org' },
     { name: 'C#', url: 'https://learn.microsoft.com/en-us/dotnet/csharp/' },
     { name: 'C', url: 'https://en.wikipedia.org/wiki/C_(programming_language)' },
     { name: 'C++', url: 'https://isocpp.org' },
-    { name: 'PHP', url: 'https://www.php.net' },
-    { name: 'TypeScript', url: 'https://www.typescriptlang.org' },
-    { name: 'SQL', url: 'https://en.wikipedia.org/wiki/SQL' },
-    { name: 'Bootstrap', url: 'https://getbootstrap.com' },
     { name: 'React', url: 'https://react.dev' },
-    { name: 'Node.js', url: 'https://nodejs.org' },
-    { name: 'Next.js', url: 'https://nextjs.org' },
     { name: 'Tailwind CSS', url: 'https://tailwindcss.com' }
   ];
 

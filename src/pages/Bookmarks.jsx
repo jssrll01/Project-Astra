@@ -230,7 +230,6 @@ function Bookmarks() {
                 <div className="bookmark-row" key={item.name}>
                   <div className="bookmark-info">
                     <span className="bookmark-name">{item.name}</span>
-                    <span className="bookmark-url">{item.url.replace('https://', '')}</span>
                   </div>
                   <a
                     href={item.url}

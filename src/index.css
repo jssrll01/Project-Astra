@@ -233,3 +233,28 @@ body.burger-open {
   height: 100vh;
   overflow: hidden;
 }
+
+/* ---------- Bigger page titles ---------- */
+
+.page-header h1,
+.page-header .eyebrow {
+  letter-spacing: -0.02em;
+}
+
+.page-header h1 {
+  font-size: clamp(2.4rem, 6vw, 3.6rem) !important;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.simple-page .page-header h1 {
+  font-size: clamp(2.4rem, 6vw, 3.6rem) !important;
+}
+
+/* Keep smaller on tiny screens so it doesn't overflow */
+@media (max-width: 480px) {
+  .page-header h1,
+  .simple-page .page-header h1 {
+    font-size: 2rem !important;
+  }
+}

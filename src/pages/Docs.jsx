@@ -218,7 +218,7 @@ function Docs() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">Documentation</p>
-          <h1>How Astra Was Built</h1>
+          
         </header>
 
         <div className="docs-toc card">

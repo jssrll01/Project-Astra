@@ -6,11 +6,10 @@ import Img from '../components/Img';
 const devotionPhotos = [
   { id: 1, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790777995/black-nazarene.jpg', caption: 'Black Nazarene' },
   { id: 2, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790777995/MV5BMTcxMTQyMTIwNF5BMl5BanBnXkFtZTcwNzg5NzkyOA._V1_.jpg', caption: 'Sacred Image' },
-  { id: 3, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790777996/st-benedict-medal-front-back.png', caption: 'St. Benedict Medal' },
-  { id: 4, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790777995/snaptik-app-7246241402504350981-slide-1.jpg', caption: 'Devotion 01' },
-  { id: 5, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790777996/snaptik-app-7246241402504350981-slide-6.jpg', caption: 'Devotion 02' },
-  { id: 6, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790777996/snaptik-app-7246241402504350981-slide-3.jpg', caption: 'Devotion 03' },
-  { id: 7, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790777995/snaptik-app-7246241402504350981-slide-2.jpg', caption: 'Devotion 04' },
+  { id: 3, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790777995/snaptik-app-7246241402504350981-slide-1.jpg', caption: 'Devotion 01' },
+  { id: 4, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790777996/snaptik-app-7246241402504350981-slide-6.jpg', caption: 'Devotion 02' },
+  { id: 5, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790777996/snaptik-app-7246241402504350981-slide-3.jpg', caption: 'Devotion 03' },
+  { id: 6, src: 'https://res.cloudinary.com/bvw3okdf/image/upload/v1790777995/snaptik-app-7246241402504350981-slide-2.jpg', caption: 'Devotion 04' },
 ];
 
 const prayers = [
@@ -93,7 +92,7 @@ function Devotion() {
 
         <div className="devotion-video">
           <iframe
-            src="https://player.cloudinary.com/embed/?cloud_name=bvw3okdf&public_id=lv_0_20261001090848&autoplay=true&loop=true&muted=true&controls=false"
+            src="https://player.cloudinary.com/embed/?cloud_name=bvw3okdf&public_id=lv_0_20261001090848"
             width="100%"
             height="480"
             frameBorder="0"

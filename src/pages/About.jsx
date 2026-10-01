@@ -1,5 +1,4 @@
 import React from 'react';
-import useScramble from '../hooks/useScramble';
 import './About.css';
 
 function About() {
@@ -17,14 +16,14 @@ function About() {
     'I enjoy designing interfaces almost as much as programming them.',
     'I do not always know the answer, but I enjoy figuring it out.'
   ];
-  const title = useScramble('Jessrell M. Custodio', 1400);
+  
 
   return (
     <div className="about-page page">
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">About Me</p>
-          <h1>{title}</h1>
+          
         </header>
 
         <div className="about-cols">

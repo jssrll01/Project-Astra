@@ -1766,3 +1766,8 @@ body.lightbox-open {
   background: transparent;
   cursor: default;
 }
+
+/* Hide bookmark URLs — show only site name */
+.bookmark-url {
+  display: none !important;
+}
