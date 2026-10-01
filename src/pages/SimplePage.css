@@ -1657,3 +1657,94 @@ body.lightbox-open {
   background: var(--teal);
   color: #06231f;
 }
+
+/* ---------- Devotion video ---------- */
+
+.devotion-video {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto 32px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #070b14;
+  aspect-ratio: 16 / 9;
+}
+
+.devotion-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ---------- Bookmarks compact layout ---------- */
+
+.bookmark-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+
+.bookmark-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+.bookmark-row:hover {
+  border-color: rgba(45, 212, 191, 0.45);
+  transform: translateX(2px);
+}
+
+.bookmark-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.bookmark-name {
+  font-size: 0.92rem;
+  color: var(--text);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookmark-url {
+  font-size: 0.76rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookmark-btn {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  border-radius: 8px;
+  background: rgba(45, 212, 191, 0.1);
+  color: var(--teal);
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.bookmark-btn:hover {
+  background: var(--teal);
+  color: #06231f;
+}
