@@ -76,7 +76,6 @@ function Background() {
         <span className="fs-panel" />
       </div>
 
-      <div className="supernova" />
 
       <span className="shooting-star ss1" />
       <span className="shooting-star ss2" />

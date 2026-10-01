@@ -220,24 +220,28 @@ function Bookmarks() {
       <div className="wrap">
         <header className="page-header reveal">
           <p className="eyebrow">Bookmarks</p>
-          <h1>Links I Actually Use</h1>
         </header>
 
         {groups.map((group) => (
           <section className="bookmark-group" key={group.title}>
             <h2 className="bookmark-title">{group.title}</h2>
-            <div className="bookmark-list">
+            <div className="bookmark-compact">
               {group.items.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bookmark card"
-                >
-                  <h3>{item.name}</h3>
-                  <p>{item.url.replace('https://', '')}</p>
-                </a>
+                <div className="bookmark-row" key={item.name}>
+                  <div className="bookmark-info">
+                    <span className="bookmark-name">{item.name}</span>
+                    <span className="bookmark-url">{item.url.replace('https://', '')}</span>
+                  </div>
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bookmark-btn"
+                    aria-label={'Open ' + item.name}
+                  >
+                    Open
+                  </a>
+                </div>
               ))}
             </div>
           </section>
