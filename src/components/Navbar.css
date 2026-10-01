@@ -154,45 +154,56 @@
   }
 }
 
-/* ---------- Blur and lock the page behind the open burger ---------- */
-
-/* Blur only the page content, never the navbar */
-body.burger-open .app main,
-body.burger-open .footer {
-  filter: blur(8px) saturate(0.85) brightness(0.7);
-  transition: filter 0.3s ease;
-  pointer-events: none;
-  user-select: none;
-}
-
-/* Backdrop sits between page and menu */
-body.burger-open .nav-backdrop {
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-}
-
-/* Navbar stays sharp and clickable */
-body.burger-open .navbar,
-body.burger-open .nav-container,
-body.burger-open .mark,
-body.burger-open .menu-toggle,
-body.burger-open .navlinks {
-  filter: none !important;
-  pointer-events: auto;
-}
-
-/* Hard-lock scrolling of the page */
-body.burger-open {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-}
-
 /* The nav column itself can still scroll if it overflows */
 body.burger-open .navlinks {
   overflow-y: auto;
   overscroll-behavior: contain;
+}
+
+/* ---------- Burger open — smooth, GPU-friendly ---------- */
+
+/* Dim only — no blur (blur is expensive on mobile) */
+body.burger-open .app main,
+body.burger-open .footer {
+  opacity: 0.35;
+  transition: opacity 0.2s ease-out;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+body.burger-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* Backdrop — simple color, no backdrop-filter */
+body.burger-open .nav-backdrop {
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Smooth slide-in with GPU-only transforms */
+.navlinks {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(100%, 0, 0);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navlinks.active {
+  transform: translate3d(0, 0, 0);
+}
+
+/* The nav column itself is cheap to scroll */
+body.burger-open .navlinks {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Reduce per-link paint cost */
+.nav-btn {
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }

@@ -37,7 +37,6 @@ function Navbar() {
     { path: '/gallery', label: 'Gallery' },
     { path: '/collection', label: 'Collection' },
     { path: '/ai-music', label: 'AI Music' },
-    { path: '/game-space', label: 'Game Space' },
     { path: '/prompt-music', label: 'Prompt Lab — Music' },
     { path: '/prompt-image', label: 'Prompt Lab — Image' },
     { path: '/prompt-programming', label: 'Prompt Lab — Programming' },

@@ -34,7 +34,6 @@ import BlogPost from './pages/BlogPost';
 import AIMusicDetail from './pages/AIMusicDetail';
 import CodePlayground from './pages/CodePlayground';
 import PersonalVault from './pages/PersonalVault';
-import GameSpace from './pages/GameSpace';
 import Devotion from './pages/Devotion';
 import './App.css';
 
@@ -76,7 +75,6 @@ function RoutesView() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/playground" element={<CodePlayground />} />
         <Route path="/vault" element={<PersonalVault />} />
-        <Route path="/game-space" element={<GameSpace />} />
         <Route path="/devotion" element={<Devotion />} />
           <Route path="/threads" element={<Threads />} />
           <Route path="*" element={<NotFound />} />

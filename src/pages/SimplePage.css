@@ -1748,3 +1748,21 @@ body.lightbox-open {
   background: var(--teal);
   color: #06231f;
 }
+
+/* ---------- Devotion video — block all clicks ---------- */
+
+.devotion-video {
+  pointer-events: none;
+}
+
+.devotion-video iframe {
+  pointer-events: none;
+}
+
+.devotion-video-shield {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: transparent;
+  cursor: default;
+}

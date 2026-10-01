@@ -97,10 +97,11 @@ function Devotion() {
             width="100%"
             height="480"
             frameBorder="0"
-            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+            allow="autoplay; fullscreen; encrypted-media"
             allowFullScreen
             title="Devotion video"
           />
+          <div className="devotion-video-shield" aria-hidden="true" />
         </div>
 
         <h2 className="devotion-section-title">Prayers</h2>
