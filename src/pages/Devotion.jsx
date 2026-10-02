@@ -92,7 +92,7 @@ function Devotion() {
 
         <div className="devotion-video">
           <iframe
-            src="https://player.cloudinary.com/embed/?cloud_name=bvw3okdf&public_id=lv_0_20261001090848"
+            src="https://player.cloudinary.com/embed/?cloud_name=bvw3okdf&public_id=lv_0_20261001090848&autoplay=true&loop=true&muted=true&controls=false"
             width="100%"
             height="480"
             frameBorder="0"

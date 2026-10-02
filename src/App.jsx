@@ -17,7 +17,6 @@ import Docs from './pages/Docs';
 import FAQ from './pages/FAQ';
 import Collection from './pages/Collection';
 import Bookmarks from './pages/Bookmarks';
-import Library from './pages/Library';
 import AIMusic from './pages/AIMusic';
 import Archives from './pages/Archives';
 import PromptMusic from './pages/PromptMusic';
@@ -60,7 +59,6 @@ function RoutesView() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/collection" element={<Collection />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
-          <Route path="/library" element={<Library />} />
         <Route path="/ai-music" element={<AIMusic />} />
           <Route path="/ai-music/:slug" element={<AIMusicDetail />} />
         <Route path="/archives" element={<Archives />} />

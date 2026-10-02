@@ -21,7 +21,6 @@ const LINKS = [
   { path: '/threads', label: 'Threads' },
   { path: '/bookshelf', label: 'Bookshelf' },
   { path: '/bookmarks', label: 'Bookmarks' },
-  { path: '/library', label: 'Library' },
   { path: '/archives', label: 'Archives' },
   { path: '/devotion', label: 'Devotion' },
   { path: '/vault', label: 'Personal Vault' },
