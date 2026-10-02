@@ -1771,3 +1771,83 @@ body.lightbox-open {
 .bookmark-url {
   display: none !important;
 }
+
+/* ---------- Journey intro ---------- */
+
+.journey-intro {
+  padding: 28px clamp(20px, 4vw, 40px);
+  border-radius: 16px;
+  margin-bottom: 32px;
+}
+
+.journey-intro h2 {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.journey-intro p {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.journey-cycle {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.9rem;
+  color: var(--teal) !important;
+  background: rgba(45, 212, 191, 0.06);
+  border-left: 3px solid var(--teal);
+  padding: 12px 16px;
+  border-radius: 8px;
+  letter-spacing: 0.02em;
+}
+
+.journey-note {
+  font-family: var(--font-d);
+  font-style: italic;
+  color: var(--gold) !important;
+  font-size: 1.1rem !important;
+  margin-top: 10px;
+}
+
+/* ---------- Journey intro ---------- */
+
+.journey-intro {
+  padding: 28px clamp(20px, 4vw, 40px);
+  border-radius: 16px;
+  margin-bottom: 32px;
+}
+
+.journey-intro h2 {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.journey-intro p {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.journey-cycle {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.9rem;
+  color: var(--teal) !important;
+  background: rgba(45, 212, 191, 0.06);
+  border-left: 3px solid var(--teal);
+  padding: 12px 16px;
+  border-radius: 8px;
+  letter-spacing: 0.02em;
+}
+
+.journey-note {
+  font-family: var(--font-d);
+  font-style: italic;
+  color: var(--gold) !important;
+  font-size: 1.1rem !important;
+  margin-top: 10px;
+}

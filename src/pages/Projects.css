@@ -153,3 +153,55 @@
   font-family: ui-monospace, Menlo, monospace;
   font-size: 0.82rem;
 }
+
+/* ---------- Projects intro ---------- */
+
+.projects-intro {
+  padding: 28px clamp(20px, 4vw, 40px);
+  border-radius: 16px;
+  margin-bottom: 28px;
+}
+
+.projects-intro h2 {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  color: var(--text);
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+
+.projects-intro p {
+  font-size: 0.96rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.projects-intro p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Projects intro ---------- */
+
+.projects-intro {
+  padding: 28px clamp(20px, 4vw, 40px);
+  border-radius: 16px;
+  margin-bottom: 28px;
+}
+
+.projects-intro h2 {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  color: var(--text);
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+
+.projects-intro p {
+  font-size: 0.96rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.projects-intro p:last-child {
+  margin-bottom: 0;
+}

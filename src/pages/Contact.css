@@ -99,3 +99,89 @@ a.contact-item:hover { border-color: rgba(45, 212, 191, 0.5); transform: transla
   line-height: 1.65;
   margin: 0;
 }
+
+/* ---------- Contact extra sections ---------- */
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-list li {
+  font-size: 0.92rem;
+  color: var(--muted);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.55;
+}
+
+.contact-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+}
+
+.contact-subhead {
+  font-family: var(--font-d);
+  font-size: 1.15rem;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+
+.contact-quote {
+  border-left: 3px solid var(--gold);
+  padding-left: 16px;
+  margin-top: 18px;
+  font-family: var(--font-d);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--gold);
+}
+
+/* ---------- Contact extra sections ---------- */
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-list li {
+  font-size: 0.92rem;
+  color: var(--muted);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.55;
+}
+
+.contact-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+}
+
+.contact-subhead {
+  font-family: var(--font-d);
+  font-size: 1.15rem;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+
+.contact-quote {
+  border-left: 3px solid var(--gold);
+  padding-left: 16px;
+  margin-top: 18px;
+  font-family: var(--font-d);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--gold);
+}

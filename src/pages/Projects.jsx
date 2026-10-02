@@ -53,7 +53,7 @@ const projects = [
     status: 'Active',
     version: 'v1.5.0',
     started: '09/01/2026',
-    deployed: '09/10/2007',
+    deployed: '09/10/2026',
     updated: '09/15/2026',
     host: 'Render',
   },
@@ -96,6 +96,20 @@ function Projects() {
         <header className="page-header reveal">
           <p className="eyebrow">Projects</p>
         </header>
+
+        <section className="projects-intro card">
+          <h2>Things I've Built, Experimented With, and Learned From</h2>
+          <p>Projects are where ideas become tangible.</p>
+          <p>
+            Every project in this collection represents a different experiment, problem,
+            technology, design approach, or lesson learned throughout my development journey.
+          </p>
+          <p>Some projects are active. Some are experimental. Some are archived. Some are still evolving.</p>
+          <p>
+            Together, they form a record of how my skills, interests, and approach to
+            technology continue to develop.
+          </p>
+        </section>
 
         <div className="projects-grid">
           {projects.map((p) => (
