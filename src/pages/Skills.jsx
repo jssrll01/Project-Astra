@@ -11,7 +11,6 @@ function Skills() {
     { name: 'C', url: 'https://en.wikipedia.org/wiki/C_(programming_language)' },
     { name: 'C++', url: 'https://isocpp.org' },
     { name: 'React', url: 'https://react.dev' },
-    { name: 'Tailwind CSS', url: 'https://tailwindcss.com' }
   ];
 
   const tools = [

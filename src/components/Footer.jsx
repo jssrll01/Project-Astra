@@ -13,13 +13,7 @@ function Footer() {
   ];
 
   const exploreLinks = [
-    { path: '/partners', label: 'Partners' },
-    { path: '/bookshelf', label: 'Bookshelf' },
-    { path: '/archives', label: 'Archives' },
     { path: '/journey', label: 'Journey' },
-    { path: '/docs', label: 'Docs' },
-    { path: '/faq', label: 'FAQ' },
-    { path: '/blog', label: 'Blog' },
   ];
 
   const labsLinks = [
@@ -37,7 +31,6 @@ function Footer() {
           <div className="footer-mark">Astra</div>
           <p className="footer-tagline">Where Intelligence Meets Innovation</p>
           <p className="footer-desc">
-            Personal portfolio and technology ecosystem by Jessrell M. Custodio.
           </p>
         </div>
 

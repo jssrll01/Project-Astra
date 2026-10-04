@@ -258,3 +258,81 @@ body.burger-open {
     font-size: 2rem !important;
   }
 }
+
+/* ---------- Neumorphism touches ---------- */
+
+/* Soft raised surfaces for cards and buttons */
+.glass,
+.card,
+.project-card,
+.timeline-content,
+.contact-item,
+.bookmark-row {
+  background: linear-gradient(145deg, #0e1729, #0b1220) !important;
+  box-shadow:
+    6px 6px 14px rgba(0, 0, 0, 0.55),
+    -4px -4px 12px rgba(45, 212, 191, 0.04),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03) !important;
+  border: none !important;
+  border-radius: 14px;
+}
+
+.glass:hover,
+.card:hover,
+.project-card:hover {
+  box-shadow:
+    8px 8px 20px rgba(0, 0, 0, 0.6),
+    -6px -6px 16px rgba(45, 212, 191, 0.06),
+    inset 0 0 0 1px rgba(45, 212, 191, 0.1) !important;
+}
+
+/* Neumorphic buttons */
+.btn-primary,
+.btn-ghost {
+  box-shadow:
+    4px 4px 10px rgba(0, 0, 0, 0.5),
+    -3px -3px 8px rgba(45, 212, 191, 0.05) !important;
+  border: none !important;
+}
+
+.btn-primary:active,
+.btn-ghost:active {
+  box-shadow:
+    inset 4px 4px 10px rgba(0, 0, 0, 0.5),
+    inset -3px -3px 8px rgba(45, 212, 191, 0.05) !important;
+  transform: translateY(0) !important;
+}
+
+/* Neumorphic chips */
+.chip,
+.tag {
+  background: linear-gradient(145deg, #0f1729, #0b1220) !important;
+  box-shadow:
+    3px 3px 8px rgba(0, 0, 0, 0.4),
+    -2px -2px 6px rgba(45, 212, 191, 0.04) !important;
+  border: none !important;
+}
+
+/* Neumorphic inputs */
+.form-group input,
+.form-group textarea,
+.vault-input,
+.gb-form input,
+.gb-form textarea,
+.blog-search,
+.search-input {
+  background: #0b1220 !important;
+  box-shadow:
+    inset 3px 3px 8px rgba(0, 0, 0, 0.5),
+    inset -2px -2px 6px rgba(45, 212, 191, 0.04) !important;
+  border: none !important;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.vault-input:focus {
+  box-shadow:
+    inset 3px 3px 8px rgba(0, 0, 0, 0.5),
+    inset -2px -2px 6px rgba(45, 212, 191, 0.08),
+    0 0 0 2px rgba(45, 212, 191, 0.25) !important;
+}

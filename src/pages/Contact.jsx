@@ -18,7 +18,7 @@ function Contact() {
     { label: 'Email', value: 'custodiojessrell07@gmail.com', href: 'mailto:custodiojessrell07@gmail.com', icon: 'https://cdn.simpleicons.org/gmail/EA4335' },
     { label: 'Facebook', value: 'Jessrell Custodio', href: 'https://www.facebook.com/share/19NZJfifwE/', icon: 'https://cdn.simpleicons.org/facebook/1877F2' },
     { label: 'Instagram', value: '@jssrll01', href: 'https://www.instagram.com/', icon: 'https://cdn.simpleicons.org/instagram/E4405F' },
-    { label: 'TikTok', value: '@sizzam_18', href: 'https://tiktok.com/@sizzam_18', icon: 'https://cdn.simpleicons.org/tiktok/ffffff' },
+    { label: 'TikTok', value: '@shaomi3_', href: 'https://tiktok.com/@shaomi3_', icon: 'https://cdn.simpleicons.org/tiktok/ffffff' },
     { label: 'X (Twitter)', value: '@astrater07', href: 'https://x.com/astrater07', icon: 'https://cdn.simpleicons.org/x/ffffff' }
   ];
 
@@ -44,34 +44,6 @@ function Contact() {
           </p>
         </section>
 
-        <section className="contact-intro card">
-          <h2>Response Time</h2>
-          <p>Usually replies within 24–48 hours.</p>
-          <p>I may not always respond immediately, but I try to review every genuine message.</p>
-          <p>Response time can vary depending on:</p>
-          <ul className="contact-list">
-            <li>message complexity</li>
-            <li>current projects</li>
-            <li>study/workload</li>
-            <li>availability</li>
-            <li>weekends and holidays</li>
-          </ul>
-          <p>If your message is important, please include enough context for me to understand what you need.</p>
-        </section>
-
-        <section className="contact-intro card">
-          <h2>Contact Philosophy</h2>
-          <h3 className="contact-subhead">Meaningful Connections Over Noise</h3>
-          <p>Astra isn't designed to collect messages for the sake of collecting messages.</p>
-          <p>The goal is to create meaningful connections.</p>
-          <p>
-            Whether it's a serious project proposal, a technical question, an interesting discovery,
-            constructive feedback, or simply a conversation between two people interested in
-            technology — every message is welcome.
-          </p>
-          <p className="contact-quote">Build something. Learn something. Share something.</p>
-        </section>
-
         <div className="contact-grid">
           <div className="contact-info card">
             <h2>Socials &amp; Reach</h2>
@@ -92,10 +64,6 @@ function Contact() {
                   <span className="contact-value">{s.value}</span>
                 </a>
               ))}
-            </div>
-            <div className="contact-response">
-              <span className="pulse-dot"></span>
-              Usually replies within 24–48 hours
             </div>
           </div>
 

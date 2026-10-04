@@ -3,7 +3,6 @@ import './About.css';
 
 function About() {
   const hobbies = ['Badminton','Mobile Legends','Call of Duty Mobile','Minecraft','UI Design','Video Editing'];
-  const values = ['Innovation','Learning','Creativity','Usefulness','Responsibility','Curiosity','Perseverance','Integrity','Collaboration','Empathy','Growth','Authenticity','Excellence','Open-mindedness','Consistency','Passion','Resilience','Focus','Adaptability','Purpose'];
   const funFacts = [
     'I often fall asleep in the middle of class, especially during major subjects. ',
     'I can spend hours working on something once I become genuinely interested in it.',
@@ -30,16 +29,13 @@ function About() {
           <section className="about-block reveal">
             <h2>My Story</h2>
             <p>My interest in technology grew from wanting to understand how digital platforms and applications work. Instead of only using technology, I started exploring how to build my own projects. Every project gives me an opportunity to learn something new, solve problems, and improve my skills.</p>
-            <p>What began as simple curiosity — "how does this website actually work?" — slowly turned into a full pursuit. I started with HTML and CSS, moved into JavaScript, then Python, then Java. Each new language felt like unlocking a new way of thinking. I would spend evenings taking apart tutorials, breaking them, fixing them, and rebuilding them until I truly understood what every line did.</p>
             <p>Along the way I discovered artificial intelligence — not just as a tool, but as a creative partner. I began using AI to assist with code, explore UI concepts, and compose music. I found that the most exciting part of technology is not just what it can do, but what it lets me do. Every project — finished or abandoned — has taught me something I could not have learned from a book alone.</p>
-            <p>Today, as a BSIT student at Mindoro State University, I am building a foundation in programming, design, and creative technology. I am still early in my journey, and I would not have it any other way. The path ahead is long, and that is exactly what makes it worth walking.</p>
           </section>
 
           <section className="about-block reveal">
             <h2>My Philosophy</h2>
             <blockquote className="philosophy">"I believe the best way to understand technology is to create with it. Every project, whether successful or not, is an opportunity to learn."</blockquote>
             <p>Technology is not just a tool — it is a canvas for ideas. The act of building, breaking, and rebuilding is where true understanding lives. Every bug is a lesson, every failure a stepping stone, and every finished project a story of persistence.</p>
-            <p>I approach each challenge with curiosity rather than fear, treating the unknown as an invitation to explore. When I build, I am not just writing code — I am shaping how people experience the digital world.</p>
           </section>
 
           <section className="about-block reveal">
@@ -57,7 +53,6 @@ function About() {
           <section className="about-block reveal">
             <h2>What Motivates Me</h2>
             <p>I am motivated by curiosity, creativity, and the challenge of turning ideas into something real. Learning how things work and building my own projects keeps me motivated.</p>
-            <p>There is a particular thrill in watching something I imagined come to life — a blank screen turning into a working interface, a vague idea becoming a functional feature. I am driven by endless questions: Can I build this? How does this work? The answers always lead to new questions, and that cycle never gets old.</p>
             <p>I am also motivated by the people who will use what I create. Knowing that a project could help someone, inspire someone, or simply make their day easier gives my work meaning beyond the code itself.</p>
           </section>
 

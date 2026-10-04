@@ -2,90 +2,19 @@ import React from 'react';
 import './Projects.css';
 
 const projects = [
-  {
-    name: 'PROJECT ASTRA',
-    category: 'Portfolio, Web App, UI/UX Design',
-    type: 'Web App',
-    status: 'Beta',
-    version: 'v2.1.0',
-    started: '08/20/2026',
-    deployed: '10/10/2026',
-    updated: '10/11/2026',
-    host: 'Render',
-  },
-  {
-    name: 'XMARKET',
-    category: 'E-commerce, Digital Market, Marketplace',
-    type: 'Web App',
-    status: 'Active',
-    version: 'v2.5.0',
-    started: '08/20/2026',
-    deployed: '09/25/2026',
-    updated: '09/29/2026',
-    host: 'Render',
-  },
-  {
-    name: 'XONLINE WALLET',
-    category: 'Finance, Digital Wallet',
-    type: 'Web App',
-    status: 'Active',
-    version: 'v1.7.1',
-    started: '09/01/2026',
-    deployed: '09/17/2026',
-    updated: '09/20/2026',
-    host: 'Render',
-  },
-  {
-    name: 'NOVAOKE',
-    category: 'Casual, Entertainment, Tradition, Digital',
-    type: 'Website / Web App',
-    status: 'Archive',
-    version: 'Unknown',
-    started: 'N/A',
-    deployed: 'N/A',
-    updated: 'N/A',
-    host: 'Vercel',
-  },
-  {
-    name: 'PRICEE',
-    category: 'E-commerce, Business',
-    type: 'Website / Web App',
-    status: 'Active',
-    version: 'v1.5.0',
-    started: '09/01/2026',
-    deployed: '09/10/2026',
-    updated: '09/15/2026',
-    host: 'Render',
-  },
-  {
-    name: 'XENTREPRENEUR',
-    category: 'Business, Course',
-    type: 'Website / Web App',
-    status: 'Active',
-    version: 'v2.5.0',
-    started: 'N/A',
-    deployed: 'N/A',
-    updated: '09/18/2026',
-    host: 'Render',
-  },
-  {
-    name: 'ReceiptX',
-    category: 'Business, Tools',
-    type: 'Website / Web App',
-    status: 'Active',
-    version: 'v1.9.3',
-    started: 'N/A',
-    deployed: 'N/A',
-    updated: '09/20/2026',
-    host: 'Render',
-  },
+  { name: 'PROJECT ASTRA', category: 'Portfolio, Web App, UI/UX Design', type: 'Web App', status: 'Beta', version: 'v2.1.0', started: '08/20/2026', deployed: '10/10/2026', updated: '10/11/2026', host: 'Render' },
+  { name: 'XMARKET', category: 'E-commerce, Digital Market, Marketplace', type: 'Web App', status: 'Active', version: 'v2.5.0', started: '08/20/2026', deployed: '09/25/2026', updated: '09/29/2026', host: 'Render' },
+  { name: 'XONLINE WALLET', category: 'Finance, Digital Wallet', type: 'Web App', status: 'Active', version: 'v1.7.1', started: '09/01/2026', deployed: '09/17/2026', updated: '09/20/2026', host: 'Render' },
+  { name: 'NOVAOKE', category: 'Casual, Entertainment, Tradition, Digital', type: 'Website / Web App', status: 'Archive', version: 'Unknown', started: 'N/A', deployed: 'N/A', updated: 'N/A', host: 'Vercel' },
+  { name: 'PRICEE', category: 'E-commerce, Business', type: 'Website / Web App', status: 'Active', version: 'v1.5.0', started: '09/01/2026', deployed: '09/10/2026', updated: '09/15/2026', host: 'Render' },
+  { name: 'XENTREPRENEUR', category: 'Business, Course', type: 'Website / Web App', status: 'Active', version: 'v2.5.0', started: 'N/A', deployed: 'N/A', updated: '09/18/2026', host: 'Render' },
+  { name: 'ReceiptX', category: 'Business, Tools', type: 'Website / Web App', status: 'Active', version: 'v1.9.3', started: 'N/A', deployed: 'N/A', updated: '09/20/2026', host: 'Render' },
 ];
 
 function statusClass(s) {
   const lower = s.toLowerCase();
   if (lower === 'active') return 'active';
   if (lower === 'beta') return 'ongoing';
-  if (lower === 'archive') return 'planned';
   return 'planned';
 }
 
@@ -96,21 +25,6 @@ function Projects() {
         <header className="page-header reveal">
           <p className="eyebrow">Projects</p>
         </header>
-
-        <section className="projects-intro card">
-          <h2>Things I've Built, Experimented With, and Learned From</h2>
-          <p>Projects are where ideas become tangible.</p>
-          <p>
-            Every project in this collection represents a different experiment, problem,
-            technology, design approach, or lesson learned throughout my development journey.
-          </p>
-          <p>Some projects are active. Some are experimental. Some are archived. Some are still evolving.</p>
-          <p>
-            Together, they form a record of how my skills, interests, and approach to
-            technology continue to develop.
-          </p>
-        </section>
-
         <div className="projects-grid">
           {projects.map((p) => (
             <article className="project-card" key={p.name}>
@@ -118,9 +32,7 @@ function Projects() {
                 <h3>{p.name}</h3>
                 <span className={'project-status ' + statusClass(p.status)}>{p.status}</span>
               </div>
-
               <p className="project-category">{p.category}</p>
-
               <div className="project-meta">
                 <div className="project-meta-row"><span>Type</span><span>{p.type}</span></div>
                 <div className="project-meta-row"><span>Version</span><span>{p.version}</span></div>

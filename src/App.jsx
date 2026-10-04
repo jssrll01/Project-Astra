@@ -11,29 +11,20 @@ import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import ProjectGallery from './pages/ProjectGallery';
-import Partners from './pages/Partners';
-import Bookshelf from './pages/Bookshelf';
-import Docs from './pages/Docs';
-import FAQ from './pages/FAQ';
 import Collection from './pages/Collection';
 import Bookmarks from './pages/Bookmarks';
 import AIMusic from './pages/AIMusic';
-import Archives from './pages/Archives';
 import PromptMusic from './pages/PromptMusic';
 import PromptImage from './pages/PromptImage';
 import PromptProgramming from './pages/PromptProgramming';
 import Journey from './pages/Journey';
-import Blog from './pages/Blog';
 import Certifications from './pages/Certifications';
 import Achievements from './pages/Achievements';
 import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
-import Threads from './pages/Threads';
-import BlogPost from './pages/BlogPost';
 import AIMusicDetail from './pages/AIMusicDetail';
 import CodePlayground from './pages/CodePlayground';
 import PersonalVault from './pages/PersonalVault';
-import Devotion from './pages/Devotion';
 import './App.css';
 
 function ScrollToTop() {
@@ -53,28 +44,19 @@ function RoutesView() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/gallery" element={<ProjectGallery />} />
-        <Route path="/partners" element={<Partners />} />
-        <Route path="/bookshelf" element={<Bookshelf />} />
-          <Route path="/docs" element={<Docs />} />
-          <Route path="/faq" element={<FAQ />} />
           <Route path="/collection" element={<Collection />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
         <Route path="/ai-music" element={<AIMusic />} />
           <Route path="/ai-music/:slug" element={<AIMusicDetail />} />
-        <Route path="/archives" element={<Archives />} />
         <Route path="/prompt-music" element={<PromptMusic />} />
         <Route path="/prompt-image" element={<PromptImage />} />
         <Route path="/prompt-programming" element={<PromptProgramming />} />
         <Route path="/journey" element={<Journey />} />
-        <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/certifications" element={<Certifications />} />
         <Route path="/achievements" element={<Achievements />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/playground" element={<CodePlayground />} />
         <Route path="/vault" element={<PersonalVault />} />
-        <Route path="/devotion" element={<Devotion />} />
-          <Route path="/threads" element={<Threads />} />
           <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

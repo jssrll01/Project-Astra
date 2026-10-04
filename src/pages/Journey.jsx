@@ -21,22 +21,6 @@ function Journey() {
         <header className="page-header reveal">
           <p className="eyebrow">Development Journey</p>
         </header>
-
-        <section className="journey-intro card">
-          <h2>From Curiosity to Creation</h2>
-          <p>Every project starts somewhere.</p>
-          <p>
-            For me, the journey began with curiosity — wanting to understand how websites work,
-            how applications are built, how interfaces can communicate ideas, and how technology
-            can be transformed into something useful.
-          </p>
-          <p>What started as learning the fundamentals gradually became an ongoing cycle of:</p>
-          <p className="journey-cycle">Learn → Experiment → Build → Break → Improve → Document → Repeat</p>
-          <p>Astra is one of the results of that journey.</p>
-          <p>But it is not the end.</p>
-          <p className="journey-note">It is another chapter.</p>
-        </section>
-
         <div className="timeline">
           {milestones.map((m, i) => (
             <div className={'timeline-item reveal reveal-delay-' + ((i % 3) + 1)} key={m.year + m.title}>

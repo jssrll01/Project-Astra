@@ -379,12 +379,6 @@
   100% { transform: translate3d(3%, 2%, 0) scale(1.08); }
 }
 
-@keyframes meteorFall {
-  0%   { opacity: 0; transform: translate(0, 0) rotate(135deg); }
-  8%   { opacity: 1; }
-  75%  { opacity: 1; }
-  100% { opacity: 0; transform: translate(-115vw, 115vh) rotate(135deg); }
-}
 
 @keyframes fillShimmer {
   0%   { background-position: 200% 0; }
